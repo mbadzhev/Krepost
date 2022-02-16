@@ -16,5 +16,11 @@ namespace KrepostWinForms.Forms
         {
             InitializeComponent();
         }
+
+        private void menuStripFileNew_Click(object sender, EventArgs e)
+        {
+            Form newDbForm = new NewDatabaseForm();
+            newDbForm.ShowDialog();
+        }
     }
 }
