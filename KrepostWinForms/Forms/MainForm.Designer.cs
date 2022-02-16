@@ -30,6 +30,7 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuStripFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripFileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +46,17 @@
             // 
             // menuStripFile
             // 
+            this.menuStripFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripFileNew});
             this.menuStripFile.Name = "menuStripFile";
             this.menuStripFile.Size = new System.Drawing.Size(37, 20);
             this.menuStripFile.Text = "File";
+            // 
+            // menuStripFileNew
+            // 
+            this.menuStripFileNew.Name = "menuStripFileNew";
+            this.menuStripFileNew.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileNew.Text = "New";
             // 
             // MainForm
             // 
@@ -69,5 +78,6 @@
 
         private MenuStrip menuStrip;
         private ToolStripMenuItem menuStripFile;
+        private ToolStripMenuItem menuStripFileNew;
     }
 }
