@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KrepostWinForms
+namespace KrepostWinForms.Forms
 {
     public partial class MainForm : Form
     {

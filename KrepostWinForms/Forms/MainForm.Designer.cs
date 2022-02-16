@@ -1,4 +1,4 @@
-﻿namespace KrepostWinForms
+﻿namespace KrepostWinForms.Forms
 {
     partial class MainForm
     {
@@ -57,6 +57,7 @@
             this.menuStripFileNew.Name = "menuStripFileNew";
             this.menuStripFileNew.Size = new System.Drawing.Size(180, 22);
             this.menuStripFileNew.Text = "New";
+            this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
             // 
             // MainForm
             // 
