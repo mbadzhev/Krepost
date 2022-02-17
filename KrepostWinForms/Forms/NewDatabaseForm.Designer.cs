@@ -42,6 +42,7 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(266, 23);
             this.textBoxPassword.TabIndex = 0;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxPasswordRepeat
             // 
@@ -50,6 +51,7 @@
             this.textBoxPasswordRepeat.PasswordChar = '*';
             this.textBoxPasswordRepeat.Size = new System.Drawing.Size(266, 23);
             this.textBoxPasswordRepeat.TabIndex = 1;
+            this.textBoxPasswordRepeat.TextChanged += new System.EventHandler(this.textBoxPasswordRepeat_TextChanged);
             // 
             // labelPassword
             // 
