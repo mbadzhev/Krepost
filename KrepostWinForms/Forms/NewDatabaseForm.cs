@@ -42,5 +42,19 @@ namespace KrepostWinForms.Forms
                 textBoxPasswordRepeat.BackColor = Color.Red;
             }
         }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            // TODO: Securely compare the master passwords.
+            if (!KrepostLib.Utility.CompareStrings(textBoxPassword.Text, textBoxPasswordRepeat.Text))
+            {
+                MessageBox.Show("Passwords do not match or are empty.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                UI.Utility.SaveDatabase();
+                Close();
+            }
+        }
     }
 }
