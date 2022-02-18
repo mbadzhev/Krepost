@@ -2,7 +2,7 @@
 {
     public static class Utility
     {
-        public static void SaveDatabase()
+        public static bool SaveDatabase()
         {
             // Set dialog settings
             SaveFileDialog sfd = new SaveFileDialog();
@@ -14,6 +14,11 @@
             {
                 // Create db, use the picked path and serialize the db
                 KrepostLib.DatabaseWriter.WriteDatabase(KrepostLib.DatabaseWriter.CreateDatabase(), Path.GetFullPath(sfd.FileName));
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -52,8 +52,10 @@ namespace KrepostWinForms.Forms
             }
             else
             {
-                UI.Utility.SaveDatabase();
-                Close();
+                if (UI.Utility.SaveDatabase())
+                {
+                    Close();
+                }
             }
         }
 
