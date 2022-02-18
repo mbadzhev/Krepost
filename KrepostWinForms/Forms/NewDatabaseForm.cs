@@ -56,5 +56,10 @@ namespace KrepostWinForms.Forms
                 Close();
             }
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
