@@ -115,6 +115,7 @@
             this.Controls.Add(this.textBoxPasswordRepeat);
             this.Controls.Add(this.textBoxPassword);
             this.Name = "NewDatabaseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewDatabaseForm";
             this.ResumeLayout(false);
             this.PerformLayout();
