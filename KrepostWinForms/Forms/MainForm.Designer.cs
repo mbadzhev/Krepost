@@ -66,6 +66,7 @@
             this.menuStripFileOpen.Name = "menuStripFileOpen";
             this.menuStripFileOpen.Size = new System.Drawing.Size(180, 22);
             this.menuStripFileOpen.Text = "Open";
+            this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
             // 
             // MainForm
             // 
