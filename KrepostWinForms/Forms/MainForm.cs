@@ -25,8 +25,11 @@ namespace KrepostWinForms.Forms
 
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
-            Form openDbForm = new OpenDatabaseForm();
-            openDbForm.ShowDialog();
+            if (UI.Utility.OpenDatabase())
+            {
+                Form openDbForm = new OpenDatabaseForm();
+                openDbForm.ShowDialog();
+            }
         }
     }
 }
