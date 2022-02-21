@@ -25,5 +25,19 @@ namespace KrepostLib
 
             return obj;
         }
+
+        public static bool ValidateDatabaseHeader(Database db)
+        {
+            // TODO: Allow for different values in header fields
+
+            // Concatenate all fields of database header
+            string headerString = db.Items.hashId + db.Items.accessHash + db.Items.integrityHash + db.Items.cipherId + db.Items.databaseIv;
+            // Hash concatenated string and compare result with stored hash
+            if (db.Items.integrityHash != Cryptography.Sha256Engine.ComputeSha256Hash(headerString))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
