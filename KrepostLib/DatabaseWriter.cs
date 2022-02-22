@@ -38,5 +38,10 @@ namespace KrepostLib
             serializer.Serialize(xmlWriter, obj);
             xmlWriter.Close();
         }
+        public static void HashDatabaseHeader(Database db)
+        {
+            string headerFields = db.Items.hashId + db.Items.accessHash + db.Items.cipherId + db.Items.databaseIv;
+            db.Items.integrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
+        }
     }
 }
