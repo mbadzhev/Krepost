@@ -89,6 +89,8 @@
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelHeader);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OpenDatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenDatabaseForm";
