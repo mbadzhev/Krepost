@@ -19,8 +19,9 @@ namespace KrepostLib
             dbHead.accessHash = "passwordhash";
             dbHead.cipherId = "AES256";
             dbHead.databaseIv = "myIv";
-            dbHead.integrityHash = "jhfguuhtrkjk";
             db.Items = dbHead;
+            HashDatabaseHeader(db);
+
             return db;
         }
 
