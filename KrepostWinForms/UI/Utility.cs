@@ -21,5 +21,29 @@
                 return false;
             }
         }
+        public static bool OpenDatabase()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofd.FilterIndex = 2;
+            ofd.RestoreDirectory = true;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Initial deserialization of db
+                Program.CurrentDb = KrepostLib.DatabaseReader.ReadDatabase(Path.GetFullPath(ofd.FileName));
+                
+                // Validate db header
+                if (!KrepostLib.DatabaseReader.ValidateDatabaseHeader(Program.CurrentDb))
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
