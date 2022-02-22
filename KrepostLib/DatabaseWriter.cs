@@ -10,7 +10,7 @@ namespace KrepostLib
 {
     public static class DatabaseWriter
     {
-        public static object CreateDatabase()
+        public static Database CreateDatabase()
         {
             // TODO: Complete implementation
             Database db = new Database();
