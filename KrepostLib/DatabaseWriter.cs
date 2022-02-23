@@ -10,13 +10,13 @@ namespace KrepostLib
 {
     public static class DatabaseWriter
     {
-        public static Database CreateDatabase()
+        public static Database CreateDatabase(string masterPassword)
         {
             // TODO: Complete implementation
             Database db = new Database();
             DatabaseHead dbHead = new DatabaseHead();
             dbHead.hashId = "SHA256";
-            dbHead.accessHash = "passwordhash";
+            dbHead.accessHash = Cryptography.Sha256Engine.ComputeSha256Hash(masterPassword);
             dbHead.cipherId = "AES256";
             dbHead.databaseIv = "myIv";
             db.Items = dbHead;
