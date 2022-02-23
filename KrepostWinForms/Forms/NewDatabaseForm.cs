@@ -52,7 +52,7 @@ namespace KrepostWinForms.Forms
             }
             else
             {
-                if (UI.Utility.SaveDatabase())
+                if (UI.Utility.SaveDatabase(textBoxPassword.Text))
                 {
                     Close();
                 }
