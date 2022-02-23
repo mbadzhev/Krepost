@@ -78,6 +78,7 @@
             this.buttonOpen.TabIndex = 4;
             this.buttonOpen.Text = "Open";
             this.buttonOpen.UseVisualStyleBackColor = true;
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
             // OpenDatabaseForm
             // 
