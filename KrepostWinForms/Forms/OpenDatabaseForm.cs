@@ -24,6 +24,7 @@ namespace KrepostWinForms.Forms
             if (Program.CurrentDb.Items.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(textBoxPassword.Text))
             {
                 // TODO: Decrypt db
+                Close();
             }
             else if (textBoxPassword.Text == "")
             {
