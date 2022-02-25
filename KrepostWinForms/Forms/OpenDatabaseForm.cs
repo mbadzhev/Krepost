@@ -21,7 +21,7 @@ namespace KrepostWinForms.Forms
         {
             // Check for empty textbox
 
-            if (Program.CurrentDb.Items.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(textBoxPassword.Text))
+            if (Program.CurrentDb.Head.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(textBoxPassword.Text))
             {
                 // TODO: Decrypt db
                 Close();

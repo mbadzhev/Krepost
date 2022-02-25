@@ -19,7 +19,7 @@ namespace KrepostLib
             dbHead.accessHash = Cryptography.Sha256Engine.ComputeSha256Hash(masterPassword);
             dbHead.cipherId = "AES256";
             dbHead.databaseIv = "myIv";
-            db.Items = dbHead;
+            db.Head = dbHead;
             HashDatabaseHeader(db);
 
             return db;
@@ -41,8 +41,8 @@ namespace KrepostLib
         }
         public static void HashDatabaseHeader(Database db)
         {
-            string headerFields = db.Items.hashId + db.Items.accessHash + db.Items.cipherId + db.Items.databaseIv;
-            db.Items.integrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
+            string headerFields = db.Head.hashId + db.Head.accessHash + db.Head.cipherId + db.Head.databaseIv;
+            db.Head.integrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
         }
     }
 }

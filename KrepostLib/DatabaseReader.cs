@@ -31,9 +31,9 @@ namespace KrepostLib
             // TODO: Allow for different values in header fields
 
             // Concatenate all fields of database header
-            string headerString = db.Items.hashId + db.Items.accessHash + db.Items.cipherId + db.Items.databaseIv;
+            string headerString = db.Head.hashId + db.Head.accessHash + db.Head.cipherId + db.Head.databaseIv;
             // Hash concatenated string and compare result with stored hash
-            if (db.Items.integrityHash != Cryptography.Sha256Engine.ComputeSha256Hash(headerString))
+            if (db.Head.integrityHash != Cryptography.Sha256Engine.ComputeSha256Hash(headerString))
             {
                 return false;
             }

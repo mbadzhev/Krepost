@@ -25,19 +25,231 @@ namespace KrepostLib
     public partial class Database
     {
 
-        private DatabaseHead itemsField;
+        private DatabaseHead headField;
+
+        private DatabaseBody bodyField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("head", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public DatabaseHead Items
+        public DatabaseHead Head
         {
             get
             {
-                return this.itemsField;
+                return this.headField;
             }
             set
             {
-                this.itemsField = value;
+                this.headField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("body", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public DatabaseBody Body
+        {
+            get
+            {
+                return this.bodyField;
+            }
+            set
+            {
+                this.bodyField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class DatabaseBody
+    {
+
+        private string integrityHashField;
+
+        private DatabaseBodyEntry[] entryField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string integrityHash
+        {
+            get
+            {
+                return this.integrityHashField;
+            }
+            set
+            {
+                this.integrityHashField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("entry", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public DatabaseBodyEntry[] entry
+        {
+            get
+            {
+                return this.entryField;
+            }
+            set
+            {
+                this.entryField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class DatabaseBodyEntry
+    {
+
+        private string entryIvField;
+
+        private string titleField;
+
+        private string usernameField;
+
+        private string emailField;
+
+        private string passwordField;
+
+        private string urlField;
+
+        private string noteField;
+
+        private string dateCreatedField;
+
+        private string dateModifiedField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string entryIv
+        {
+            get
+            {
+                return this.entryIvField;
+            }
+            set
+            {
+                this.entryIvField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string title
+        {
+            get
+            {
+                return this.titleField;
+            }
+            set
+            {
+                this.titleField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string username
+        {
+            get
+            {
+                return this.usernameField;
+            }
+            set
+            {
+                this.usernameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string email
+        {
+            get
+            {
+                return this.emailField;
+            }
+            set
+            {
+                this.emailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string password
+        {
+            get
+            {
+                return this.passwordField;
+            }
+            set
+            {
+                this.passwordField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string url
+        {
+            get
+            {
+                return this.urlField;
+            }
+            set
+            {
+                this.urlField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string note
+        {
+            get
+            {
+                return this.noteField;
+            }
+            set
+            {
+                this.noteField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string dateCreated
+        {
+            get
+            {
+                return this.dateCreatedField;
+            }
+            set
+            {
+                this.dateCreatedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string dateModified
+        {
+            get
+            {
+                return this.dateModifiedField;
+            }
+            set
+            {
+                this.dateModifiedField = value;
             }
         }
     }
@@ -53,11 +265,11 @@ namespace KrepostLib
 
         private string hashIdField;
 
+        private string cipherIdField;
+
         private string accessHashField;
 
         private string integrityHashField;
-
-        private string cipherIdField;
 
         private string databaseIvField;
 
@@ -72,6 +284,20 @@ namespace KrepostLib
             set
             {
                 this.hashIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string cipherId
+        {
+            get
+            {
+                return this.cipherIdField;
+            }
+            set
+            {
+                this.cipherIdField = value;
             }
         }
 
@@ -100,20 +326,6 @@ namespace KrepostLib
             set
             {
                 this.integrityHashField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string cipherId
-        {
-            get
-            {
-                return this.cipherIdField;
-            }
-            set
-            {
-                this.cipherIdField = value;
             }
         }
 
