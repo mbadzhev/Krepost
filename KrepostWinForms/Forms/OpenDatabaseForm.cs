@@ -1,0 +1,34 @@
+﻿namespace KrepostWinForms.Forms
+{
+    public partial class OpenDatabaseForm : Form
+    {
+        public OpenDatabaseForm()
+        {
+            InitializeComponent();
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            // Check for empty textbox
+
+            if (Program.CurrentDb.Head.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(textBoxPassword.Text))
+            {
+                // TODO: Decrypt db
+                Close();
+            }
+            else if (textBoxPassword.Text == "")
+            {
+                MessageBox.Show("Password is empty", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Password is incorrect", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+}
