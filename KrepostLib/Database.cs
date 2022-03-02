@@ -271,7 +271,7 @@ namespace KrepostLib
 
         private string integrityHashField;
 
-        private string databaseIvField;
+        private byte[] databaseIvField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -331,7 +331,7 @@ namespace KrepostLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string databaseIv
+        public byte[] databaseIv
         {
             get
             {
