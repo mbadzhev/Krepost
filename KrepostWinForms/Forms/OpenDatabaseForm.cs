@@ -1,4 +1,5 @@
-﻿namespace KrepostWinForms.Forms
+﻿using System.Diagnostics;
+namespace KrepostWinForms.Forms
 {
     public partial class OpenDatabaseForm : Form
     {
@@ -13,7 +14,13 @@
 
             if (Program.CurrentDb.Head.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(textBoxPassword.Text))
             {
+                // TODO: Extremely insecure!!! Add secure layer over this reference
+
+                // Compute and save the key used in encrypting the database body
+                Program.CurrentKey = KrepostLib.Cryptography.Argon2Engine.DeriveKey(textBoxPassword.Text, Program.CurrentDb.Head.databaseIv);
+               
                 // TODO: Decrypt db
+
                 Close();
             }
             else if (textBoxPassword.Text == "")

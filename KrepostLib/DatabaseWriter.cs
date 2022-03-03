@@ -13,7 +13,8 @@ namespace KrepostLib
             dbHead.hashId = "SHA256";
             dbHead.accessHash = Cryptography.Sha256Engine.ComputeSha256Hash(masterPassword);
             dbHead.cipherId = "AES256";
-            dbHead.databaseIv = "myIv";
+            // Generate 128 bit (16 bytes) IV used by both KDF and AES
+            dbHead.databaseIv = Cryptography.Generator.GenerateBytes(16);
             db.Head = dbHead;
             HashDatabaseHeader(db);
 
