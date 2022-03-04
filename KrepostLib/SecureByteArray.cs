@@ -15,10 +15,32 @@
                 return dataLenght;
             }
         }
-        public SecureByteArray()
+        public SecureByteArray(byte[] array)
         {
-            // create byte[]
-            throw new NotImplementedException();
+            // Validate byte array contains some data.
+            if (array == null)
+            {
+                throw new ArgumentNullException("data");
+            }
+
+            // Get number of elements in array.
+            int arrayLength = array.Length;
+
+            // Validate byte array contains at least one element.
+            if (arrayLength < 0)
+            {
+                throw new ArgumentOutOfRangeException("arrayLength");
+            }
+
+            dataLenght = (uint)arrayLength;
+            // Declare byte array of size.
+            data = new byte[dataLenght];
+
+            // Copy argument array into field array.
+            Array.Copy(array, 0, data, 0, dataLenght);
+
+            // Encrypt the byte array.
+            Encrypt();
         }
         public void Encrypt()
         {
