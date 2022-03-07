@@ -2,7 +2,6 @@
 
 namespace KrepostLib.Cryptography
 {
-    //https://bytes.com/topic/java/answers/700499-cant-decrypt-my-aes-128-c-encrypted-byte-array-java really helped
     public sealed class AesEngine
     {
         public static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
@@ -24,6 +23,22 @@ namespace KrepostLib.Cryptography
                     {
                         return ReadFully(cs);
                     }
+                }
+            }
+        }
+        //https://bytes.com/topic/java/answers/700499-cant-decrypt-my-aes-128-c-encrypted-byte-array-java really helped
+        private static byte[] ReadFully(Stream stream)
+        {
+            // TODO: Introduce validation for byte array size
+            byte[] buffer = new byte[32768];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                while (true)
+                {
+                    int read = stream.Read(buffer, 0, buffer.Length);
+                    if (read <= 0)
+                        return ms.ToArray();
+                    ms.Write(buffer, 0, read);
                 }
             }
         }
