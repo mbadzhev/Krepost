@@ -12,5 +12,14 @@
                 return false;
             return true;
         }
+        public static void DisplayBytes(byte[] bytes)
+        {
+            for (int i = 0; i < bytes.Length; ++i)
+            {
+                Console.Write(bytes[i].ToString("x2") + " ");
+                if (i > 0 && i % 16 == 0) Console.Write("\n");
+            }
+            Console.WriteLine("");
+        }
     }
 }
