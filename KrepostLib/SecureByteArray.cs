@@ -75,7 +75,7 @@ namespace KrepostLib
             }
 
             byte[] temp = AesEngine.Encrypt(data, dataKey, dataIv);
-            
+
             // Overwrite plaintext data with ciphertext
             data = null;
             data = new byte[temp.Length];
@@ -83,8 +83,30 @@ namespace KrepostLib
         }
         public void Decrypt()
         {
-            // decrypt byte[]
-            throw new NotImplementedException();
+            // Validate at least one element is present for decryption.
+            if (data.Length == 0) return;
+
+            // Validate key has been generated.
+            if (dataKey == null)
+            {
+                throw new NullReferenceException("dataKey");
+            }
+
+            // Validate nonce has been generated.
+            if (dataIv == null)
+            {
+                throw new NullReferenceException("dataIv");
+            }
+
+            byte[] temp = AesEngine.Decrypt(data, dataKey, dataIv);
+
+            // Overwrite ciphertext data with plaintext
+            data = null;
+            data = new byte[temp.Length];
+            data = temp;
+
+            // Minimize plaintext exposure time in memory.
+            Array.Clear(temp, 0, temp.Length);
         }
         public byte[] Read()
         {
