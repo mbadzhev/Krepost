@@ -13,10 +13,13 @@ namespace KrepostLib
         /// The nonce member length must be 12 bytes (96 bits).
         /// </summary>
         private byte[] dataIv;
-        /// <summary>
-        /// The tag member length must be 16 bytes (128 bits).
-        /// </summary>
+
         private uint dataLenght;
+
+        /// <summary>
+        /// Used to prevent access from multiple threads at the same time.
+        /// </summary>
+        private readonly object lockObject = new object();
 
         /// <summary>
         /// Length of byte array is the number of elements present in the array.
@@ -108,10 +111,23 @@ namespace KrepostLib
             // Minimize plaintext exposure time in memory.
             Array.Clear(temp, 0, temp.Length);
         }
-        public byte[] Read()
+        public byte[] Expose()
         {
-            // decrypt byte[], return unsecure byte[] and encrypt byte[] again
-            throw new NotImplementedException();
+            if (dataLenght == 0)
+            {
+                throw new ArgumentOutOfRangeException("dataLenght");
+            }
+
+            byte[] plainText = new byte[dataLenght];
+
+            lock (lockObject)
+            {
+                Decrypt();
+                Array.Copy(data, plainText, (int)dataLenght);
+                Encrypt();
+            }
+
+            return plainText;
         }
     }
 }
