@@ -80,9 +80,8 @@ namespace KrepostLib
             byte[] temp = AesEngine.Encrypt(data, dataKey, dataIv);
 
             // Overwrite plaintext data with ciphertext
-            data = null;
             data = new byte[temp.Length];
-            data = temp;
+            Array.Copy(temp, 0, data, 0, temp.Length);
         }
         public void Decrypt()
         {
@@ -104,9 +103,8 @@ namespace KrepostLib
             byte[] temp = AesEngine.Decrypt(data, dataKey, dataIv);
 
             // Overwrite ciphertext data with plaintext
-            data = null;
             data = new byte[temp.Length];
-            data = temp;
+            Array.Copy(temp, 0, data, 0, temp.Length);
 
             // Minimize plaintext exposure time in memory.
             Array.Clear(temp, 0, temp.Length);
