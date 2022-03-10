@@ -7,6 +7,8 @@ namespace KrepostLib.Security
     {
         private SecureString data;
         private Encoding encoding;
+        private byte[] dataByteArray;
+        private bool disposedStatus;
 
         public SecureStringUtil(SecureString inputData)
         {
@@ -27,6 +29,7 @@ namespace KrepostLib.Security
                 encoding = Encoding.UTF8;
             }
 
+            disposedStatus = false;
         }
 
         public byte[] ToByteArray()
@@ -36,7 +39,18 @@ namespace KrepostLib.Security
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            if (!disposedStatus)
+            {
+                if (dataByteArray == null)
+                {
+                    return;
+                }
+
+                Array.Clear(dataByteArray, 0, dataByteArray.Length);
+
+                disposedStatus = true;
+            }
+            GC.SuppressFinalize(this);
         }
 
         ~SecureStringUtil()
