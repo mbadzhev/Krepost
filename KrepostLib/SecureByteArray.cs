@@ -4,17 +4,32 @@ namespace KrepostLib
 {
     public sealed class SecureByteArray
     {
-        private byte[] data;
         /// <summary>
-        /// The key member length must be 32 bytes (256 bits).
+        /// Holds data in plaintext or ciphertext form.
+        /// </summary>
+        private byte[] data;
+
+        /// <summary>
+        /// Holds the key used for encryption and decryption.
+        /// The key length must be 32 bytes (256 bits).
         /// </summary>
         private byte[] dataKey;
+
         /// <summary>
-        /// The nonce member length must be 12 bytes (96 bits).
+        /// Holds the initialization vector used for encryption and decryption.
+        /// The iv member length must be 16 bytes (128 bits).
         /// </summary>
         private byte[] dataIv;
 
-        private uint dataLenght;
+        /// <summary>
+        /// Holds the number of bytes of the plaintext.
+        /// </summary>
+        private int plainTextLength;
+
+        /// <summary>
+        /// Holds the number of bytes of the ciphertext.
+        /// </summary>
+        private int cipherTextLength;
 
         /// <summary>
         /// Used to prevent access from multiple threads at the same time.
@@ -22,46 +37,39 @@ namespace KrepostLib
         private readonly object lockObject = new object();
 
         /// <summary>
-        /// Length of byte array is the number of elements present in the array.
+        /// Gets the total number of plaintext elements in the <see cref="SecureByteArray"/>.
         /// </summary>
-		public uint Length
+        /// <returns>
+        /// The total number of elements of the plaintext byte array.
+        /// </returns>
+		public int Length
         {
             get
             {
-                return dataLenght;
+                return plainTextLength;
             }
         }
-        public SecureByteArray(byte[] array)
+
+        /// <summary>
+        /// Construct a secure byte array object.
+        /// </summary>
+        /// <param name="inputData">Data stored in the <see cref="SecureByteArray"/>.
+        /// </param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public SecureByteArray(ref byte[] inputData)
         {
             // Validate byte array contains some data.
-            if (array == null)
+            if (inputData == null)
             {
-                throw new ArgumentNullException("data");
+                throw new ArgumentNullException("inputData");
             }
 
-            // Get number of elements in array.
-            int arrayLength = array.Length;
-
-            // Validate byte array contains at least one element.
-            if (arrayLength < 0)
+            // Validate input data contains at least one element.
+            if (inputData.Length <= 0)
             {
-                throw new ArgumentOutOfRangeException("arrayLength");
+                throw new ArgumentOutOfRangeException("inputData.Length");
             }
-
-            dataLenght = (uint)arrayLength;
-            // Declare byte array of size.
-            data = new byte[dataLenght];
-
-            // Copy argument array into field array.
-            Array.Copy(array, 0, data, 0, dataLenght);
-
-            // Encrypt the byte array.
-            Encrypt();
-        }
-        public void Encrypt()
-        {
-            // Validate at least one element is present for encryption.
-            if (data.Length == 0) return;
 
             // Validate key has been generated.
             if (dataKey == null)
@@ -70,37 +78,44 @@ namespace KrepostLib
                 dataKey = Argon2Engine.DeriveKey(Generator.GenerateBytes(32), Generator.GenerateBytes(16));
             }
 
-            // Validate nonce has been generated.
+            // Validate iv has been generated.
             if (dataIv == null)
             {
                 // Generate 12 byte (96 bit) byte array.
                 dataIv = Generator.GenerateBytes(16);
             }
 
+            plainTextLength = inputData.Length;
+            // Declare byte array of size.
+            data = new byte[plainTextLength];
+
+            // Copy argument array into field array.
+            Array.Copy(inputData, 0, data, 0, plainTextLength);
+
+            // Encrypt the byte array.
+            Encrypt();
+        }
+        private void Encrypt()
+        {
+            ValidateCryptographicElements();
+
             byte[] temp = AesEngine.Encrypt(data, dataKey, dataIv);
+            cipherTextLength = temp.Length;
 
             // Overwrite plaintext data with ciphertext
-            data = new byte[temp.Length];
-            Array.Copy(temp, 0, data, 0, temp.Length);
+            data = new byte[cipherTextLength];
+            Array.Copy(temp, 0, data, 0, cipherTextLength);
         }
-        public void Decrypt()
+        private void Decrypt()
         {
-            // Validate at least one element is present for decryption.
-            if (data.Length == 0) return;
-
-            // Validate key has been generated.
-            if (dataKey == null)
-            {
-                throw new NullReferenceException("dataKey");
-            }
-
-            // Validate nonce has been generated.
-            if (dataIv == null)
-            {
-                throw new NullReferenceException("dataIv");
-            }
+            ValidateCryptographicElements();
 
             byte[] temp = AesEngine.Decrypt(data, dataKey, dataIv);
+
+            if (plainTextLength != temp.Length)
+            {
+                throw new ArgumentOutOfRangeException("plainTextLength");
+            }
 
             // Overwrite ciphertext data with plaintext
             data = new byte[temp.Length];
@@ -109,23 +124,50 @@ namespace KrepostLib
             // Minimize plaintext exposure time in memory.
             Array.Clear(temp, 0, temp.Length);
         }
+
+        /// <summary>
+        /// Gets a copy of the stored data.
+        /// The plaintext is exposed in memory and is at risk.
+        /// </summary>
+        /// <returns>Plaintext byte array.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public byte[] Expose()
         {
-            if (dataLenght == 0)
+            if (cipherTextLength == 0)
             {
-                throw new ArgumentOutOfRangeException("dataLenght");
+                throw new ArgumentOutOfRangeException("cipherTextLength");
             }
 
-            byte[] plainText = new byte[dataLenght];
+            byte[] plainText = new byte[plainTextLength];
 
             lock (lockObject)
             {
                 Decrypt();
-                Array.Copy(data, plainText, (int)dataLenght);
+                Array.Copy(data, 0, plainText, 0, plainTextLength);
                 Encrypt();
             }
 
             return plainText;
+        }
+        private void ValidateCryptographicElements()
+        {
+            // Validate there is data to manipulate.
+            if (data.Length <= 0)
+            {
+                throw new ArgumentOutOfRangeException("data.Length");
+            }
+
+            // Validate a key has been generated.
+            if (dataKey == null)
+            {
+                throw new ArgumentNullException("dataKey");
+            }
+
+            // Validate nonce has been generated.
+            if (dataIv == null)
+            {
+                throw new ArgumentNullException("dataIv");
+            }
         }
     }
 }
