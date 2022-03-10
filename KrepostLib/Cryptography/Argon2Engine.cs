@@ -21,5 +21,17 @@ namespace KrepostLib.Cryptography
             // AES256 requires a 256 bit key so 32 bytes (256 bits) are called for.
             return new MemoryStream(argon2.GetBytes(32));
         }
+        public static byte[] DeriveKey(byte[] input, byte[] salt)
+        {
+            var argon2 = new Argon2id(input);
+
+            // TODO: Develop a way to change the parameters for kdf to match PC hardware
+            argon2.Salt = salt; // Salt is recommended to be 16 bytes
+            argon2.DegreeOfParallelism = 8; // four cores
+            argon2.Iterations = 4;
+            argon2.MemorySize = 256 * 256; // 256 MB
+
+            return argon2.GetBytes(32);
+        }
     }
 }
