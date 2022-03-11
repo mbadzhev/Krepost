@@ -8,11 +8,32 @@ namespace KrepostLib.Security
 {
     public sealed class SecureStringUtil : IDisposable
     {
+        /// <summary>
+        /// Holds the input data in <see cref="SecureString"/>.
+        /// </summary>
         private SecureString data;
+
+        /// <summary>
+        /// Holds the character encoding to use throughout the <see cref="SecureStringUtil"/> instance.
+        /// </summary>
         private Encoding encoding;
+
+        /// <summary>
+        /// Holds the data from <see cref="SecureString"/> in byte array form.
+        /// </summary>
         private byte[] dataByteArray;
+
+        /// <summary>
+        /// Keeps track if the object is disposed.
+        /// </summary>
         private bool disposedStatus;
 
+        /// <summary>
+        /// Constructs a <see cref="SecureStringUtil"/> object.
+        /// </summary>
+        /// <param name="inputData">A <see cref="SecureString"/> object to be manipulated.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public SecureStringUtil(SecureString inputData)
         {
             if (inputData == null)
@@ -35,6 +56,10 @@ namespace KrepostLib.Security
             disposedStatus = false;
         }
 
+        /// <summary>
+        /// Converts a <see cref="SecureString"/> to a byte array.
+        /// </summary>
+        /// <returns>Plaintext byte array of data stored in a <see cref="SecureString"/>.</returns>
         public unsafe byte[] SecureStringToByteArray()
         {
             int maxLength = encoding.GetMaxByteCount(data.Length);
