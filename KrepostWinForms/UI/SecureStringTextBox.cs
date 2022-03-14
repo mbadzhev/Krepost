@@ -2,11 +2,17 @@
 
 using System.Security;
 
+using KrepostLib.Security;
+using KrepostLib.Cryptography;
+
 namespace SecureStringTextBox
 {
     public partial class SecureStringTextBox : UserControl
     {
         private SecureString data = new SecureString();
+        private string dataHash;
+        private byte[] dataSalt;
+        private bool emptyStatus;
 
         public SecureString Data
         {
@@ -15,10 +21,22 @@ namespace SecureStringTextBox
                 return data;
             }
         }
-        
+        public string DataHash
+        {
+            get { return dataHash; }
+            set { dataHash = value; }
+        }
+        public byte[] DataSalt
+        {
+            get { return dataSalt; }
+            set { dataSalt = value; }
+        }
+
         public SecureStringTextBox()
         {
             InitializeComponent();
+
+            emptyStatus = true;
         }
         private void InputBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -30,11 +48,13 @@ namespace SecureStringTextBox
         }
         private void InputBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            emptyStatus = false;
+
             if (e.KeyChar == (char)Keys.Back)
             {
                 ProcessBackspace();
             }
-            else if (e.KeyChar == (char)Keys.Return || e.KeyChar== (char)Keys.Escape)
+            else if (e.KeyChar == (char)Keys.Return || e.KeyChar == (char)Keys.Escape)
             {
                 return;
             }
@@ -44,6 +64,15 @@ namespace SecureStringTextBox
             }
 
             e.Handled = true;
+
+            if (emptyStatus)
+            {
+                return;
+            }
+            else
+            {
+                HashData();
+            }
         }
         private void ProcessBackspace()
         {
@@ -56,6 +85,10 @@ namespace SecureStringTextBox
             {
                 data.RemoveAt(InputBox.SelectionStart - 1);
                 ResetDisplayCharacters(InputBox.SelectionStart - 1);
+            }
+            if (data.Length <= 0)
+            {
+                emptyStatus = true;
             }
         }
         private void ProcessNewCharacter(char character)
@@ -92,6 +125,20 @@ namespace SecureStringTextBox
             }
 
             ResetDisplayCharacters(InputBox.SelectionStart);
+
+            if (data.Length <= 0)
+            {
+                emptyStatus = true;
+            }
+        }
+        private void HashData()
+        {
+            using (SecureStringUtil wrapper = new SecureStringUtil(data))
+            {
+                byte[] plaintext = wrapper.SecureStringToByteArray();
+                dataHash = Sha256Engine.ComputeSha256Hash(plaintext, dataSalt);
+                Array.Clear(plaintext, 0, plaintext.Length);
+            }
         }
     }
 }
