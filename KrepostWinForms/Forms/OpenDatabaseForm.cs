@@ -12,7 +12,7 @@ namespace KrepostWinForms.Forms
         {
             // Check for empty textbox
 
-            if (Program.CurrentDb.Head.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(textBoxPassword.Text))
+            if (Program.CurrentDb.Head.accessHash == KrepostLib.Cryptography.Sha256Engine.ComputeSha256Hash(System.Text.Encoding.UTF8.GetBytes(textBoxPassword.Text), Program.CurrentDb.Head.databaseIv))
             {
                 // TODO: Extremely insecure!!! Add secure layer over this reference
 
