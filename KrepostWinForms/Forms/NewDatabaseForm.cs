@@ -23,6 +23,8 @@
             {
                 if (UI.Utility.SaveDatabase(secureStringTextBoxTop.DataHash, secureStringTextBoxTop.DataSalt))
                 {
+                    secureStringTextBoxTop.Data.Dispose();
+                    secureStringTextBoxBottom.Data.Dispose();
                     Close();
                 }
             }
@@ -30,6 +32,8 @@
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            secureStringTextBoxTop.Data.Dispose();
+            secureStringTextBoxBottom.Data.Dispose();
             Close();
         }
     }

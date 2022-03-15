@@ -33,12 +33,14 @@ namespace KrepostWinForms.Forms
 
                 // TODO: Decrypt db
 
+                secureStringTextBox.Data.Dispose();
                 Close();
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            secureStringTextBox.Data.Dispose();
             Close();
         }
     }
