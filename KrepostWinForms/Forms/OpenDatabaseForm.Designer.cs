@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.labelHeader = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOpen = new System.Windows.Forms.Button();
+            this.secureStringTextBox = new SecureStringTextBox.SecureStringTextBox();
             this.SuspendLayout();
             // 
             // labelHeader
@@ -43,14 +43,6 @@
             this.labelHeader.Size = new System.Drawing.Size(153, 15);
             this.labelHeader.TabIndex = 0;
             this.labelHeader.Text = "Enter Your Master Password";
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(117, 83);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(305, 23);
-            this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // labelPassword
             // 
@@ -81,15 +73,25 @@
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
+            // secureStringTextBox
+            // 
+            this.secureStringTextBox.DataHash = null;
+            this.secureStringTextBox.DataSalt = null;
+            this.secureStringTextBox.Location = new System.Drawing.Point(117, 82);
+            this.secureStringTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBox.Name = "secureStringTextBox";
+            this.secureStringTextBox.Size = new System.Drawing.Size(305, 23);
+            this.secureStringTextBox.TabIndex = 5;
+            // 
             // OpenDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 361);
+            this.Controls.Add(this.secureStringTextBox);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelHeader);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -104,9 +106,9 @@
         #endregion
 
         private Label labelHeader;
-        private TextBox textBoxPassword;
         private Label labelPassword;
         private Button buttonCancel;
         private Button buttonOpen;
+        private SecureStringTextBox.SecureStringTextBox secureStringTextBox;
     }
 }
