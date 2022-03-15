@@ -6,7 +6,7 @@
         {
             if (str1 == null || str2 == null)
                 return false;
-            if (str1.Length < 1 || str2.Length < 1)
+            if (str1.Length <= 0 || str2.Length <= 0)
                 return false;
             if (str1 != str2)
                 return false;
