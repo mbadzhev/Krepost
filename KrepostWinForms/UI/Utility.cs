@@ -2,7 +2,7 @@
 {
     public static class Utility
     {
-        public static bool SaveDatabase(string masterPassword)
+        public static bool SaveDatabase(string masterHash, byte[] iv)
         {
             // TODO: Securely pass master password
             // Set dialog settings
@@ -14,7 +14,7 @@
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 // Create db, use the picked path and serialize the db
-                KrepostLib.DatabaseWriter.WriteDatabase(KrepostLib.DatabaseWriter.CreateDatabase(masterPassword), Path.GetFullPath(sfd.FileName));
+                KrepostLib.DatabaseWriter.WriteDatabase(KrepostLib.DatabaseWriter.CreateDatabase(masterHash, iv), Path.GetFullPath(sfd.FileName));
                 return true;
             }
             else
