@@ -5,16 +5,16 @@ namespace KrepostLib
 {
     public static class DatabaseWriter
     {
-        public static Database CreateDatabase(string masterPassword)
+        public static Database CreateDatabase(string masterHash, byte[] iv)
         {
             // TODO: Complete implementation
             Database db = new Database();
             DatabaseHead dbHead = new DatabaseHead();
             dbHead.hashId = "SHA256";
-            dbHead.accessHash = Cryptography.Sha256Engine.ComputeSha256Hash(masterPassword);
+            dbHead.accessHash = masterHash;
             dbHead.cipherId = "AES256";
             // Generate 128 bit (16 bytes) IV used by both KDF and AES
-            dbHead.databaseIv = Cryptography.Generator.GenerateBytes(16);
+            dbHead.databaseIv = iv;
             db.Head = dbHead;
             HashDatabaseHeader(db);
 
