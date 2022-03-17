@@ -2,10 +2,10 @@
 {
     public enum CipherId
     {
-        AES256 = 1,
+        AES256 = 0,
     }
     public enum HashId
     {
-        SHA256 = 1,
+        SHA256 = 0,
     }
 }
