@@ -2,6 +2,7 @@
 
 namespace KrepostLib
 {
+    [Serializable]
     public sealed class SecureByteArray
     {
         /// <summary>
