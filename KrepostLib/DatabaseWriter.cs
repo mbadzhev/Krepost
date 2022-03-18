@@ -1,6 +1,8 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 
+using KrepostLib.Storage;
+
 namespace KrepostLib
 {
     public static class DatabaseWriter
@@ -8,13 +10,14 @@ namespace KrepostLib
         public static Database CreateDatabase(string masterHash, byte[] iv)
         {
             // TODO: Complete implementation
-            Database db = new Database();
             DatabaseHead dbHead = new DatabaseHead();
-            dbHead.hashId = "SHA256";
-            dbHead.accessHash = masterHash;
-            dbHead.cipherId = "AES256";
+            DatabaseBody dbBody = new DatabaseBody();
+            Database db = new Database(dbHead, dbBody);
+            dbHead.HashFunction = HashId.SHA256;
+            dbHead.AccessHash = masterHash;
+            dbHead.CipherAlgorithm = CipherId.AES256;
             // Generate 128 bit (16 bytes) IV used by both KDF and AES
-            dbHead.databaseIv = iv;
+            dbHead.BodyIv = iv;
             db.Head = dbHead;
             HashDatabaseHeader(db);
 
@@ -37,8 +40,8 @@ namespace KrepostLib
         }
         public static void HashDatabaseHeader(Database db)
         {
-            string headerFields = db.Head.hashId + db.Head.accessHash + db.Head.cipherId + db.Head.databaseIv;
-            db.Head.integrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
+            string headerFields = db.Head.HashFunction + db.Head.AccessHash + db.Head.CipherAlgorithm + db.Head.BodyIv;
+            db.Head.IntegrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
         }
     }
 }
