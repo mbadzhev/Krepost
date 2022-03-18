@@ -1,5 +1,7 @@
 ﻿using System.Runtime.Serialization;
 
+using KrepostLib.Security;
+
 namespace KrepostLib.Storage
 {
     public class Database

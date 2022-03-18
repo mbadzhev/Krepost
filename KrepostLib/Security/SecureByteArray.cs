@@ -1,6 +1,6 @@
 ﻿using KrepostLib.Cryptography;
 
-namespace KrepostLib
+namespace KrepostLib.Security
 {
     [Serializable]
     public sealed class SecureByteArray
