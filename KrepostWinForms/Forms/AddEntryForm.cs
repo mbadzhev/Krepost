@@ -16,5 +16,14 @@ namespace KrepostWinForms.Forms
         {
             InitializeComponent();
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            secureStringTextBoxUsername.Data.Dispose();
+            secureStringTextBoxEmail.Data.Dispose();
+            secureStringTextBoxPassword.Data.Dispose();
+            secureStringTextBoxNote.Data.Dispose();
+            Close();
+        }
     }
 }

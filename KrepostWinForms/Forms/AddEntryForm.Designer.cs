@@ -37,7 +37,7 @@
             this.secureStringTextBoxPassword = new SecureStringTextBox.SecureStringTextBox();
             this.secureStringTextBoxEmail = new SecureStringTextBox.SecureStringTextBox();
             this.secureStringTextBoxUsername = new SecureStringTextBox.SecureStringTextBox();
-            this.secureStringTextBox5 = new SecureStringTextBox.SecureStringTextBox();
+            this.secureStringTextBoxNote = new SecureStringTextBox.SecureStringTextBox();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -128,15 +128,15 @@
             this.secureStringTextBoxUsername.Size = new System.Drawing.Size(325, 23);
             this.secureStringTextBoxUsername.TabIndex = 8;
             // 
-            // secureStringTextBox5
+            // secureStringTextBoxNote
             // 
-            this.secureStringTextBox5.DataHash = null;
-            this.secureStringTextBox5.DataSalt = null;
-            this.secureStringTextBox5.Location = new System.Drawing.Point(97, 260);
-            this.secureStringTextBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.secureStringTextBox5.Name = "secureStringTextBox5";
-            this.secureStringTextBox5.Size = new System.Drawing.Size(325, 23);
-            this.secureStringTextBox5.TabIndex = 10;
+            this.secureStringTextBoxNote.DataHash = null;
+            this.secureStringTextBoxNote.DataSalt = null;
+            this.secureStringTextBoxNote.Location = new System.Drawing.Point(97, 260);
+            this.secureStringTextBoxNote.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
+            this.secureStringTextBoxNote.Size = new System.Drawing.Size(325, 23);
+            this.secureStringTextBoxNote.TabIndex = 10;
             // 
             // textBoxUrl
             // 
@@ -169,6 +169,7 @@
             this.buttonCancel.TabIndex = 13;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // AddEntryForm
             // 
@@ -179,7 +180,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.textBoxUrl);
-            this.Controls.Add(this.secureStringTextBox5);
+            this.Controls.Add(this.secureStringTextBoxNote);
             this.Controls.Add(this.secureStringTextBoxUsername);
             this.Controls.Add(this.secureStringTextBoxEmail);
             this.Controls.Add(this.secureStringTextBoxPassword);
@@ -210,7 +211,7 @@
         private SecureStringTextBox.SecureStringTextBox secureStringTextBoxPassword;
         private SecureStringTextBox.SecureStringTextBox secureStringTextBoxEmail;
         private SecureStringTextBox.SecureStringTextBox secureStringTextBoxUsername;
-        private SecureStringTextBox.SecureStringTextBox secureStringTextBox5;
+        private SecureStringTextBox.SecureStringTextBox secureStringTextBoxNote;
         private TextBox textBoxUrl;
         private TextBox textBoxTitle;
         private Button buttonSave;
