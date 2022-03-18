@@ -35,7 +35,7 @@ namespace SecureStringTextBox
         public SecureStringTextBox()
         {
             InitializeComponent();
-
+            
             emptyStatus = true;
         }
         private void InputBox_KeyDown(object sender, KeyEventArgs e)
@@ -133,6 +133,10 @@ namespace SecureStringTextBox
         }
         private void HashData()
         {
+            if (dataSalt == null || dataSalt.Length <= 0)
+            {
+                dataSalt = Generator.GenerateBytes(16);
+            }
             using (SecureStringUtil wrapper = new SecureStringUtil(data))
             {
                 byte[] plaintext = wrapper.SecureStringToByteArray();
