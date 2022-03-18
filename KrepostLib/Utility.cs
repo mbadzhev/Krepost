@@ -12,6 +12,10 @@
                 return false;
             return true;
         }
+        public static string GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
         public static void DisplayBytes(byte[] bytes)
         {
             for (int i = 0; i < bytes.Length; ++i)
