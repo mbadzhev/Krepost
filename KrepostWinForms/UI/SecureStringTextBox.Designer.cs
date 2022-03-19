@@ -1,4 +1,4 @@
-﻿namespace SecureStringTextBox
+﻿namespace KrepostWinForms.UI
 {
     partial class SecureStringTextBox
     {

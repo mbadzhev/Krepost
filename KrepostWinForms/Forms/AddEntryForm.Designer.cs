@@ -1,4 +1,6 @@
-﻿namespace KrepostWinForms.Forms
+﻿using KrepostWinForms.UI;
+
+namespace KrepostWinForms.Forms
 {
     partial class AddEntryForm
     {
@@ -34,10 +36,10 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUrl = new System.Windows.Forms.Label();
             this.labelNote = new System.Windows.Forms.Label();
-            this.secureStringTextBoxPassword = new SecureStringTextBox.SecureStringTextBox();
-            this.secureStringTextBoxEmail = new SecureStringTextBox.SecureStringTextBox();
-            this.secureStringTextBoxUsername = new SecureStringTextBox.SecureStringTextBox();
-            this.secureStringTextBoxNote = new SecureStringTextBox.SecureStringTextBox();
+            this.secureStringTextBoxPassword = new SecureStringTextBox();
+            this.secureStringTextBoxEmail = new SecureStringTextBox();
+            this.secureStringTextBoxUsername = new SecureStringTextBox();
+            this.secureStringTextBoxNote = new SecureStringTextBox();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -160,6 +162,7 @@
             this.buttonSave.TabIndex = 14;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonCancel
             // 
@@ -208,10 +211,10 @@
         private Label labelPassword;
         private Label labelUrl;
         private Label labelNote;
-        private SecureStringTextBox.SecureStringTextBox secureStringTextBoxPassword;
-        private SecureStringTextBox.SecureStringTextBox secureStringTextBoxEmail;
-        private SecureStringTextBox.SecureStringTextBox secureStringTextBoxUsername;
-        private SecureStringTextBox.SecureStringTextBox secureStringTextBoxNote;
+        private SecureStringTextBox secureStringTextBoxPassword;
+        private SecureStringTextBox secureStringTextBoxEmail;
+        private SecureStringTextBox secureStringTextBoxUsername;
+        private SecureStringTextBox secureStringTextBoxNote;
         private TextBox textBoxUrl;
         private TextBox textBoxTitle;
         private Button buttonSave;

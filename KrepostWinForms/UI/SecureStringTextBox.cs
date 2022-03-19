@@ -5,7 +5,7 @@ using System.Security;
 using KrepostLib.Security;
 using KrepostLib.Cryptography;
 
-namespace SecureStringTextBox
+namespace KrepostWinForms.UI
 {
     public partial class SecureStringTextBox : UserControl
     {

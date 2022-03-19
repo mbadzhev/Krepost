@@ -1,4 +1,6 @@
-﻿namespace KrepostWinForms.Forms
+﻿using KrepostWinForms.UI;
+
+namespace KrepostWinForms.Forms
 {
     partial class OpenDatabaseForm
     {
@@ -32,7 +34,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOpen = new System.Windows.Forms.Button();
-            this.secureStringTextBox = new SecureStringTextBox.SecureStringTextBox();
+            this.secureStringTextBox = new SecureStringTextBox();
             this.SuspendLayout();
             // 
             // labelHeader
@@ -109,6 +111,6 @@
         private Label labelPassword;
         private Button buttonCancel;
         private Button buttonOpen;
-        private SecureStringTextBox.SecureStringTextBox secureStringTextBox;
+        private SecureStringTextBox secureStringTextBox;
     }
 }
