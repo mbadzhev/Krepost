@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 using System.Xml.Serialization;
 
 using KrepostLib.Cryptography;
@@ -27,20 +28,36 @@ namespace KrepostLib
             Database db = new Database(dbHead, dbBody);
             return db;
         }
-
-        public static void WriteDatabase(object obj, string path)
+        public static void SerializeDatabase(Database db, SecureByteArray key, string path)
         {
-            // TODO: Chech for errors in the process
+            // TODO: Validate arguments
+
+            DatabaseFile dbF = new DatabaseFile();
+            dbF.Salt = Generator.GenerateBytes(16);
+            dbF.Head = ObjectToByteArray(db.Head);
+            dbF.HeadHash = Sha256Engine.ComputeSha256Hash(dbF.Head, dbF.Salt);
+            dbF.Body = AesEngine.Encrypt(ObjectToByteArray(db.Body), key, db.Head.BodyIv);
+            dbF.BodyHash = Sha256Engine.ComputeSha256Hash(dbF.Body, dbF.Salt);
+            
 
             // Use new line and indentadion in xml output.
             XmlWriterSettings xmlWriterSettings = new()
             {
                 Indent = true
             };
-            XmlSerializer serializer = new(typeof(Database));
+            XmlSerializer serializer = new(typeof(DatabaseFile));
             using XmlWriter xmlWriter = XmlWriter.Create(path, xmlWriterSettings);
-            serializer.Serialize(xmlWriter, obj);
+            serializer.Serialize(xmlWriter, dbF);
             xmlWriter.Close();
+        }
+        public static byte[] ObjectToByteArray(object obj)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                formatter.Serialize(ms, obj);
+                return ms.ToArray();
+            }
         }
         public static void HashDatabaseHead(DatabaseHead dbH, byte[] salt)
         {
