@@ -1,6 +1,8 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 
+using KrepostLib.Cryptography;
+using KrepostLib.Security;
 using KrepostLib.Storage;
 
 namespace KrepostLib
@@ -11,16 +13,18 @@ namespace KrepostLib
         {
             // TODO: Complete implementation
             DatabaseHead dbHead = new DatabaseHead();
-            DatabaseBody dbBody = new DatabaseBody();
-            Database db = new Database(dbHead, dbBody);
             dbHead.HashFunction = HashId.SHA256;
-            dbHead.AccessHash = masterHash;
             dbHead.CipherAlgorithm = CipherId.AES256;
-            // Generate 128 bit (16 bytes) IV used by both KDF and AES
+            dbHead.AccessHash = masterHash;
             dbHead.BodyIv = iv;
-            db.Head = dbHead;
-            HashDatabaseHeader(db);
 
+            DatabaseBody dbBody = new DatabaseBody();
+            dbBody.HeadSalt = Generator.GenerateBytes(16);
+            dbBody.EntryList = new List<DatabaseEntry>();
+
+            HashDatabaseHead(dbHead, dbBody.HeadSalt);
+
+            Database db = new Database(dbHead, dbBody);
             return db;
         }
 
@@ -38,10 +42,10 @@ namespace KrepostLib
             serializer.Serialize(xmlWriter, obj);
             xmlWriter.Close();
         }
-        public static void HashDatabaseHeader(Database db)
+        public static void HashDatabaseHead(DatabaseHead dbH, byte[] salt)
         {
-            string headerFields = db.Head.HashFunction + db.Head.AccessHash + db.Head.CipherAlgorithm + db.Head.BodyIv;
-            db.Head.IntegrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
+            string headFields = dbH.HashFunction + dbH.AccessHash + dbH.CipherAlgorithm + dbH.BodyIv;
+            dbH.IntegrityHash = Sha256Engine.ComputeSha256Hash(headFields, salt);
         }
     }
 }
