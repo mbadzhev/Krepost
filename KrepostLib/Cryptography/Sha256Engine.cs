@@ -21,6 +21,12 @@ namespace KrepostLib.Cryptography
                 return builder.ToString();
             }
         }
+        public static string ComputeSha256Hash(string plainText, byte[] salt)
+        {
+            byte[] bytesInput = Encoding.UTF8.GetBytes(plainText);
+
+            return ComputeSha256Hash(bytesInput, salt);
+        }
         public static string ComputeSha256Hash(byte[] plainText, byte[] salt)
         {
             byte[] completeInput = new byte[plainText.Length + salt.Length];
