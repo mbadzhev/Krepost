@@ -144,5 +144,15 @@ namespace KrepostWinForms.UI
                 Array.Clear(plaintext, 0, plaintext.Length);
             }
         }
+        public SecureByteArray ToSecureByteArray()
+        {
+            using (SecureStringUtil util = new SecureStringUtil(Data))
+            {
+                byte[] bytes = util.SecureStringToByteArray();
+                SecureByteArray secureBytes = new SecureByteArray(ref bytes);
+                Array.Clear(bytes, 0, bytes.Length);
+                return secureBytes;
+            }
+        }
     }
 }
