@@ -2,6 +2,8 @@
 
 using Konscious.Security.Cryptography;
 
+using KrepostLib.Security;
+
 namespace KrepostLib.Cryptography
 {
     public static class Argon2Engine
@@ -32,6 +34,13 @@ namespace KrepostLib.Cryptography
             argon2.MemorySize = 256 * 256; // 256 MB
 
             return argon2.GetBytes(32);
+        }
+        public static byte[] DeriveKey(SecureByteArray input, byte[] salt)
+        {
+            byte[] bytes = input.Expose();
+            byte[] key = DeriveKey(bytes, salt);
+            Array.Clear(bytes, 0, bytes.Length);
+            return key;
         }
     }
 }
