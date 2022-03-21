@@ -177,7 +177,11 @@ namespace KrepostLib.Storage
 
         private void ComputeIntegrityHash()
         {
-            throw new NotImplementedException();
+            string entryFields = Title + Encoding.UTF8.GetString(Username.Data) +
+                Encoding.UTF8.GetString(Email.Data) + Encoding.UTF8.GetString(Password.Data) +
+                Url + Encoding.UTF8.GetString(Note.Data) + DateCreated + DateModified;
+
+            IntegrityHash = Sha256Engine.ComputeSha256Hash(entryFields);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
