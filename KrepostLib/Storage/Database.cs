@@ -1,5 +1,7 @@
 ﻿using System.Runtime.Serialization;
+using System.Text;
 
+using KrepostLib.Cryptography;
 using KrepostLib.Security;
 
 namespace KrepostLib.Storage
@@ -103,6 +105,15 @@ namespace KrepostLib.Storage
     [Serializable]
     public sealed class DatabaseEntry : ISerializable
     {
+        private static byte[] DefaultUsername = Encoding.UTF8.GetBytes("myUsername");
+        private static readonly SecureByteArray DefaultUsernameBytes = new SecureByteArray(ref DefaultUsername);
+        private static byte[] DefaultEmail = Encoding.UTF8.GetBytes("email@service.com");
+        private static readonly SecureByteArray DefaultEmailBytes = new SecureByteArray(ref DefaultEmail);
+        private static byte[] DefaultNote = Encoding.UTF8.GetBytes("mySecretNote");
+        private static readonly SecureByteArray DefaultNoteBytes = new SecureByteArray(ref DefaultNote);
+        private static readonly string DefaultUrl = "https://";
+        const string DefaultDateModified = "000000000000000000";
+
         /// <summary>
         /// Gets or sets the entry title.
         /// </summary>
@@ -148,6 +159,26 @@ namespace KrepostLib.Storage
         {
             // Empty constructor needed for serialization
         }
+        public DatabaseEntry(string title, SecureByteArray username,
+            SecureByteArray email, SecureByteArray password,
+            string url, SecureByteArray note, byte[] iv)
+        {
+            Title = title;
+            Username = username;
+            Email = email;
+            Password = password;
+            Url = url;
+            Note = note;
+            DateCreated = Utility.GetTimestamp();
+            DateModified = DefaultDateModified;
+            Iv = iv;
+            ComputeIntegrityHash();
+        }
+
+        private void ComputeIntegrityHash()
+        {
+            throw new NotImplementedException();
+        }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -176,5 +207,7 @@ namespace KrepostLib.Storage
             Iv = (byte[])info.GetValue("EntryIv", typeof(byte[]));
             IntegrityHash = (string)info.GetValue("IntegrityHash", typeof(string));
         }
+
+
     }
 }
