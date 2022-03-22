@@ -5,7 +5,7 @@ using System.Security;
 using KrepostLib.Security;
 using KrepostLib.Cryptography;
 
-namespace SecureStringTextBox
+namespace KrepostWinForms.UI
 {
     public partial class SecureStringTextBox : UserControl
     {
@@ -35,7 +35,7 @@ namespace SecureStringTextBox
         public SecureStringTextBox()
         {
             InitializeComponent();
-
+            
             emptyStatus = true;
         }
         private void InputBox_KeyDown(object sender, KeyEventArgs e)
@@ -133,11 +133,25 @@ namespace SecureStringTextBox
         }
         private void HashData()
         {
+            if (dataSalt == null || dataSalt.Length <= 0)
+            {
+                dataSalt = Generator.GenerateBytes(16);
+            }
             using (SecureStringUtil wrapper = new SecureStringUtil(data))
             {
                 byte[] plaintext = wrapper.SecureStringToByteArray();
                 dataHash = Sha256Engine.ComputeSha256Hash(plaintext, dataSalt);
                 Array.Clear(plaintext, 0, plaintext.Length);
+            }
+        }
+        public SecureByteArray ToSecureByteArray()
+        {
+            using (SecureStringUtil util = new SecureStringUtil(Data))
+            {
+                byte[] bytes = util.SecureStringToByteArray();
+                SecureByteArray secureBytes = new SecureByteArray(ref bytes);
+                Array.Clear(bytes, 0, bytes.Length);
+                return secureBytes;
             }
         }
     }

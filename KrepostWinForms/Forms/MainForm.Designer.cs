@@ -32,13 +32,16 @@
             this.menuStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuStripFile});
+            this.menuStripFile,
+            this.menuStripEntry});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(800, 24);
@@ -57,16 +60,31 @@
             // menuStripFileNew
             // 
             this.menuStripFileNew.Name = "menuStripFileNew";
-            this.menuStripFileNew.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileNew.Size = new System.Drawing.Size(103, 22);
             this.menuStripFileNew.Text = "New";
             this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
             // 
             // menuStripFileOpen
             // 
             this.menuStripFileOpen.Name = "menuStripFileOpen";
-            this.menuStripFileOpen.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileOpen.Size = new System.Drawing.Size(103, 22);
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
+            // 
+            // menuStripEntry
+            // 
+            this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripEntryAddEntry});
+            this.menuStripEntry.Name = "menuStripEntry";
+            this.menuStripEntry.Size = new System.Drawing.Size(46, 20);
+            this.menuStripEntry.Text = "Entry";
+            // 
+            // menuStripEntryAddEntry
+            // 
+            this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
+            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryAddEntry.Text = "Add Entry";
+            this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
             // 
             // MainForm
             // 
@@ -91,5 +109,7 @@
         private ToolStripMenuItem menuStripFile;
         private ToolStripMenuItem menuStripFileNew;
         private ToolStripMenuItem menuStripFileOpen;
+        private ToolStripMenuItem menuStripEntry;
+        private ToolStripMenuItem menuStripEntryAddEntry;
     }
 }

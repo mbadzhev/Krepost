@@ -1,7 +1,8 @@
 ﻿using KrepostLib.Cryptography;
 
-namespace KrepostLib
+namespace KrepostLib.Security
 {
+    [Serializable]
     public sealed class SecureByteArray
     {
         /// <summary>
@@ -36,6 +37,8 @@ namespace KrepostLib
         /// </summary>
         private readonly object lockObject = new object();
 
+        private bool encryptedStatus;
+
         /// <summary>
         /// Gets the total number of plaintext elements in the <see cref="SecureByteArray"/>.
         /// </summary>
@@ -49,6 +52,21 @@ namespace KrepostLib
                 return plainTextLength;
             }
         }
+        public byte[] Data
+        {
+            get
+            {
+                if (encryptedStatus)
+                {
+                    return data;
+                }
+                else
+                {
+                    throw new InvalidOperationException();
+                    return null;
+                }
+            }
+        }
 
         /// <summary>
         /// Construct a secure byte array object.
@@ -59,6 +77,8 @@ namespace KrepostLib
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public SecureByteArray(ref byte[] inputData)
         {
+            encryptedStatus = false;
+
             // Validate byte array contains some data.
             if (inputData == null)
             {
@@ -105,6 +125,8 @@ namespace KrepostLib
             // Overwrite plaintext data with ciphertext
             data = new byte[cipherTextLength];
             Array.Copy(temp, 0, data, 0, cipherTextLength);
+
+            encryptedStatus = true;
         }
         private void Decrypt()
         {
@@ -123,6 +145,8 @@ namespace KrepostLib
 
             // Minimize plaintext exposure time in memory.
             Array.Clear(temp, 0, temp.Length);
+
+            encryptedStatus = false;
         }
 
         /// <summary>

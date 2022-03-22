@@ -1,4 +1,6 @@
-﻿namespace KrepostLib
+﻿using System.Text;
+
+namespace KrepostLib
 {
     public static class Utility
     {
@@ -11,6 +13,16 @@
             if (str1 != str2)
                 return false;
             return true;
+        }
+        public static string GetTimestamp()
+        {
+            DateTime time = DateTime.Now;
+            return time.ToString("yyyyMMddHHmmssffff");
+        }
+        public static byte[] ToByteArray(string value)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(value);
+            return bytes;
         }
         public static void DisplayBytes(byte[] bytes)
         {

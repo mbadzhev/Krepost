@@ -1,5 +1,10 @@
-﻿using System.Xml;
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 using System.Xml.Serialization;
+
+using KrepostLib.Cryptography;
+using KrepostLib.Security;
+using KrepostLib.Storage;
 
 namespace KrepostLib
 {
@@ -8,37 +13,56 @@ namespace KrepostLib
         public static Database CreateDatabase(string masterHash, byte[] iv)
         {
             // TODO: Complete implementation
-            Database db = new Database();
             DatabaseHead dbHead = new DatabaseHead();
-            dbHead.hashId = "SHA256";
-            dbHead.accessHash = masterHash;
-            dbHead.cipherId = "AES256";
-            // Generate 128 bit (16 bytes) IV used by both KDF and AES
-            dbHead.databaseIv = iv;
-            db.Head = dbHead;
-            HashDatabaseHeader(db);
+            dbHead.HashFunction = HashId.SHA256;
+            dbHead.CipherAlgorithm = CipherId.AES256;
+            dbHead.AccessHash = masterHash;
+            dbHead.BodyIv = iv;
 
+            DatabaseBody dbBody = new DatabaseBody();
+            dbBody.HeadSalt = Generator.GenerateBytes(16);
+            dbBody.EntryList = new List<DatabaseEntry>();
+
+            HashDatabaseHead(dbHead, dbBody.HeadSalt);
+
+            Database db = new Database(dbHead, dbBody);
             return db;
         }
-
-        public static void WriteDatabase(object obj, string path)
+        public static void SerializeDatabase(Database db, SecureByteArray key, string path)
         {
-            // TODO: Chech for errors in the process
+            // TODO: Validate arguments
+
+            DatabaseFile dbF = new DatabaseFile();
+            dbF.Salt = Generator.GenerateBytes(16);
+            dbF.Head = ObjectToByteArray(db.Head);
+            dbF.HeadHash = Sha256Engine.ComputeSha256Hash(dbF.Head, dbF.Salt);
+            dbF.Body = AesEngine.Encrypt(ObjectToByteArray(db.Body), key, db.Head.BodyIv);
+            dbF.BodyHash = Sha256Engine.ComputeSha256Hash(dbF.Body, dbF.Salt);
+            
 
             // Use new line and indentadion in xml output.
             XmlWriterSettings xmlWriterSettings = new()
             {
                 Indent = true
             };
-            XmlSerializer serializer = new(typeof(Database));
+            XmlSerializer serializer = new(typeof(DatabaseFile));
             using XmlWriter xmlWriter = XmlWriter.Create(path, xmlWriterSettings);
-            serializer.Serialize(xmlWriter, obj);
+            serializer.Serialize(xmlWriter, dbF);
             xmlWriter.Close();
         }
-        public static void HashDatabaseHeader(Database db)
+        public static byte[] ObjectToByteArray(object obj)
         {
-            string headerFields = db.Head.hashId + db.Head.accessHash + db.Head.cipherId + db.Head.databaseIv;
-            db.Head.integrityHash = Cryptography.Sha256Engine.ComputeSha256Hash(headerFields);
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                formatter.Serialize(ms, obj);
+                return ms.ToArray();
+            }
+        }
+        public static void HashDatabaseHead(DatabaseHead dbH, byte[] salt)
+        {
+            string headFields = dbH.HashFunction + dbH.AccessHash + dbH.CipherAlgorithm + dbH.BodyIv;
+            dbH.IntegrityHash = Sha256Engine.ComputeSha256Hash(headFields, salt);
         }
     }
 }

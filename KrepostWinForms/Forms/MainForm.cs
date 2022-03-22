@@ -5,8 +5,11 @@
         public MainForm()
         {
             InitializeComponent();
+
+            //menuStripEntryAddEntry.Enabled = false;
         }
 
+        #region menuStripFile Functions
         private void menuStripFileNew_Click(object sender, EventArgs e)
         {
             Form newDbForm = new NewDatabaseForm();
@@ -21,5 +24,20 @@
                 openDbForm.ShowDialog();
             }
         }
+        #endregion
+
+        #region menuStripEntry Functions
+        private void menuStripEntryAddEntry_Click(object sender, EventArgs e)
+        {
+            if (Program.CurrentDb == null)
+            {
+                MessageBox.Show("No open database is available.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Form addEntryForm = new AddEntryForm();
+            addEntryForm.ShowDialog();
+        }
+        #endregion
     }
 }

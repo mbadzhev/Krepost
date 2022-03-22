@@ -1,4 +1,7 @@
-﻿namespace KrepostWinForms.UI
+﻿using KrepostLib;
+using KrepostLib.Storage;
+
+namespace KrepostWinForms.UI
 {
     public static class Utility
     {
@@ -14,7 +17,9 @@
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 // Create db, use the picked path and serialize the db
-                KrepostLib.DatabaseWriter.WriteDatabase(KrepostLib.DatabaseWriter.CreateDatabase(masterHash, iv), Path.GetFullPath(sfd.FileName));
+                Database db = DatabaseWriter.CreateDatabase(masterHash, iv);
+                Program.CurrentDb = db;
+                DatabaseWriter.SerializeDatabase(db, Program.CurrentKey, Path.GetFullPath(sfd.FileName));
                 return true;
             }
             else

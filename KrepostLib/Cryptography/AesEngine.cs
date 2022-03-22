@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using KrepostLib.Security;
 
 namespace KrepostLib.Cryptography
 {
@@ -25,6 +26,13 @@ namespace KrepostLib.Cryptography
                     }
                 }
             }
+        }
+        public static byte[] Encrypt(byte[] plainBytes, SecureByteArray key, byte[] iv)
+        {
+            byte[] masterKey = key.Expose();
+            byte[] cipherText = Encrypt(plainBytes, masterKey, iv);
+            Array.Clear(masterKey, 0, masterKey.Length);
+            return cipherText;
         }
         public static byte[] Decrypt(byte[] encryptedData, byte[] key, byte[] iv)
         {

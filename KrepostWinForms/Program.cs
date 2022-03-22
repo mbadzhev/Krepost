@@ -1,9 +1,12 @@
+using KrepostLib.Security;
+using KrepostLib.Storage;
+
 namespace KrepostWinForms
 {
     internal static class Program
     {
-        public static KrepostLib.Database? CurrentDb { get; set; }
-        public static KrepostLib.SecureByteArray? CurrentKey { get; set; }
+        public static Database? CurrentDb { get; set; }
+        public static SecureByteArray? CurrentKey { get; set; }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
