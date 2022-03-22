@@ -40,7 +40,7 @@ namespace KrepostWinForms.UI
                 Program.CurrentDb = KrepostLib.DatabaseReader.ReadDatabase(Path.GetFullPath(ofd.FileName));
                 
                 // Validate db header
-                if (!KrepostLib.DatabaseReader.ValidateDatabaseHeader(Program.CurrentDb))
+                if (!KrepostLib.DatabaseReader.ValidateDatabaseHead(Program.CurrentDb))
                 {
                     return false;
                 }

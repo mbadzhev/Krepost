@@ -1,6 +1,8 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
 
+using KrepostLib.Storage;
+
 namespace KrepostLib
 {
     public static class DatabaseReader
@@ -26,14 +28,37 @@ namespace KrepostLib
             return obj;
         }
 
-        public static bool ValidateDatabaseHeader(Database db)
+        public static DatabaseFile DeserializeDatabase(string path)
+        {
+            // Create a new file stream to read the stored DatabaseFile.
+            Stream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+            DatabaseFile dbF;
+
+            using (XmlReader reader = XmlReader.Create(fs))
+            {
+                XmlSerializer deserializer = new XmlSerializer(typeof(DatabaseFile));
+                if (deserializer.CanDeserialize(reader))
+                {
+                    dbF = deserializer.Deserialize(reader) as DatabaseFile;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            fs.Close();
+
+            return dbF;
+        }
+
+        public static bool ValidateDatabaseHead(Database db)
         {
             // TODO: Allow for different values in header fields
 
             // Concatenate all fields of database header
-            string headerString = db.Head.hashId + db.Head.accessHash + db.Head.cipherId + db.Head.databaseIv;
+            string headerString = db.Head.HashFunction + db.Head.AccessHash + db.Head.CipherAlgorithm + db.Head.BodyIv;
             // Hash concatenated string and compare result with stored hash
-            if (db.Head.integrityHash != Cryptography.Sha256Engine.ComputeSha256Hash(headerString))
+            if (db.Head.IntegrityHash != Cryptography.Sha256Engine.ComputeSha256Hash(headerString))
             {
                 return false;
             }
