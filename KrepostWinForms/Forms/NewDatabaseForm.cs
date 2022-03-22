@@ -1,4 +1,6 @@
-﻿namespace KrepostWinForms.Forms
+﻿using KrepostLib.Cryptography;
+
+namespace KrepostWinForms.Forms
 {
     public partial class NewDatabaseForm : Form
     {
@@ -21,6 +23,9 @@
             }
             else
             {
+                byte[] key = Argon2Engine.DeriveKey(secureStringTextBoxTop.ToSecureByteArray(), secureStringTextBoxTop.DataSalt);
+                Program.CurrentKey = new KrepostLib.Security.SecureByteArray(ref key);
+                Array.Clear(key, 0, key.Length);
                 if (UI.Utility.SaveDatabase(secureStringTextBoxTop.DataHash, secureStringTextBoxTop.DataSalt))
                 {
                     secureStringTextBoxTop.Data.Dispose();
