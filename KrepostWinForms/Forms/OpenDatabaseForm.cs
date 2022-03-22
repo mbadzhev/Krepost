@@ -10,12 +10,12 @@ namespace KrepostWinForms.Forms
         {
             InitializeComponent();
 
-            secureStringTextBox.DataSalt = Program.CurrentDb.Head.databaseIv;
+            secureStringTextBox.DataSalt = Program.CurrentDb.Head.BodyIv;
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (!KrepostLib.Utility.CompareStrings(Program.CurrentDb.Head.accessHash, secureStringTextBox.DataHash))
+            if (!KrepostLib.Utility.CompareStrings(Program.CurrentDb.Head.AccessHash, secureStringTextBox.DataHash))
             {
                 MessageBox.Show("Password is incorrect.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -25,9 +25,9 @@ namespace KrepostWinForms.Forms
                 using (SecureStringUtil wrapper = new SecureStringUtil(secureStringTextBox.Data))
                 {
                     byte[] temp = wrapper.SecureStringToByteArray();
-                    byte[] key = KrepostLib.Cryptography.Argon2Engine.DeriveKey(temp, Program.CurrentDb.Head.databaseIv);
+                    byte[] key = KrepostLib.Cryptography.Argon2Engine.DeriveKey(temp, Program.CurrentDb.Head.BodyIv);
                     Array.Clear(temp, 0, temp.Length);
-                    Program.CurrentKey = new KrepostLib.SecureByteArray(ref key);
+                    Program.CurrentKey = new SecureByteArray(ref key);
                     Array.Clear(key, 0, key.Length);
                 }
 
