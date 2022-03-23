@@ -12,7 +12,7 @@ namespace KrepostLib.Storage
         public static Database OpenDatabase(string path, SecureByteArray key)
         {
             // Deserialize and validate database file
-            DatabaseFile dbFile = DeserializeDatabase(path);
+            DatabaseFile dbFile = DeserializeDatabaseFile(path);
             if (!dbFile.ValidateHead())
                 throw new InvalidOperationException("DatabaseFile head is compromised");
             if (!dbFile.ValidateBody())
@@ -25,7 +25,7 @@ namespace KrepostLib.Storage
                 throw new InvalidOperationException("Database head is compromised");
             }
 
-            // Deserialize and decrypt database body 
+            // Deserialize and decrypt database body
             byte[] tempDbBody = AesEngine.Decrypt(dbFile.Body, key, dbHead.BodyIv);
             DatabaseBody dbBody = (DatabaseBody)ByteArrayToObject(tempDbBody);
 
@@ -35,7 +35,7 @@ namespace KrepostLib.Storage
             return db;
         }
 
-        public static DatabaseFile DeserializeDatabase(string path)
+        public static DatabaseFile DeserializeDatabaseFile(string path)
         {
             // Create a new file stream to read the stored DatabaseFile.
             Stream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -56,6 +56,18 @@ namespace KrepostLib.Storage
             fs.Close();
 
             return dbF;
+        }
+
+        public static DatabaseHead DeserializeDatabaseHead(DatabaseFile dbF)
+        {
+            // Deserialize and validate database head 
+            DatabaseHead dbHead = (DatabaseHead)ByteArrayToObject(dbF.Head);
+            if (dbHead.IntegrityHash != DatabaseWriter.ComputeDatabaseHeadHash(dbHead, dbHead.BodyIv))
+            {
+                throw new InvalidOperationException("Database head is compromised");
+            }
+
+            return dbHead;
         }
 
         public static bool ValidateDatabaseHead(Database db)
