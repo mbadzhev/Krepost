@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 using System.Xml.Serialization;
 
 using KrepostLib.Storage;
@@ -63,6 +64,20 @@ namespace KrepostLib
                 return false;
             }
             return true;
+        }
+        /// <summary>
+        /// Deserializes a byte array to an object.
+        /// </summary>
+        /// <param name="byteArray">Byte array of a serialized object.</param>
+        /// <returns></returns>
+        public static object ByteArrayToObject(byte[] byteArray)
+        {
+            MemoryStream ms = new MemoryStream(byteArray);
+            ms.Position = 0;
+
+            BinaryFormatter bf = new BinaryFormatter();
+
+            return bf.Deserialize(ms);
         }
     }
 }
