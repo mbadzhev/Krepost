@@ -4,9 +4,8 @@ using System.Xml.Serialization;
 
 using KrepostLib.Cryptography;
 using KrepostLib.Security;
-using KrepostLib.Storage;
 
-namespace KrepostLib
+namespace KrepostLib.Storage
 {
     public static class DatabaseWriter
     {
