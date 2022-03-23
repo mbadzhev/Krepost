@@ -56,6 +56,13 @@ namespace KrepostLib.Cryptography
                 }
             }
         }
+        public static byte[] Decrypt(byte[] plainBytes, SecureByteArray key, byte[] iv)
+        {
+            byte[] masterKey = key.Expose();
+            byte[] plainText = Decrypt(plainBytes, masterKey, iv);
+            Array.Clear(masterKey, 0, masterKey.Length);
+            return plainText;
+        }
         //https://bytes.com/topic/java/answers/700499-cant-decrypt-my-aes-128-c-encrypted-byte-array-java really helped
         private static byte[] ReadFully(Stream stream)
         {
