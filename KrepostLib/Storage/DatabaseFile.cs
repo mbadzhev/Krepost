@@ -46,5 +46,21 @@ namespace KrepostLib.Storage
             }
             return false;
         }
+        public bool ValidateBody()
+        {
+            if (Body == null)
+            {
+                throw new InvalidOperationException("Head is null");
+            }
+            if (Body.Length <= 0)
+            {
+                throw new InvalidOperationException("Head cannot be <= 0");
+            }
+            if (BodyHash == Sha256Engine.ComputeSha256Hash(Body, Salt))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
