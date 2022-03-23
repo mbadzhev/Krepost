@@ -2,31 +2,38 @@
 using System.Xml;
 using System.Xml.Serialization;
 
+using KrepostLib.Cryptography;
+using KrepostLib.Security;
 using KrepostLib.Storage;
 
 namespace KrepostLib
 {
     public static class DatabaseReader
     {
-        public static Database ReadDatabase(string path)
+        public static Database OpenDatabase(string path, SecureByteArray key)
         {
-            // Create a new file stream for reading the XML file
-            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-            Database obj;
+            // Deserialize and validate database file
+            DatabaseFile dbFile = DeserializeDatabase(path);
+            if (!dbFile.ValidateHead())
+                throw new InvalidOperationException("DatabaseFile head is compromised");
+            if (!dbFile.ValidateBody())
+                throw new InvalidOperationException("DatabaseFile body is compromised");
 
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.Async = true;
-
-            using (XmlReader xmlReader = XmlReader.Create(fs, settings))
+            // Deserialize and validate database head 
+            DatabaseHead dbHead = (DatabaseHead)ByteArrayToObject(dbFile.Head);
+            if (dbHead.IntegrityHash != DatabaseWriter.ComputeDatabaseHeadHash(dbHead, dbHead.BodyIv))
             {
-                XmlSerializer deserializer = new XmlSerializer(typeof(Database));
-                obj = deserializer.Deserialize(xmlReader) as Database;
+                throw new InvalidOperationException("Database head is compromised");
             }
 
-            // Cleanup
-            fs.Close();
+            // Deserialize and decrypt database body 
+            byte[] tempDbBody = AesEngine.Decrypt(dbFile.Body, key, dbHead.BodyIv);
+            DatabaseBody dbBody = (DatabaseBody)ByteArrayToObject(tempDbBody);
 
-            return obj;
+            // Construct database
+            Database db = new Database(dbHead, dbBody);
+
+            return db;
         }
 
         public static DatabaseFile DeserializeDatabase(string path)
