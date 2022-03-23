@@ -83,6 +83,17 @@ namespace KrepostLib.Storage
             }
             return true;
         }
+        public static bool ValidateDatabaseHead(DatabaseHead dbH)
+        {
+            // Concatenate all fields of database header
+            string headerString = dbH.HashFunction + dbH.AccessHash + dbH.CipherAlgorithm + dbH.BodyIv;
+            // Hash concatenated string and compare result with stored hash
+            if (dbH.IntegrityHash != Sha256Engine.ComputeSha256Hash(headerString, dbH.BodyIv))
+            {
+                return false;
+            }
+            return true;
+        }
         /// <summary>
         /// Deserializes a byte array to an object.
         /// </summary>
