@@ -1,4 +1,5 @@
-﻿using KrepostLib.Storage;
+﻿using KrepostLib.Security;
+using KrepostLib.Storage;
 
 namespace KrepostWinForms.UI
 {
@@ -60,6 +61,26 @@ namespace KrepostWinForms.UI
                 return false;
 
             Program.CurrentDbHead = dbH;
+            return true;
+        }
+        /// <summary>
+        /// Deserializes and decrypts a <see cref="DatabaseBody"/>
+        /// from a <see cref="DatabaseFile"/>, initializing a
+        /// <see cref="Database"/> to be used as global variable.
+        /// </summary>
+        /// <param name="dbF">Database file to read the encrypted body from.</param>
+        /// <param name="dbH">Database head to read the random bytes used during encryption</param>
+        /// <param name="key">Key used during encryption.</param>
+        /// <returns>Boolean confirming successful execution.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AccessDatabaseBody(DatabaseFile dbF, DatabaseHead dbH, SecureByteArray key)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseBody dbB = DatabaseReader.DeserializeDatabaseBody(dbF, dbH, key);
+
+            Program.CurrentDb = new Database(dbH, dbB);
             return true;
         }
     }
