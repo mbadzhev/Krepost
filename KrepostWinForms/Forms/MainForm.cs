@@ -18,7 +18,7 @@
 
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
-            if (UI.Utility.OpenDatabase())
+            if (UI.Utility.OpenDatabaseFile())
             {
                 Form openDbForm = new OpenDatabaseForm();
                 openDbForm.ShowDialog();

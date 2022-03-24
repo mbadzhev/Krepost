@@ -26,31 +26,28 @@ namespace KrepostWinForms.UI
                 return false;
             }
         }
-        public static bool OpenDatabase()
+        public static bool OpenDatabaseFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            ofd.FilterIndex = 2;
+            ofd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
+            ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                // Deserialize db head
+                // Deserialize and validate database file
                 DatabaseFile dbf = DatabaseReader.DeserializeDatabaseFile(Path.GetFullPath(ofd.FileName));
-                DatabaseHead dbE = DatabaseReader.DeserializeDatabaseHead(dbf);
-                Program.CurrentDbHead = dbE;
-
-                // Validate db head
-                if (!DatabaseReader.ValidateDatabaseHead(dbE))
-                {
+                if (!dbf.ValidateHead())
                     return false;
-                }
+                if (!dbf.ValidateBody())
+                    return false;
+                
+                // Save reference to db file to reduce deserializations
+                Program.CurrentDbFile = dbf;
                 return true;
             }
             else
-            {
                 return false;
-            }
         }
     }
 }
