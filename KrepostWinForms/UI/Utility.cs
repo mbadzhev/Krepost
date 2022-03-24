@@ -41,13 +41,26 @@ namespace KrepostWinForms.UI
                     return false;
                 if (!dbf.ValidateBody())
                     return false;
-                
+
                 // Save reference to db file to reduce deserializations
                 Program.CurrentDbFile = dbf;
                 return true;
             }
             else
                 return false;
+        }
+        public static bool AccessDatabaseHead(DatabaseFile dbF)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseHead dbH = DatabaseReader.DeserializeDatabaseHead(dbF);
+
+            if (!DatabaseReader.ValidateDatabaseHead(dbH))
+                return false;
+
+            Program.CurrentDbHead = dbH;
+            return true;
         }
     }
 }

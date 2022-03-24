@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using KrepostLib.Security;
 
-using KrepostLib.Security;
+using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Forms
 {
@@ -10,6 +10,15 @@ namespace KrepostWinForms.Forms
         {
             InitializeComponent();
 
+            // Extract db head from db file to access hashed master password
+            if (!Utility.AccessDatabaseHead(Program.CurrentDbFile))
+            {
+                MessageBox.Show("The database did not pass validation." +
+                    "Data stored in it may be corrupted or compromised.");
+                return;
+            }
+
+            // Use the saved iv for hashing and key derivation
             secureStringTextBox.DataSalt = Program.CurrentDbHead.BodyIv;
         }
 
