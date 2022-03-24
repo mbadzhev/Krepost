@@ -34,6 +34,7 @@
             this.menuStripFileOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +75,8 @@
             // menuStripEntry
             // 
             this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuStripEntryAddEntry});
+            this.menuStripEntryAddEntry,
+            this.menuStripEntryEditEntry});
             this.menuStripEntry.Name = "menuStripEntry";
             this.menuStripEntry.Size = new System.Drawing.Size(46, 20);
             this.menuStripEntry.Text = "Entry";
@@ -85,6 +87,13 @@
             this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
             this.menuStripEntryAddEntry.Text = "Add Entry";
             this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
+            // 
+            // menuStripEntryEditEntry
+            // 
+            this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
+            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryEditEntry.Text = "Edit Entry";
+            this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
             // MainForm
             // 
@@ -111,5 +120,6 @@
         private ToolStripMenuItem menuStripFileOpen;
         private ToolStripMenuItem menuStripEntry;
         private ToolStripMenuItem menuStripEntryAddEntry;
+        private ToolStripMenuItem menuStripEntryEditEntry;
     }
 }

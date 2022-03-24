@@ -38,6 +38,18 @@
             Form addEntryForm = new AddEntryForm();
             addEntryForm.ShowDialog();
         }
+
+        private void menuStripEntryEditEntry_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase)
+            {
+                MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Form editEntryForm = new EditEntryForm();
+            editEntryForm.Show();
+        }
         #endregion
     }
 }
