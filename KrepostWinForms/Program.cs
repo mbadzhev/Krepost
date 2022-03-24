@@ -6,6 +6,7 @@ namespace KrepostWinForms
     internal static class Program
     {
         public static Database? CurrentDb { get; set; }
+        public static DatabaseHead CurrentDbHead { get; set; }
         public static SecureByteArray? CurrentKey { get; set; }
         /// <summary>
         ///  The main entry point for the application.
