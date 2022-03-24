@@ -19,10 +19,10 @@ namespace KrepostLib.Storage
             dbHead.BodyIv = iv;
 
             DatabaseBody dbBody = new DatabaseBody();
-            dbBody.HeadSalt = Generator.GenerateBytes(16);
+            //dbBody.HeadSalt = Generator.GenerateBytes(16);
             dbBody.EntryList = new List<DatabaseEntry>();
 
-            dbHead.IntegrityHash = ComputeDatabaseHeadHash(dbHead, dbBody.HeadSalt);
+            dbHead.IntegrityHash = ComputeDatabaseHeadHash(dbHead, dbHead.BodyIv);
 
             Database db = new Database(dbHead, dbBody);
             return db;
