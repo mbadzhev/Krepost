@@ -69,7 +69,15 @@ namespace KrepostLib.Storage
 
             return dbHead;
         }
+        public static DatabaseBody DeserializeDatabaseBody(DatabaseFile dbF, DatabaseHead dbH, SecureByteArray key)
+        {
+            // Deserialize and decrypt database body
+            byte[] tempDbBody = AesEngine.Decrypt(dbF.Body, key, dbH.BodyIv);
+            DatabaseBody dbBody = (DatabaseBody)ByteArrayToObject(tempDbBody);
+            Array.Clear(tempDbBody, 0, tempDbBody.Length);
 
+            return dbBody;
+        }
         public static bool ValidateDatabaseHead(Database db)
         {
             // TODO: Allow for different values in header fields
