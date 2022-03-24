@@ -8,6 +8,7 @@ namespace KrepostWinForms
         public static DatabaseFile CurrentDbFile { get; set; }
         public static Database? CurrentDb { get; set; }
         public static DatabaseHead CurrentDbHead { get; set; }
+        public static bool OpenDatabase { get; set; }
         public static SecureByteArray? CurrentKey { get; set; }
         /// <summary>
         ///  The main entry point for the application.
@@ -19,6 +20,9 @@ namespace KrepostWinForms
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Forms.MainForm());
+
+            // No database is opened at the start of the application
+            OpenDatabase = false;
         }
     }
 }

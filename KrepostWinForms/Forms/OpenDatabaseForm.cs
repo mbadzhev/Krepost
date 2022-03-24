@@ -40,7 +40,16 @@ namespace KrepostWinForms.Forms
                     Array.Clear(key, 0, key.Length);
                 }
 
-                // TODO: Decrypt db
+                // Decrypt and deserialize the last component needed for a complete database
+                if (!Utility.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
+                {
+                    MessageBox.Show("Something went wrong while opening encrypted database content.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Marks that a database is opened
+                    Program.OpenDatabase = true;
+                }
 
                 secureStringTextBox.Data.Dispose();
                 Close();
