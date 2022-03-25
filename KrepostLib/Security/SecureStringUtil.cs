@@ -55,6 +55,27 @@ namespace KrepostLib.Security
 
             disposedStatus = false;
         }
+        /// <summary>
+        /// Constructs a <see cref="SecureStringUtil"/> object.
+        /// </summary>
+        /// <param name="bytes">A byte array used as input data to be manipulated.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public SecureStringUtil(byte[] bytes)
+        {
+            if (bytes == null)
+                throw new ArgumentNullException("bytes");
+            if (bytes.Length <= 0)
+                throw new ArgumentOutOfRangeException("bytes");
+            
+            dataByteArray = bytes;
+            data = new SecureString();
+
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            disposedStatus = false;
+        }
 
         /// <summary>
         /// Converts a <see cref="SecureString"/> to a byte array.
