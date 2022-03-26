@@ -16,10 +16,8 @@ namespace KrepostWinForms.UI
 
         public SecureString Data
         {
-            get
-            {
-                return data;
-            }
+            get { return data; }
+            set { data = value; }
         }
         public string DataHash
         {
