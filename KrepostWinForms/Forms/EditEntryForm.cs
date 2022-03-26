@@ -8,6 +8,23 @@ namespace KrepostWinForms.Forms
         {
             InitializeComponent();
         }
+        public EditEntryForm(DatabaseEntry dbE)
+        {
+            if (dbE == null)
+            {
+                MessageBox.Show("No database entry is selected.");
+                return;
+            }
+
+            InitializeComponent();
+
+            textBoxTitle.Text = dbE.Title;
+            secureStringTextBoxUsername.DisplayCharacterNumberOnly(dbE.Username.Length);
+            secureStringTextBoxEmail.DisplayCharacterNumberOnly(dbE.Email.Length);
+            secureStringTextBoxPassword.DisplayCharacterNumberOnly(dbE.Password.Length);
+            textBoxUrl.Text = dbE.Url;
+            secureStringTextBoxNote.DisplayCharacterNumberOnly(dbE.Note.Length);
+        }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
