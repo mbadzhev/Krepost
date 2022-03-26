@@ -152,5 +152,9 @@ namespace KrepostWinForms.UI
                 return secureBytes;
             }
         }
+        public void DisplayCharacterNumberOnly(int elements)
+        {
+            InputBox.Text = new string(InputBox.PasswordChar, elements);
+        }
     }
 }
