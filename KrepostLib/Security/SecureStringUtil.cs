@@ -67,7 +67,7 @@ namespace KrepostLib.Security
                 throw new ArgumentNullException("bytes");
             if (bytes.Length <= 0)
                 throw new ArgumentOutOfRangeException("bytes");
-            
+
             dataByteArray = bytes;
             data = new SecureString();
 
@@ -76,7 +76,6 @@ namespace KrepostLib.Security
 
             disposedStatus = false;
         }
-
         /// <summary>
         /// Converts a <see cref="SecureString"/> to a byte array.
         /// </summary>
@@ -145,7 +144,6 @@ namespace KrepostLib.Security
                 // Zero out the data in the char array
                 tempChars[i] = (char)0;
             }
-            data.MakeReadOnly();
             return data;
         }
         public void Dispose()
