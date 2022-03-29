@@ -1,9 +1,13 @@
-﻿using KrepostLib.Storage;
+﻿using KrepostLib.Security;
+using KrepostLib.Storage;
+
+using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Forms
 {
     public partial class EditEntryForm : Form
     {
+        DatabaseEntry entry;
         public EditEntryForm()
         {
             InitializeComponent();
@@ -15,8 +19,20 @@ namespace KrepostWinForms.Forms
                 MessageBox.Show("No database entry is selected.");
                 return;
             }
+            entry = dbE;
 
             InitializeComponent();
+
+            // Set the SecureStrings to use in the SecureStringTextBoxes.
+            // Exposes the plaintext of the encrypted entry in memory!
+            using (SecureStringUtil ssu = new SecureStringUtil(entry.Username.Expose()))
+                secureStringTextBoxUsername.Data = ssu.ByteArrayToSecureString(entry.Username.Expose());
+            using (SecureStringUtil ssu = new SecureStringUtil(entry.Email.Expose()))
+                secureStringTextBoxEmail.Data = ssu.ByteArrayToSecureString(entry.Email.Expose());
+            using (SecureStringUtil ssu = new SecureStringUtil(entry.Password.Expose()))
+                secureStringTextBoxPassword.Data = ssu.ByteArrayToSecureString(entry.Password.Expose());
+            using (SecureStringUtil ssu = new SecureStringUtil(entry.Note.Expose()))
+                secureStringTextBoxNote.Data = ssu.ByteArrayToSecureString(entry.Note.Expose());
 
             textBoxTitle.Text = dbE.Title;
             secureStringTextBoxUsername.DisplayCharacterNumberOnly(dbE.Username.Length);
@@ -81,6 +97,42 @@ namespace KrepostWinForms.Forms
                 return false;
             }
             return true;
+        }
+
+        private void buttonRevealUsername_Click(object sender, EventArgs e)
+        {
+            ButtonRevealClick(buttonRevealUsername, textBoxUsername, secureStringTextBoxUsername);
+        }
+
+        private void buttonRevealEmail_Click(object sender, EventArgs e)
+        {
+            ButtonRevealClick(buttonRevealEmail, textBoxEmail, secureStringTextBoxEmail);
+        }
+
+        private void buttonRevealPassword_Click(object sender, EventArgs e)
+        {
+            ButtonRevealClick(buttonRevealPassword, textBoxPassword, secureStringTextBoxPassword);
+        }
+
+        private void buttonRevealNote_Click(object sender, EventArgs e)
+        {
+            ButtonRevealClick(buttonRevealNote, textBoxNote, secureStringTextBoxNote);
+        }
+        private void ButtonRevealClick(Button btn, TextBox tbx, SecureStringTextBox sstbx)
+        {
+            if (btn.Text == "Reveal")
+            {
+                tbx.Text = sstbx.Expose();
+                tbx.Visible = true;
+                sstbx.Visible = false;
+                btn.Text = "Hide";
+            }
+            else if (btn.Text == "Hide")
+            {
+                sstbx.Visible = true;
+                tbx.Visible = false;
+                btn.Text = "Reveal";
+            }
         }
     }
 }
