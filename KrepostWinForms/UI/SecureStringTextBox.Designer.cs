@@ -40,8 +40,8 @@
             this.InputBox.Size = new System.Drawing.Size(175, 23);
             this.InputBox.TabIndex = 0;
             this.InputBox.UseSystemPasswordChar = true;
-            this.InputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputBox_KeyPress);
             this.InputBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputBox_KeyDown);
+            this.InputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputBox_KeyPress);
             // 
             // SecureStringTextBox
             // 

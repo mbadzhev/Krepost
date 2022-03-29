@@ -1,5 +1,5 @@
 ﻿// Code taken largely from: http://www.blackwasp.co.uk/SecureStringTextBox.aspx
-
+using System.Runtime.InteropServices;
 using System.Security;
 
 using KrepostLib.Security;
@@ -155,6 +155,23 @@ namespace KrepostWinForms.UI
         public void DisplayCharacterNumberOnly(int elements)
         {
             InputBox.Text = new string(InputBox.PasswordChar, elements);
+        }
+        public string Expose()
+        {
+            return SecureStringToString(data);
+        }
+        private string SecureStringToString(SecureString value)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
         }
     }
 }
