@@ -34,6 +34,7 @@ namespace KrepostWinForms.Forms
             using (SecureStringUtil ssu = new SecureStringUtil(entry.Note.Expose()))
                 secureStringTextBoxNote.Data = ssu.ByteArrayToSecureString(entry.Note.Expose());
 
+            // Display all entry elements' values
             textBoxTitle.Text = dbE.Title;
             secureStringTextBoxUsername.DisplayCharacterNumberOnly(dbE.Username.Length);
             secureStringTextBoxEmail.DisplayCharacterNumberOnly(dbE.Email.Length);
@@ -122,6 +123,12 @@ namespace KrepostWinForms.Forms
         {
             ButtonRevealClick(buttonRevealNote, textBoxNote, secureStringTextBoxNote);
         }
+        /// <summary>
+        /// Reveals the value stored in a SecureStringTextBox.
+        /// </summary>
+        /// <param name="btn"><see cref="Button"/> that is clicked.</param>
+        /// <param name="tbx"><see cref="TextBox"/> that will display the plaintext value.</param>
+        /// <param name="sstbx"><see cref="SecureStringTextBox"/> that stores the value to be revealed.</param>
         private void ButtonRevealClick(Button btn, TextBox tbx, SecureStringTextBox sstbx)
         {
             if (btn.Text == "Reveal")
