@@ -58,7 +58,7 @@ namespace KrepostWinForms.Forms
             }
 
             // Create new database entry with data from the input boxes.
-            DatabaseEntry entry = new DatabaseEntry(textBoxTitle.Text,
+            DatabaseEntry newEntry = new DatabaseEntry(textBoxTitle.Text,
                 secureStringTextBoxUsername.ToSecureByteArray(),
                 secureStringTextBoxEmail.ToSecureByteArray(),
                 secureStringTextBoxPassword.ToSecureByteArray(),
@@ -66,7 +66,11 @@ namespace KrepostWinForms.Forms
                 secureStringTextBoxNote.ToSecureByteArray(),
                 KrepostLib.Cryptography.Generator.GenerateBytes(16));
 
-            Program.CurrentDb.Body.EntryList.Add(entry);
+            Program.CurrentDb.Body.EntryList.Remove(entry);
+            entry = newEntry;
+            Program.CurrentDb.Body.EntryList.Add(newEntry);
+
+            Close();
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
