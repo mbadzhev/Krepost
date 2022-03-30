@@ -30,10 +30,10 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString1 = new System.Security.SecureString();
-            System.Security.SecureString secureString2 = new System.Security.SecureString();
-            System.Security.SecureString secureString3 = new System.Security.SecureString();
-            System.Security.SecureString secureString4 = new System.Security.SecureString();
+            System.Security.SecureString secureString5 = new System.Security.SecureString();
+            System.Security.SecureString secureString6 = new System.Security.SecureString();
+            System.Security.SecureString secureString7 = new System.Security.SecureString();
+            System.Security.SecureString secureString8 = new System.Security.SecureString();
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -114,7 +114,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxPassword
             // 
-            this.secureStringTextBoxPassword.Data = secureString1;
+            this.secureStringTextBoxPassword.Data = secureString5;
             this.secureStringTextBoxPassword.DataHash = null;
             this.secureStringTextBoxPassword.DataSalt = null;
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(97, 180);
@@ -125,7 +125,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxEmail
             // 
-            this.secureStringTextBoxEmail.Data = secureString2;
+            this.secureStringTextBoxEmail.Data = secureString6;
             this.secureStringTextBoxEmail.DataHash = null;
             this.secureStringTextBoxEmail.DataSalt = null;
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(97, 140);
@@ -136,7 +136,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxUsername
             // 
-            this.secureStringTextBoxUsername.Data = secureString3;
+            this.secureStringTextBoxUsername.Data = secureString7;
             this.secureStringTextBoxUsername.DataHash = null;
             this.secureStringTextBoxUsername.DataSalt = null;
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(97, 100);
@@ -147,7 +147,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxNote
             // 
-            this.secureStringTextBoxNote.Data = secureString4;
+            this.secureStringTextBoxNote.Data = secureString8;
             this.secureStringTextBoxNote.DataHash = null;
             this.secureStringTextBoxNote.DataSalt = null;
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(97, 260);
@@ -234,6 +234,7 @@ namespace KrepostWinForms.Forms
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(97, 100);
             this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.ReadOnly = true;
             this.textBoxUsername.Size = new System.Drawing.Size(243, 23);
             this.textBoxUsername.TabIndex = 19;
             // 
@@ -241,6 +242,7 @@ namespace KrepostWinForms.Forms
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(97, 140);
             this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.ReadOnly = true;
             this.textBoxEmail.Size = new System.Drawing.Size(243, 23);
             this.textBoxEmail.TabIndex = 20;
             // 
@@ -248,6 +250,7 @@ namespace KrepostWinForms.Forms
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(97, 180);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.ReadOnly = true;
             this.textBoxPassword.Size = new System.Drawing.Size(243, 23);
             this.textBoxPassword.TabIndex = 21;
             // 
@@ -255,6 +258,7 @@ namespace KrepostWinForms.Forms
             // 
             this.textBoxNote.Location = new System.Drawing.Point(97, 260);
             this.textBoxNote.Name = "textBoxNote";
+            this.textBoxNote.ReadOnly = true;
             this.textBoxNote.Size = new System.Drawing.Size(243, 23);
             this.textBoxNote.TabIndex = 22;
             // 
