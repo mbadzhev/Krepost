@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using KrepostLib.Security;
 
-using KrepostLib.Security;
+using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Forms
 {
@@ -10,12 +10,21 @@ namespace KrepostWinForms.Forms
         {
             InitializeComponent();
 
-            secureStringTextBox.DataSalt = Program.CurrentDb.Head.databaseIv;
+            // Extract db head from db file to access hashed master password
+            if (!Utility.AccessDatabaseHead(Program.CurrentDbFile))
+            {
+                MessageBox.Show("The database did not pass validation." +
+                    "Data stored in it may be corrupted or compromised.");
+                return;
+            }
+
+            // Use the saved iv for hashing and key derivation
+            secureStringTextBox.DataSalt = Program.CurrentDbHead.BodyIv;
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (!KrepostLib.Utility.CompareStrings(Program.CurrentDb.Head.accessHash, secureStringTextBox.DataHash))
+            if (!KrepostLib.Utility.CompareStrings(Program.CurrentDbHead.AccessHash, secureStringTextBox.DataHash))
             {
                 MessageBox.Show("Password is incorrect.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -25,13 +34,22 @@ namespace KrepostWinForms.Forms
                 using (SecureStringUtil wrapper = new SecureStringUtil(secureStringTextBox.Data))
                 {
                     byte[] temp = wrapper.SecureStringToByteArray();
-                    byte[] key = KrepostLib.Cryptography.Argon2Engine.DeriveKey(temp, Program.CurrentDb.Head.databaseIv);
+                    byte[] key = KrepostLib.Cryptography.Argon2Engine.DeriveKey(temp, Program.CurrentDbHead.BodyIv);
                     Array.Clear(temp, 0, temp.Length);
-                    Program.CurrentKey = new KrepostLib.SecureByteArray(ref key);
+                    Program.CurrentKey = new SecureByteArray(ref key);
                     Array.Clear(key, 0, key.Length);
                 }
 
-                // TODO: Decrypt db
+                // Decrypt and deserialize the last component needed for a complete database
+                if (!Utility.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
+                {
+                    MessageBox.Show("Something went wrong while opening encrypted database content.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Marks that a database is opened
+                    Program.OpenDatabase = true;
+                }
 
                 secureStringTextBox.Data.Dispose();
                 Close();

@@ -1,4 +1,4 @@
-﻿using KrepostLib;
+﻿using KrepostLib.Security;
 using KrepostLib.Storage;
 
 namespace KrepostWinForms.UI
@@ -27,29 +27,61 @@ namespace KrepostWinForms.UI
                 return false;
             }
         }
-        public static bool OpenDatabase()
+        public static bool OpenDatabaseFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            ofd.FilterIndex = 2;
+            ofd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
+            ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                // Initial deserialization of db
-                Program.CurrentDb = KrepostLib.DatabaseReader.ReadDatabase(Path.GetFullPath(ofd.FileName));
-                
-                // Validate db header
-                if (!KrepostLib.DatabaseReader.ValidateDatabaseHeader(Program.CurrentDb))
-                {
+                // Deserialize and validate database file
+                DatabaseFile dbf = DatabaseReader.DeserializeDatabaseFile(Path.GetFullPath(ofd.FileName));
+                if (!dbf.ValidateHead())
                     return false;
-                }
+                if (!dbf.ValidateBody())
+                    return false;
+
+                // Save reference to db file to reduce deserializations
+                Program.CurrentDbFile = dbf;
                 return true;
             }
             else
-            {
                 return false;
-            }
+        }
+        public static bool AccessDatabaseHead(DatabaseFile dbF)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseHead dbH = DatabaseReader.DeserializeDatabaseHead(dbF);
+
+            if (!DatabaseReader.ValidateDatabaseHead(dbH))
+                return false;
+
+            Program.CurrentDbHead = dbH;
+            return true;
+        }
+        /// <summary>
+        /// Deserializes and decrypts a <see cref="DatabaseBody"/>
+        /// from a <see cref="DatabaseFile"/>, initializing a
+        /// <see cref="Database"/> to be used as global variable.
+        /// </summary>
+        /// <param name="dbF">Database file to read the encrypted body from.</param>
+        /// <param name="dbH">Database head to read the random bytes used during encryption</param>
+        /// <param name="key">Key used during encryption.</param>
+        /// <returns>Boolean confirming successful execution.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AccessDatabaseBody(DatabaseFile dbF, DatabaseHead dbH, SecureByteArray key)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseBody dbB = DatabaseReader.DeserializeDatabaseBody(dbF, dbH, key);
+
+            Program.CurrentDb = new Database(dbH, dbB);
+            return true;
         }
     }
 }

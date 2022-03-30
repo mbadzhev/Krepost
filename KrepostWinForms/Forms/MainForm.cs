@@ -18,7 +18,7 @@
 
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
-            if (UI.Utility.OpenDatabase())
+            if (UI.Utility.OpenDatabaseFile())
             {
                 Form openDbForm = new OpenDatabaseForm();
                 openDbForm.ShowDialog();
@@ -37,6 +37,18 @@
 
             Form addEntryForm = new AddEntryForm();
             addEntryForm.ShowDialog();
+        }
+
+        private void menuStripEntryEditEntry_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase)
+            {
+                MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Form editEntryForm = new EditEntryForm();
+            editEntryForm.Show();
         }
         #endregion
     }

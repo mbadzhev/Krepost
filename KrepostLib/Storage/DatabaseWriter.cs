@@ -4,9 +4,8 @@ using System.Xml.Serialization;
 
 using KrepostLib.Cryptography;
 using KrepostLib.Security;
-using KrepostLib.Storage;
 
-namespace KrepostLib
+namespace KrepostLib.Storage
 {
     public static class DatabaseWriter
     {
@@ -20,10 +19,10 @@ namespace KrepostLib
             dbHead.BodyIv = iv;
 
             DatabaseBody dbBody = new DatabaseBody();
-            dbBody.HeadSalt = Generator.GenerateBytes(16);
+            //dbBody.HeadSalt = Generator.GenerateBytes(16);
             dbBody.EntryList = new List<DatabaseEntry>();
 
-            HashDatabaseHead(dbHead, dbBody.HeadSalt);
+            dbHead.IntegrityHash = ComputeDatabaseHeadHash(dbHead, dbHead.BodyIv);
 
             Database db = new Database(dbHead, dbBody);
             return db;
@@ -38,7 +37,7 @@ namespace KrepostLib
             dbF.HeadHash = Sha256Engine.ComputeSha256Hash(dbF.Head, dbF.Salt);
             dbF.Body = AesEngine.Encrypt(ObjectToByteArray(db.Body), key, db.Head.BodyIv);
             dbF.BodyHash = Sha256Engine.ComputeSha256Hash(dbF.Body, dbF.Salt);
-            
+
 
             // Use new line and indentadion in xml output.
             XmlWriterSettings xmlWriterSettings = new()
@@ -59,10 +58,11 @@ namespace KrepostLib
                 return ms.ToArray();
             }
         }
-        public static void HashDatabaseHead(DatabaseHead dbH, byte[] salt)
+        public static string ComputeDatabaseHeadHash(DatabaseHead dbH, byte[] salt)
         {
             string headFields = dbH.HashFunction + dbH.AccessHash + dbH.CipherAlgorithm + dbH.BodyIv;
-            dbH.IntegrityHash = Sha256Engine.ComputeSha256Hash(headFields, salt);
+            string headHash = Sha256Engine.ComputeSha256Hash(headFields, salt);
+            return headHash;
         }
     }
 }

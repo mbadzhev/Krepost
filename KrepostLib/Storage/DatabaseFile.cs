@@ -1,4 +1,6 @@
-﻿namespace KrepostLib.Storage
+﻿using KrepostLib.Cryptography;
+
+namespace KrepostLib.Storage
 {
     [Serializable]
     public sealed class DatabaseFile
@@ -27,5 +29,38 @@
         /// Gets or sets the salt used to compute the hashes of the head and body.
         /// </summary>
         public byte[]? Salt { get; set; }
+
+        public bool ValidateHead()
+        {
+            if (Head == null)
+            {
+                throw new InvalidOperationException("Head is null");
+            }
+            if (Head.Length <= 0)
+            {
+                throw new InvalidOperationException("Head cannot be <= 0");
+            }
+            if (HeadHash == Sha256Engine.ComputeSha256Hash(Head, Salt))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool ValidateBody()
+        {
+            if (Body == null)
+            {
+                throw new InvalidOperationException("Head is null");
+            }
+            if (Body.Length <= 0)
+            {
+                throw new InvalidOperationException("Head cannot be <= 0");
+            }
+            if (BodyHash == Sha256Engine.ComputeSha256Hash(Body, Salt))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

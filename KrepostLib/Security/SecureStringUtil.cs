@@ -55,7 +55,27 @@ namespace KrepostLib.Security
 
             disposedStatus = false;
         }
+        /// <summary>
+        /// Constructs a <see cref="SecureStringUtil"/> object.
+        /// </summary>
+        /// <param name="bytes">A byte array used as input data to be manipulated.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public SecureStringUtil(byte[] bytes)
+        {
+            if (bytes == null)
+                throw new ArgumentNullException("bytes");
+            if (bytes.Length <= 0)
+                throw new ArgumentOutOfRangeException("bytes");
 
+            dataByteArray = bytes;
+            data = new SecureString();
+
+            if (encoding == null)
+                encoding = Encoding.UTF8;
+
+            disposedStatus = false;
+        }
         /// <summary>
         /// Converts a <see cref="SecureString"/> to a byte array.
         /// </summary>
@@ -97,7 +117,35 @@ namespace KrepostLib.Security
                 }
             }
         }
+        /// <summary>
+        /// Converts a byte array to a <see cref="SecureString"/> object.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public SecureString ByteArrayToSecureString(byte[] bytes)
+        {
+            if (bytes == null)
+                throw new ArgumentNullException("bytes");
+            if (bytes.Length <= 0)
+                throw new ArgumentOutOfRangeException("bytes");
 
+            char[] tempChars = encoding.GetChars(bytes);
+
+            // Zero out the data in the byte array
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = 0;
+            }
+
+            // Append all data from the char array to the secure string
+            for (int i = 0; i < tempChars.Length; i++)
+            {
+                data.AppendChar(tempChars[i]);
+                // Zero out the data in the char array
+                tempChars[i] = (char)0;
+            }
+            return data;
+        }
         public void Dispose()
         {
             if (!disposedStatus)

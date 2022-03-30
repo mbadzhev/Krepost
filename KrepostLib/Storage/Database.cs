@@ -75,11 +75,6 @@ namespace KrepostLib.Storage
     public partial class DatabaseBody : ISerializable
     {
         /// <summary>
-        /// Gets or sets the salt used to validate the hash of the database head.
-        /// </summary>
-        /// <returns>The salt in a byte array.</returns>
-        public byte[] HeadSalt { get; set; }
-        /// <summary>
         /// Gets or sets the list of all entries, stored in the database.
         /// </summary>
         /// <returns>The entries in a list.</returns>
@@ -92,12 +87,10 @@ namespace KrepostLib.Storage
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("HeadSalt", HeadSalt);
             info.AddValue("EntryList", EntryList);
         }
         public DatabaseBody(SerializationInfo info, StreamingContext context)
         {
-            HeadSalt = (byte[])info.GetValue("HeadSalt", typeof(byte[]));
             EntryList = (List<DatabaseEntry>)info.GetValue("EntryList", typeof(List<DatabaseEntry>));
         }
     }
