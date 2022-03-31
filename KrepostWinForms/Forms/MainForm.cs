@@ -1,4 +1,5 @@
-﻿namespace KrepostWinForms.Forms
+﻿using KrepostWinForms.UI;
+namespace KrepostWinForms.Forms
 {
     public partial class MainForm : Form
     {
@@ -6,6 +7,7 @@
         {
             InitializeComponent();
 
+            toolStrip.Renderer = new CustomToolStripRenderer();
             //menuStripEntryAddEntry.Enabled = false;
         }
 
