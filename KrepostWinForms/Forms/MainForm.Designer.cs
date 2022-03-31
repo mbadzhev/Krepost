@@ -35,7 +35,7 @@
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.splitContainerEntry = new System.Windows.Forms.SplitContainer();
@@ -106,13 +106,14 @@
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(684, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 439);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.statusStrip.Size = new System.Drawing.Size(684, 22);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip";
             // 
             // toolStrip
             // 
@@ -131,6 +132,10 @@
             this.splitContainerMain.Location = new System.Drawing.Point(0, 49);
             this.splitContainerMain.Name = "splitContainerMain";
             // 
+            // splitContainerMain.Panel1
+            // 
+            this.splitContainerMain.Panel1.BackColor = System.Drawing.SystemColors.Window;
+            // 
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.splitContainerEntry);
@@ -141,13 +146,22 @@
             // 
             // splitContainerEntry
             // 
+            this.splitContainerEntry.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainerEntry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainerEntry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerEntry.Location = new System.Drawing.Point(0, 0);
             this.splitContainerEntry.Name = "splitContainerEntry";
             this.splitContainerEntry.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerEntry.Panel1
+            // 
+            this.splitContainerEntry.Panel1.BackColor = System.Drawing.SystemColors.Window;
+            // 
+            // splitContainerEntry.Panel2
+            // 
+            this.splitContainerEntry.Panel2.BackColor = System.Drawing.SystemColors.Window;
             this.splitContainerEntry.Size = new System.Drawing.Size(481, 390);
-            this.splitContainerEntry.SplitterDistance = 100;
+            this.splitContainerEntry.SplitterDistance = 99;
             this.splitContainerEntry.SplitterWidth = 3;
             this.splitContainerEntry.TabIndex = 0;
             // 
@@ -158,7 +172,7 @@
             this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.toolStrip);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
@@ -185,7 +199,7 @@
         private ToolStripMenuItem menuStripEntry;
         private ToolStripMenuItem menuStripEntryAddEntry;
         private ToolStripMenuItem menuStripEntryEditEntry;
-        private StatusStrip statusStrip1;
+        private StatusStrip statusStrip;
         private ToolStrip toolStrip;
         private SplitContainer splitContainerMain;
         private SplitContainer splitContainerEntry;
