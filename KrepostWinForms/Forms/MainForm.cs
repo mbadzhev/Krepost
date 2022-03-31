@@ -1,4 +1,5 @@
 ﻿using KrepostWinForms.UI;
+
 namespace KrepostWinForms.Forms
 {
     public partial class MainForm : Form
@@ -53,5 +54,11 @@ namespace KrepostWinForms.Forms
             editEntryForm.Show();
         }
         #endregion
+
+        public void RefreshTreeView()
+        {
+            Middleware.DisplayUtils.DisplayEntryList(treeView, Program.CurrentDb);
+            treeView.Sort();
+        }
     }
 }
