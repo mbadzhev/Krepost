@@ -38,9 +38,11 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainerEntry = new System.Windows.Forms.SplitContainer();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
+            this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerEntry)).BeginInit();
@@ -135,6 +137,7 @@
             // splitContainerMain.Panel1
             // 
             this.splitContainerMain.Panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.splitContainerMain.Panel1.Controls.Add(this.treeView);
             // 
             // splitContainerMain.Panel2
             // 
@@ -143,6 +146,15 @@
             this.splitContainerMain.SplitterDistance = 200;
             this.splitContainerMain.SplitterWidth = 3;
             this.splitContainerMain.TabIndex = 3;
+            // 
+            // treeView
+            // 
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.Size = new System.Drawing.Size(198, 388);
+            this.treeView.TabIndex = 0;
             // 
             // splitContainerEntry
             // 
@@ -180,6 +192,7 @@
             this.Text = "MainForm";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
@@ -203,5 +216,6 @@
         private ToolStrip toolStrip;
         private SplitContainer splitContainerMain;
         private SplitContainer splitContainerEntry;
+        private TreeView treeView;
     }
 }
