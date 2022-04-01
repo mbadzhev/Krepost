@@ -54,7 +54,11 @@ namespace KrepostWinForms.Forms
                 return;
             }
 
-            Form editEntryForm = new EditEntryForm();
+            if (Program.SelectedEntry == null)
+            {
+                return;
+            }
+            Form editEntryForm = new EditEntryForm(Program.SelectedEntry);
             editEntryForm.ShowDialog();
 
             RefreshTreeView();

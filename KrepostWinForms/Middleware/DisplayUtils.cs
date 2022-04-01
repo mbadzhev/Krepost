@@ -34,6 +34,8 @@ namespace KrepostWinForms.Middleware
             if (entry == null)
                 return false;
 
+            Program.SelectedEntry = entry;
+
             title.Text = entry.Title;
             doC.Text = entry.DateCreated;
             doM.Text = entry.DateModified;
