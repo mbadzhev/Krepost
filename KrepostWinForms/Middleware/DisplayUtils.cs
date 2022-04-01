@@ -28,5 +28,15 @@ namespace KrepostWinForms.Middleware
                 trv.Nodes["passwords"].Nodes.Add(trn);
             }
         }
+        public static void DisplayEntryHeader(TreeNode trn, Database db, Label title, Label doC, Label doM)
+        {
+            DatabaseEntry? entry = db.Body.EntryList.Find(x => x.Uid == (string)trn.Tag);
+            if (entry == null)
+                return;
+
+            title.Text = entry.Title;
+            doC.Text = entry.DateCreated;
+            doM.Text = entry.DateModified;
+        }
     }
 }

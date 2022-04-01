@@ -40,6 +40,8 @@ namespace KrepostWinForms.Forms
 
             Form addEntryForm = new AddEntryForm();
             addEntryForm.ShowDialog();
+
+            RefreshTreeView();
         }
 
         private void menuStripEntryEditEntry_Click(object sender, EventArgs e)
@@ -54,11 +56,22 @@ namespace KrepostWinForms.Forms
             editEntryForm.Show();
         }
         #endregion
+        #region splitContainer Functions
 
+        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            RefreshEntryHeader(e.Node);
+        }
+        #endregion
         public void RefreshTreeView()
         {
             Middleware.DisplayUtils.DisplayEntryList(treeView, Program.CurrentDb);
             treeView.Sort();
+        }
+        public void RefreshEntryHeader(TreeNode node)
+        {
+            Middleware.DisplayUtils.DisplayEntryHeader(node, Program.CurrentDb, labelEntryTitle, labelEntryDoC, labelEntryDoM);
+            panelEntryTop.Visible = true;
         }
     }
 }

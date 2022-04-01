@@ -46,6 +46,11 @@
             this.labelEntryDoC = new System.Windows.Forms.Label();
             this.labelEntryTitle = new System.Windows.Forms.Label();
             this.panelEntryBottom = new System.Windows.Forms.Panel();
+            this.buttonNote = new System.Windows.Forms.Button();
+            this.buttonUrl = new System.Windows.Forms.Button();
+            this.buttonPassword = new System.Windows.Forms.Button();
+            this.buttonEmail = new System.Windows.Forms.Button();
+            this.buttonUsername = new System.Windows.Forms.Button();
             this.textBoxNote = new System.Windows.Forms.TextBox();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -56,11 +61,6 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.buttonUsername = new System.Windows.Forms.Button();
-            this.buttonEmail = new System.Windows.Forms.Button();
-            this.buttonPassword = new System.Windows.Forms.Button();
-            this.buttonUrl = new System.Windows.Forms.Button();
-            this.buttonNote = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -181,6 +181,7 @@
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(118, 488);
             this.treeView.TabIndex = 0;
+            this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
             // 
             // splitContainerEntry
             // 
@@ -279,6 +280,51 @@
             this.panelEntryBottom.Size = new System.Drawing.Size(459, 365);
             this.panelEntryBottom.TabIndex = 0;
             // 
+            // buttonNote
+            // 
+            this.buttonNote.Location = new System.Drawing.Point(371, 232);
+            this.buttonNote.Name = "buttonNote";
+            this.buttonNote.Size = new System.Drawing.Size(60, 23);
+            this.buttonNote.TabIndex = 14;
+            this.buttonNote.Text = "Reveal";
+            this.buttonNote.UseVisualStyleBackColor = true;
+            // 
+            // buttonUrl
+            // 
+            this.buttonUrl.Location = new System.Drawing.Point(371, 189);
+            this.buttonUrl.Name = "buttonUrl";
+            this.buttonUrl.Size = new System.Drawing.Size(60, 23);
+            this.buttonUrl.TabIndex = 13;
+            this.buttonUrl.Text = "Reveal";
+            this.buttonUrl.UseVisualStyleBackColor = true;
+            // 
+            // buttonPassword
+            // 
+            this.buttonPassword.Location = new System.Drawing.Point(371, 146);
+            this.buttonPassword.Name = "buttonPassword";
+            this.buttonPassword.Size = new System.Drawing.Size(60, 23);
+            this.buttonPassword.TabIndex = 12;
+            this.buttonPassword.Text = "Reveal";
+            this.buttonPassword.UseVisualStyleBackColor = true;
+            // 
+            // buttonEmail
+            // 
+            this.buttonEmail.Location = new System.Drawing.Point(371, 102);
+            this.buttonEmail.Name = "buttonEmail";
+            this.buttonEmail.Size = new System.Drawing.Size(60, 23);
+            this.buttonEmail.TabIndex = 11;
+            this.buttonEmail.Text = "Reveal";
+            this.buttonEmail.UseVisualStyleBackColor = true;
+            // 
+            // buttonUsername
+            // 
+            this.buttonUsername.Location = new System.Drawing.Point(371, 60);
+            this.buttonUsername.Name = "buttonUsername";
+            this.buttonUsername.Size = new System.Drawing.Size(60, 23);
+            this.buttonUsername.TabIndex = 10;
+            this.buttonUsername.Text = "Reveal";
+            this.buttonUsername.UseVisualStyleBackColor = true;
+            // 
             // textBoxNote
             // 
             this.textBoxNote.Location = new System.Drawing.Point(100, 232);
@@ -369,51 +415,6 @@
             this.labelUsername.Size = new System.Drawing.Size(63, 15);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
-            // 
-            // buttonUsername
-            // 
-            this.buttonUsername.Location = new System.Drawing.Point(371, 60);
-            this.buttonUsername.Name = "buttonUsername";
-            this.buttonUsername.Size = new System.Drawing.Size(60, 23);
-            this.buttonUsername.TabIndex = 10;
-            this.buttonUsername.Text = "Reveal";
-            this.buttonUsername.UseVisualStyleBackColor = true;
-            // 
-            // buttonEmail
-            // 
-            this.buttonEmail.Location = new System.Drawing.Point(371, 102);
-            this.buttonEmail.Name = "buttonEmail";
-            this.buttonEmail.Size = new System.Drawing.Size(60, 23);
-            this.buttonEmail.TabIndex = 11;
-            this.buttonEmail.Text = "Reveal";
-            this.buttonEmail.UseVisualStyleBackColor = true;
-            // 
-            // buttonPassword
-            // 
-            this.buttonPassword.Location = new System.Drawing.Point(371, 146);
-            this.buttonPassword.Name = "buttonPassword";
-            this.buttonPassword.Size = new System.Drawing.Size(60, 23);
-            this.buttonPassword.TabIndex = 12;
-            this.buttonPassword.Text = "Reveal";
-            this.buttonPassword.UseVisualStyleBackColor = true;
-            // 
-            // buttonUrl
-            // 
-            this.buttonUrl.Location = new System.Drawing.Point(371, 189);
-            this.buttonUrl.Name = "buttonUrl";
-            this.buttonUrl.Size = new System.Drawing.Size(60, 23);
-            this.buttonUrl.TabIndex = 13;
-            this.buttonUrl.Text = "Reveal";
-            this.buttonUrl.UseVisualStyleBackColor = true;
-            // 
-            // buttonNote
-            // 
-            this.buttonNote.Location = new System.Drawing.Point(371, 232);
-            this.buttonNote.Name = "buttonNote";
-            this.buttonNote.Size = new System.Drawing.Size(60, 23);
-            this.buttonNote.TabIndex = 14;
-            this.buttonNote.Text = "Reveal";
-            this.buttonNote.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
