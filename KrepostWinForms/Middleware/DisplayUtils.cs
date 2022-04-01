@@ -22,7 +22,10 @@ namespace KrepostWinForms.Middleware
             trv.Nodes.Add("passwords", "Passwords");
             foreach (var item in db.Body.EntryList)
             {
-                trv.Nodes["passwords"].Nodes.Add(item.Title);
+                TreeNode trn = new TreeNode();
+                trn.Text = item.Title;
+                trn.Tag = item.Uid;
+                trv.Nodes["passwords"].Nodes.Add(trn);
             }
         }
     }
