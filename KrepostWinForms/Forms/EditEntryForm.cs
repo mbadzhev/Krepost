@@ -83,7 +83,6 @@ namespace KrepostWinForms.Forms
             secureStringTextBoxEmail.Data.Dispose();
             secureStringTextBoxPassword.Data.Dispose();
             secureStringTextBoxNote.Data.Dispose();
-            MessageBox.Show(entry.Uid);
             Close();
         }
         private bool ValidateInput()

@@ -120,7 +120,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(97, 180);
             this.secureStringTextBoxPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxPassword.Name = "secureStringTextBoxPassword";
-            this.secureStringTextBoxPassword.Size = new System.Drawing.Size(243, 23);
+            this.secureStringTextBoxPassword.Size = new System.Drawing.Size(258, 23);
             this.secureStringTextBoxPassword.TabIndex = 6;
             // 
             // secureStringTextBoxEmail
@@ -131,7 +131,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(97, 140);
             this.secureStringTextBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxEmail.Name = "secureStringTextBoxEmail";
-            this.secureStringTextBoxEmail.Size = new System.Drawing.Size(243, 23);
+            this.secureStringTextBoxEmail.Size = new System.Drawing.Size(258, 23);
             this.secureStringTextBoxEmail.TabIndex = 7;
             // 
             // secureStringTextBoxUsername
@@ -142,7 +142,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(97, 100);
             this.secureStringTextBoxUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxUsername.Name = "secureStringTextBoxUsername";
-            this.secureStringTextBoxUsername.Size = new System.Drawing.Size(243, 23);
+            this.secureStringTextBoxUsername.Size = new System.Drawing.Size(258, 23);
             this.secureStringTextBoxUsername.TabIndex = 8;
             // 
             // secureStringTextBoxNote
@@ -153,7 +153,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(97, 260);
             this.secureStringTextBoxNote.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
-            this.secureStringTextBoxNote.Size = new System.Drawing.Size(243, 23);
+            this.secureStringTextBoxNote.Size = new System.Drawing.Size(258, 23);
             this.secureStringTextBoxNote.TabIndex = 10;
             // 
             // textBoxUrl
@@ -192,9 +192,9 @@ namespace KrepostWinForms.Forms
             // 
             // buttonRevealUsername
             // 
-            this.buttonRevealUsername.Location = new System.Drawing.Point(347, 100);
+            this.buttonRevealUsername.Location = new System.Drawing.Point(362, 100);
             this.buttonRevealUsername.Name = "buttonRevealUsername";
-            this.buttonRevealUsername.Size = new System.Drawing.Size(75, 23);
+            this.buttonRevealUsername.Size = new System.Drawing.Size(60, 23);
             this.buttonRevealUsername.TabIndex = 15;
             this.buttonRevealUsername.Text = "Reveal";
             this.buttonRevealUsername.UseVisualStyleBackColor = true;
@@ -202,9 +202,9 @@ namespace KrepostWinForms.Forms
             // 
             // buttonRevealEmail
             // 
-            this.buttonRevealEmail.Location = new System.Drawing.Point(347, 140);
+            this.buttonRevealEmail.Location = new System.Drawing.Point(362, 140);
             this.buttonRevealEmail.Name = "buttonRevealEmail";
-            this.buttonRevealEmail.Size = new System.Drawing.Size(75, 23);
+            this.buttonRevealEmail.Size = new System.Drawing.Size(60, 23);
             this.buttonRevealEmail.TabIndex = 16;
             this.buttonRevealEmail.Text = "Reveal";
             this.buttonRevealEmail.UseVisualStyleBackColor = true;
@@ -212,9 +212,9 @@ namespace KrepostWinForms.Forms
             // 
             // buttonRevealPassword
             // 
-            this.buttonRevealPassword.Location = new System.Drawing.Point(347, 180);
+            this.buttonRevealPassword.Location = new System.Drawing.Point(362, 180);
             this.buttonRevealPassword.Name = "buttonRevealPassword";
-            this.buttonRevealPassword.Size = new System.Drawing.Size(75, 23);
+            this.buttonRevealPassword.Size = new System.Drawing.Size(60, 23);
             this.buttonRevealPassword.TabIndex = 17;
             this.buttonRevealPassword.Text = "Reveal";
             this.buttonRevealPassword.UseVisualStyleBackColor = true;
@@ -222,9 +222,9 @@ namespace KrepostWinForms.Forms
             // 
             // buttonRevealNote
             // 
-            this.buttonRevealNote.Location = new System.Drawing.Point(347, 260);
+            this.buttonRevealNote.Location = new System.Drawing.Point(362, 260);
             this.buttonRevealNote.Name = "buttonRevealNote";
-            this.buttonRevealNote.Size = new System.Drawing.Size(75, 23);
+            this.buttonRevealNote.Size = new System.Drawing.Size(60, 23);
             this.buttonRevealNote.TabIndex = 18;
             this.buttonRevealNote.Text = "Reveal";
             this.buttonRevealNote.UseVisualStyleBackColor = true;
@@ -289,6 +289,7 @@ namespace KrepostWinForms.Forms
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxNote);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditEntryForm";

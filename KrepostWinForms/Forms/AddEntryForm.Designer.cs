@@ -30,16 +30,20 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
+            System.Security.SecureString secureString2 = new System.Security.SecureString();
+            System.Security.SecureString secureString3 = new System.Security.SecureString();
+            System.Security.SecureString secureString4 = new System.Security.SecureString();
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUrl = new System.Windows.Forms.Label();
             this.labelNote = new System.Windows.Forms.Label();
-            this.secureStringTextBoxPassword = new SecureStringTextBox();
-            this.secureStringTextBoxEmail = new SecureStringTextBox();
-            this.secureStringTextBoxUsername = new SecureStringTextBox();
-            this.secureStringTextBoxNote = new SecureStringTextBox();
+            this.secureStringTextBoxPassword = new KrepostWinForms.UI.SecureStringTextBox();
+            this.secureStringTextBoxEmail = new KrepostWinForms.UI.SecureStringTextBox();
+            this.secureStringTextBoxUsername = new KrepostWinForms.UI.SecureStringTextBox();
+            this.secureStringTextBoxNote = new KrepostWinForms.UI.SecureStringTextBox();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -102,6 +106,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxPassword
             // 
+            this.secureStringTextBoxPassword.Data = secureString1;
             this.secureStringTextBoxPassword.DataHash = null;
             this.secureStringTextBoxPassword.DataSalt = null;
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(97, 180);
@@ -112,6 +117,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxEmail
             // 
+            this.secureStringTextBoxEmail.Data = secureString2;
             this.secureStringTextBoxEmail.DataHash = null;
             this.secureStringTextBoxEmail.DataSalt = null;
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(97, 140);
@@ -122,6 +128,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxUsername
             // 
+            this.secureStringTextBoxUsername.Data = secureString3;
             this.secureStringTextBoxUsername.DataHash = null;
             this.secureStringTextBoxUsername.DataSalt = null;
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(97, 100);
@@ -132,6 +139,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxNote
             // 
+            this.secureStringTextBoxNote.Data = secureString4;
             this.secureStringTextBoxNote.DataHash = null;
             this.secureStringTextBoxNote.DataSalt = null;
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(97, 260);
@@ -193,6 +201,7 @@ namespace KrepostWinForms.Forms
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.labelTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEntryForm";

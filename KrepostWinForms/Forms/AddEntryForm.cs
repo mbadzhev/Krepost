@@ -38,6 +38,12 @@ namespace KrepostWinForms.Forms
                 KrepostLib.Cryptography.Generator.GenerateBytes(16));
 
             Program.CurrentDb.Body.EntryList.Add(entry);
+
+            secureStringTextBoxUsername.Data.Dispose();
+            secureStringTextBoxEmail.Data.Dispose();
+            secureStringTextBoxPassword.Data.Dispose();
+            secureStringTextBoxNote.Data.Dispose();
+            Close();
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
