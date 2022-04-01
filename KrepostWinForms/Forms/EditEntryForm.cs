@@ -69,7 +69,10 @@ namespace KrepostWinForms.Forms
                 secureStringTextBoxPassword.ToSecureByteArray(),
                 textBoxUrl.Text,
                 secureStringTextBoxNote.ToSecureByteArray(), uuidStr,
-                KrepostLib.Cryptography.Generator.GenerateBytes(16));
+                KrepostLib.Cryptography.Generator.GenerateBytes(16),
+                KrepostLib.Utility.GetTimestamp());
+
+            newEntry.DateCreated = entry.DateCreated;
 
             Program.CurrentDb.Body.EntryList.Remove(entry);
             entry = newEntry;

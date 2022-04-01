@@ -155,7 +155,7 @@ namespace KrepostLib.Storage
         }
         public DatabaseEntry(string title, SecureByteArray username,
             SecureByteArray email, SecureByteArray password,
-            string url, SecureByteArray note, string uid, byte[] iv)
+            string url, SecureByteArray note, string uid, byte[] iv, string doM = DefaultDateModified)
         {
             Title = title;
             Username = username;
@@ -164,7 +164,7 @@ namespace KrepostLib.Storage
             Url = url;
             Note = note;
             DateCreated = Utility.GetTimestamp();
-            DateModified = DefaultDateModified;
+            DateModified = doM;
             Uid = uid;
             Iv = iv;
             ComputeIntegrityHash();
