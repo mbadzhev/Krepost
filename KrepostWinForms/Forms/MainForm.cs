@@ -9,6 +9,8 @@ namespace KrepostWinForms.Forms
             InitializeComponent();
 
             toolStrip.Renderer = new CustomToolStripRenderer();
+            panelEntryTop.Visible = false;
+            panelEntryBottom.Visible = false;
             //menuStripEntryAddEntry.Enabled = false;
         }
 
@@ -53,7 +55,12 @@ namespace KrepostWinForms.Forms
             }
 
             Form editEntryForm = new EditEntryForm();
-            editEntryForm.Show();
+            editEntryForm.ShowDialog();
+
+            RefreshTreeView();
+
+            panelEntryTop.Visible = false;
+            panelEntryBottom.Visible = false;
         }
         #endregion
         #region splitContainer Functions
@@ -70,8 +77,12 @@ namespace KrepostWinForms.Forms
         }
         public void RefreshEntryHeader(TreeNode node)
         {
-            Middleware.DisplayUtils.DisplayEntryHeader(node, Program.CurrentDb, labelEntryTitle, labelEntryDoC, labelEntryDoM);
+            if (!Middleware.DisplayUtils.DisplayEntryHeader(node, Program.CurrentDb, labelEntryTitle, labelEntryDoC, labelEntryDoM))
+            {
+                return;
+            }
             panelEntryTop.Visible = true;
+            panelEntryBottom.Visible = true;
         }
     }
 }
