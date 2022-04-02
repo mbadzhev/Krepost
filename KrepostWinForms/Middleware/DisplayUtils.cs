@@ -72,15 +72,19 @@ namespace KrepostWinForms.Middleware
             string dateCFormat = String.Format("Created: {0}{1}/{2}{3}/{4}{5}{6}{7}, {8}{9}:{10}{11}:{12}{13}",
                 dateC[6], dateC[7], dateC[4], dateC[5], dateC[0], dateC[1], dateC[2], dateC[3],
                 dateC[8], dateC[9], dateC[10], dateC[11], dateC[12], dateC[13]);
-            string dateMFormat = String.Format("Modified: {0}{1}/{2}{3}/{4}{5}{6}{7}, {8}{9}:{10}{11}:{12}{13}",
-                dateM[6], dateM[7], dateM[4], dateM[5], dateM[0], dateM[1], dateM[2], dateM[3],
-                dateM[8], dateM[9], dateM[10], dateM[11], dateM[12], dateM[13]);
-
+            
             // Assign values to display
             title.Text = SelectedEntry.Title;
             doC.Text = dateCFormat;
-            doM.Text = dateMFormat;
-
+            if (dateM == "000000000000000000")
+                doM.Text = "Modified: N/A";
+            else
+            {
+                string dateMFormat = String.Format("Modified: {0}{1}/{2}{3}/{4}{5}{6}{7}, {8}{9}:{10}{11}:{12}{13}",
+                    dateM[6], dateM[7], dateM[4], dateM[5], dateM[0], dateM[1], dateM[2], dateM[3],
+                    dateM[8], dateM[9], dateM[10], dateM[11], dateM[12], dateM[13]);
+                doM.Text = dateMFormat;
+            }
             return true;
         }
         public static bool DisplayEntryBody(TreeNode node, Database db, TextBox username, TextBox email, TextBox password, TextBox url, TextBox note)

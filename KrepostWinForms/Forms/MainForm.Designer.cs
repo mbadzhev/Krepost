@@ -241,7 +241,7 @@
             // labelEntryDoC
             // 
             this.labelEntryDoC.AutoSize = true;
-            this.labelEntryDoC.Location = new System.Drawing.Point(288, 24);
+            this.labelEntryDoC.Location = new System.Drawing.Point(281, 24);
             this.labelEntryDoC.Name = "labelEntryDoC";
             this.labelEntryDoC.Size = new System.Drawing.Size(160, 15);
             this.labelEntryDoC.TabIndex = 2;
