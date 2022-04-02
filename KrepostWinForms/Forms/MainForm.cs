@@ -34,9 +34,9 @@ namespace KrepostWinForms.Forms
         #region menuStripEntry Functions
         private void menuStripEntryAddEntry_Click(object sender, EventArgs e)
         {
-            if (Program.CurrentDb == null)
+            if (!Program.OpenDatabase || Program.CurrentDb == null)
             {
-                MessageBox.Show("No open database is available.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace KrepostWinForms.Forms
 
         private void menuStripEntryEditEntry_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase)
+            if (!Program.OpenDatabase || Program.CurrentDb == null)
             {
                 MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -18,8 +18,9 @@ namespace KrepostWinForms.UI
             {
                 // Create db, use the picked path and serialize the db
                 Database db = DatabaseWriter.CreateDatabase(masterHash, iv);
-                Program.CurrentDb = db;
                 DatabaseWriter.SerializeDatabase(db, Program.CurrentKey, Path.GetFullPath(sfd.FileName));
+                Program.CurrentDb = db;
+                Program.OpenDatabase = true;
                 return true;
             }
             else
