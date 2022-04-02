@@ -73,6 +73,7 @@ namespace KrepostWinForms.Forms
         {
             RefreshEntryHeader(e.Node);
             RefreshEntryBody(e.Node);
+            Middleware.DisplayUtils.ResetSelectedEntry();
         }
         #endregion
         public void RefreshTreeView()

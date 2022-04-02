@@ -52,20 +52,23 @@ namespace KrepostWinForms.Middleware
             if (doM == null)
                 throw new ArgumentNullException();
 
-            // Find the selected entry.
-            DatabaseEntry? entry = DatabaseUtils.FindEntry(trn, db);
-            if (entry == null)
-                return false;
+            if (SelectedEntry == null)
+            {
+                // Find the selected entry.
+                DatabaseEntry? entry = DatabaseUtils.FindEntry(trn, db);
+                if (entry == null)
+                    return false;
+                SelectedEntry = entry;
+            }
 
             // Mark this entry as the currently selected.
-            SelectedEntry = entry;
-            Program.SelectedEntry = entry;
+            Program.SelectedEntry = SelectedEntry;
 
             // Format the dates for readability.
             // DateTime is stored in the format "yyyyMMddHHmmssffff"
             // Final string is in the format "Created: 01/01/0001, 01:01:01"
-            string dateC = entry.DateCreated;
-            string dateM = entry.DateModified;
+            string dateC = SelectedEntry.DateCreated;
+            string dateM = SelectedEntry.DateModified;
             string dateCFormat = String.Format("Created: {0}{1}/{2}{3}/{4}{5}{6}{7}, {8}{9}:{10}{11}:{12}{13}",
                 dateC[6], dateC[7], dateC[4], dateC[5], dateC[0], dateC[1], dateC[2], dateC[3],
                 dateC[8], dateC[9], dateC[10], dateC[11], dateC[12], dateC[13]);
@@ -74,7 +77,7 @@ namespace KrepostWinForms.Middleware
                 dateM[8], dateM[9], dateM[10], dateM[11], dateM[12], dateM[13]);
 
             // Assign values to display
-            title.Text = entry.Title;
+            title.Text = SelectedEntry.Title;
             doC.Text = dateCFormat;
             doM.Text = dateMFormat;
 
@@ -116,6 +119,13 @@ namespace KrepostWinForms.Middleware
             note.Text = new string(note.PasswordChar, SelectedEntry.Note.Length);
 
             return true;
+        }
+        public static void ResetSelectedEntry()
+        {
+            if (SelectedEntry != null)
+            {
+                SelectedEntry = null;
+            }
         }
     }
 }
