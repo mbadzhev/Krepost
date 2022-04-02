@@ -61,6 +61,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.menuStripFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -92,7 +93,8 @@
             // 
             this.menuStripFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStripFileNew,
-            this.menuStripFileOpen});
+            this.menuStripFileOpen,
+            this.menuStripFileSave});
             this.menuStripFile.Name = "menuStripFile";
             this.menuStripFile.Size = new System.Drawing.Size(37, 20);
             this.menuStripFile.Text = "File";
@@ -100,14 +102,14 @@
             // menuStripFileNew
             // 
             this.menuStripFileNew.Name = "menuStripFileNew";
-            this.menuStripFileNew.Size = new System.Drawing.Size(103, 22);
+            this.menuStripFileNew.Size = new System.Drawing.Size(180, 22);
             this.menuStripFileNew.Text = "New";
             this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
             // 
             // menuStripFileOpen
             // 
             this.menuStripFileOpen.Name = "menuStripFileOpen";
-            this.menuStripFileOpen.Size = new System.Drawing.Size(103, 22);
+            this.menuStripFileOpen.Size = new System.Drawing.Size(180, 22);
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
             // 
@@ -421,6 +423,13 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
+            // menuStripFileSave
+            // 
+            this.menuStripFileSave.Name = "menuStripFileSave";
+            this.menuStripFileSave.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileSave.Text = "Save";
+            this.menuStripFileSave.Click += new System.EventHandler(this.menuStripFileSave_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -489,5 +498,6 @@
         private Button buttonNote;
         private Button buttonUrl;
         private Button buttonPassword;
+        private ToolStripMenuItem menuStripFileSave;
     }
 }

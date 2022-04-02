@@ -29,6 +29,10 @@ namespace KrepostWinForms.Forms
                 openDbForm.ShowDialog();
             }
         }
+        private void menuStripFileSave_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region menuStripEntry Functions
@@ -67,6 +71,7 @@ namespace KrepostWinForms.Forms
             panelEntryBottom.Visible = false;
         }
         #endregion
+
         #region splitContainer Functions
 
         private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
