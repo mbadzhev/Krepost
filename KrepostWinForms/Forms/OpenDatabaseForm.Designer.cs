@@ -30,11 +30,12 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
             this.labelHeader = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOpen = new System.Windows.Forms.Button();
-            this.secureStringTextBox = new SecureStringTextBox();
+            this.secureStringTextBox = new KrepostWinForms.UI.SecureStringTextBox();
             this.SuspendLayout();
             // 
             // labelHeader
@@ -77,6 +78,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBox
             // 
+            this.secureStringTextBox.Data = secureString1;
             this.secureStringTextBox.DataHash = null;
             this.secureStringTextBox.DataSalt = null;
             this.secureStringTextBox.Location = new System.Drawing.Point(117, 82);
@@ -95,6 +97,7 @@ namespace KrepostWinForms.Forms
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelHeader);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OpenDatabaseForm";

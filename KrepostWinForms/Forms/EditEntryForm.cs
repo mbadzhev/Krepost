@@ -58,14 +58,21 @@ namespace KrepostWinForms.Forms
                 return;
             }
 
+            // Generate uuid for the entry.
+            Guid uuid = Guid.NewGuid();
+            string uuidStr = uuid.ToString();
+
             // Create new database entry with data from the input boxes.
             DatabaseEntry newEntry = new DatabaseEntry(textBoxTitle.Text,
                 secureStringTextBoxUsername.ToSecureByteArray(),
                 secureStringTextBoxEmail.ToSecureByteArray(),
                 secureStringTextBoxPassword.ToSecureByteArray(),
                 textBoxUrl.Text,
-                secureStringTextBoxNote.ToSecureByteArray(),
-                KrepostLib.Cryptography.Generator.GenerateBytes(16));
+                secureStringTextBoxNote.ToSecureByteArray(), uuidStr,
+                KrepostLib.Cryptography.Generator.GenerateBytes(16),
+                KrepostLib.Utility.GetTimestamp());
+
+            newEntry.DateCreated = entry.DateCreated;
 
             Program.CurrentDb.Body.EntryList.Remove(entry);
             entry = newEntry;

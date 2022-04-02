@@ -30,13 +30,15 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
+            System.Security.SecureString secureString2 = new System.Security.SecureString();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelPasswordRepeat = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.secureStringTextBoxBottom = new SecureStringTextBox();
-            this.secureStringTextBoxTop = new SecureStringTextBox();
+            this.secureStringTextBoxBottom = new KrepostWinForms.UI.SecureStringTextBox();
+            this.secureStringTextBoxTop = new KrepostWinForms.UI.SecureStringTextBox();
             this.SuspendLayout();
             // 
             // labelPassword
@@ -88,6 +90,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxBottom
             // 
+            this.secureStringTextBoxBottom.Data = secureString1;
             this.secureStringTextBoxBottom.DataHash = null;
             this.secureStringTextBoxBottom.DataSalt = null;
             this.secureStringTextBoxBottom.Location = new System.Drawing.Point(157, 148);
@@ -98,6 +101,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxTop
             // 
+            this.secureStringTextBoxTop.Data = secureString2;
             this.secureStringTextBoxTop.DataHash = null;
             this.secureStringTextBoxTop.DataSalt = null;
             this.secureStringTextBoxTop.Location = new System.Drawing.Point(157, 108);
@@ -118,6 +122,7 @@ namespace KrepostWinForms.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPasswordRepeat);
             this.Controls.Add(this.labelPassword);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewDatabaseForm";

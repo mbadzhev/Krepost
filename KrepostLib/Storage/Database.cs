@@ -139,6 +139,7 @@ namespace KrepostLib.Storage
         /// Gets or sets the last entry modification date.
         /// </summary>
         public string DateModified { get; set; }
+        public string Uid { get; set; }
         /// <summary>
         /// Gets or sets the entry iv used for encrypting other entry components.
         /// </summary>
@@ -154,7 +155,7 @@ namespace KrepostLib.Storage
         }
         public DatabaseEntry(string title, SecureByteArray username,
             SecureByteArray email, SecureByteArray password,
-            string url, SecureByteArray note, byte[] iv)
+            string url, SecureByteArray note, string uid, byte[] iv, string doM = DefaultDateModified)
         {
             Title = title;
             Username = username;
@@ -163,7 +164,8 @@ namespace KrepostLib.Storage
             Url = url;
             Note = note;
             DateCreated = Utility.GetTimestamp();
-            DateModified = DefaultDateModified;
+            DateModified = doM;
+            Uid = uid;
             Iv = iv;
             ComputeIntegrityHash();
         }
@@ -172,7 +174,7 @@ namespace KrepostLib.Storage
         {
             string entryFields = Title + Encoding.UTF8.GetString(Username.Data) +
                 Encoding.UTF8.GetString(Email.Data) + Encoding.UTF8.GetString(Password.Data) +
-                Url + Encoding.UTF8.GetString(Note.Data) + DateCreated + DateModified;
+                Url + Encoding.UTF8.GetString(Note.Data) + DateCreated + DateModified + Uid;
 
             IntegrityHash = Sha256Engine.ComputeSha256Hash(entryFields);
         }
@@ -187,6 +189,7 @@ namespace KrepostLib.Storage
             info.AddValue("Note", Note);
             info.AddValue("DateCreated", DateCreated);
             info.AddValue("DateModified", DateModified);
+            info.AddValue("Uid", Uid);
             info.AddValue("EntryIv", Iv);
             info.AddValue("IntegrityHash", IntegrityHash);
         }
@@ -201,10 +204,9 @@ namespace KrepostLib.Storage
             Note = (SecureByteArray)info.GetValue("Note", typeof(SecureByteArray));
             DateCreated = (string)info.GetValue("DateCreated", typeof(string));
             DateModified = (string)info.GetValue("DateModified", typeof(string));
+            Uid = (string)info.GetValue("Uid", typeof(string));
             Iv = (byte[])info.GetValue("EntryIv", typeof(byte[]));
             IntegrityHash = (string)info.GetValue("IntegrityHash", typeof(string));
         }
-
-
     }
 }

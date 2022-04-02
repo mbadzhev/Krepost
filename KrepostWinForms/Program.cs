@@ -10,6 +10,7 @@ namespace KrepostWinForms
         public static DatabaseHead CurrentDbHead { get; set; }
         public static bool OpenDatabase { get; set; }
         public static SecureByteArray? CurrentKey { get; set; }
+        public static DatabaseEntry SelectedEntry { get; set; }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
