@@ -72,6 +72,7 @@ namespace KrepostWinForms.Forms
         private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             RefreshEntryHeader(e.Node);
+            RefreshEntryBody(e.Node);
         }
         #endregion
         public void RefreshTreeView()
@@ -87,6 +88,10 @@ namespace KrepostWinForms.Forms
             }
             panelEntryTop.Visible = true;
             panelEntryBottom.Visible = true;
+        }
+        private void RefreshEntryBody(TreeNode node)
+        {
+            Middleware.DisplayUtils.DisplayEntryBody(node, Program.CurrentDb, textBoxUsername, textBoxEmail, textBoxPassword, textBoxUrl, textBoxNote);
         }
     }
 }

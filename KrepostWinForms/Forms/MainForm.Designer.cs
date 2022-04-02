@@ -331,6 +331,7 @@
             this.textBoxNote.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxNote.Multiline = true;
             this.textBoxNote.Name = "textBoxNote";
+            this.textBoxNote.PasswordChar = '●';
             this.textBoxNote.ReadOnly = true;
             this.textBoxNote.Size = new System.Drawing.Size(265, 75);
             this.textBoxNote.TabIndex = 9;
@@ -349,6 +350,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(100, 146);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '●';
             this.textBoxPassword.ReadOnly = true;
             this.textBoxPassword.Size = new System.Drawing.Size(265, 23);
             this.textBoxPassword.TabIndex = 7;
@@ -358,6 +360,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(100, 103);
             this.textBoxEmail.Margin = new System.Windows.Forms.Padding(10, 10, 3, 10);
             this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.PasswordChar = '●';
             this.textBoxEmail.ReadOnly = true;
             this.textBoxEmail.Size = new System.Drawing.Size(265, 23);
             this.textBoxEmail.TabIndex = 6;
@@ -367,6 +370,7 @@
             this.textBoxUsername.Location = new System.Drawing.Point(100, 60);
             this.textBoxUsername.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.PasswordChar = '●';
             this.textBoxUsername.ReadOnly = true;
             this.textBoxUsername.Size = new System.Drawing.Size(265, 23);
             this.textBoxUsername.TabIndex = 5;

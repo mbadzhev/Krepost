@@ -4,6 +4,7 @@ namespace KrepostWinForms.Middleware
 {
     internal class DisplayUtils
     {
+        public static DatabaseEntry? SelectedEntry { get; set; }
         /// <summary>
         /// Clears the <see cref="TreeView"/> and fills it with every <see cref="DatabaseEntry"/> present in the <see cref="Database"/>.
         /// </summary>
@@ -57,6 +58,7 @@ namespace KrepostWinForms.Middleware
                 return false;
 
             // Mark this entry as the currently selected.
+            SelectedEntry = entry;
             Program.SelectedEntry = entry;
 
             // Format the dates for readability.
@@ -75,6 +77,43 @@ namespace KrepostWinForms.Middleware
             title.Text = entry.Title;
             doC.Text = dateCFormat;
             doM.Text = dateMFormat;
+
+            return true;
+        }
+        public static bool DisplayEntryBody(TreeNode node, Database db, TextBox username, TextBox email, TextBox password, TextBox url, TextBox note)
+        {
+            if (node == null)
+                throw new ArgumentNullException();
+            if (db == null)
+                throw new ArgumentNullException();
+            if (username == null)
+                throw new ArgumentNullException();
+            if (email == null)
+                throw new ArgumentNullException();
+            if (password == null)
+                throw new ArgumentNullException();
+            if (url == null)
+                throw new ArgumentNullException();
+            if (note == null)
+                throw new ArgumentNullException();
+
+            if (SelectedEntry == null)
+            {
+                // Find the selected entry.
+                DatabaseEntry? entry = DatabaseUtils.FindEntry(node, db);
+                if (entry == null)
+                    return false;
+                SelectedEntry = entry;
+            }
+
+            // Mark this entry as the currently selected.
+            Program.SelectedEntry = SelectedEntry;
+
+            username.Text = new string(username.PasswordChar, SelectedEntry.Username.Length);
+            email.Text = new string(email.PasswordChar, SelectedEntry.Email.Length);
+            password.Text = new string(password.PasswordChar, SelectedEntry.Password.Length);
+            url.Text = SelectedEntry.Url;
+            note.Text = new string(note.PasswordChar, SelectedEntry.Note.Length);
 
             return true;
         }
