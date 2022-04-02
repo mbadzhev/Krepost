@@ -250,6 +250,7 @@
             // labelEntryTitle
             // 
             this.labelEntryTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEntryTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEntryTitle.Location = new System.Drawing.Point(0, 0);
             this.labelEntryTitle.Name = "labelEntryTitle";
             this.labelEntryTitle.Size = new System.Drawing.Size(459, 118);
