@@ -12,7 +12,7 @@ namespace KrepostWinForms.Forms
             InitializeComponent();
 
             // Generate salt for hashing user input.
-            salt = Generator.GenerateBytes(16);
+            salt = CryptographyUtils.GenerateSalt(16);
             secureStringTextBoxTop.DataSalt = salt;
             secureStringTextBoxBottom.DataSalt = salt;
         }
