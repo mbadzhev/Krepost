@@ -46,6 +46,7 @@ namespace KrepostWinForms.UI
 
                 // Save reference to db file to reduce deserializations
                 Program.CurrentDbFile = dbf;
+                Program.DbFilePath = Path.GetFullPath(ofd.FileName);
                 return true;
             }
             else

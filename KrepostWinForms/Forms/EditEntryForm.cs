@@ -77,6 +77,7 @@ namespace KrepostWinForms.Forms
             Program.CurrentDb.Body.EntryList.Remove(entry);
             entry = newEntry;
             Program.CurrentDb.Body.EntryList.Add(newEntry);
+            Program.SavedDatabase = false;
 
             Close();
         }
