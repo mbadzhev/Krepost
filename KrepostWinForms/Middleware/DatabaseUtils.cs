@@ -1,7 +1,10 @@
 ﻿using System.Reflection;
 
+using KrepostLib.Cryptography;
 using KrepostLib.Security;
 using KrepostLib.Storage;
+
+using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Middleware
 {
@@ -40,6 +43,16 @@ namespace KrepostWinForms.Middleware
             }
             else
                 return false;
+        }
+        /// <summary>
+        /// Sets a new key used for encryption and decryption, devired from user input.
+        /// </summary>
+        /// <param name="userInput">Master password used to access a database.</param>
+        public static void SetNewKey(SecureStringTextBox userInput)
+        {
+            byte[] key = Argon2Engine.DeriveKey(userInput.ToSecureByteArray(), userInput.DataSalt);
+            Program.CurrentKey = new SecureByteArray(ref key);
+            Array.Clear(key, 0, key.Length);
         }
         /// <summary>
         /// Saves the database currently in use to the file it was loaded from.
