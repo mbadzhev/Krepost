@@ -109,5 +109,33 @@ namespace KrepostWinForms.Forms
         {
             Middleware.DisplayUtils.DisplayEntryBody(node, Program.CurrentDb, textBoxUsername, textBoxEmail, textBoxPassword, textBoxUrl, textBoxNote);
         }
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.SavedDatabase == false)
+            {
+                string message = "There are unsaved database changes. Should these changes be saved?";
+                var result = MessageBox.Show(message, "Krepost", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (Program.CurrentDb != null && Program.CurrentKey != null && Program.DbFilePath != null)
+                        Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
+                    else
+                    {
+                        string str2 = "A loaded database was not found. No changes could be saved.";
+                        MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    // Discard all changes.
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    // Cancel the closure of the form.
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

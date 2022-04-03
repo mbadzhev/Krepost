@@ -38,6 +38,7 @@ namespace KrepostWinForms.Forms
                 KrepostLib.Cryptography.Generator.GenerateBytes(16));
 
             Program.CurrentDb.Body.EntryList.Add(entry);
+            Program.SavedDatabase = false;
 
             secureStringTextBoxUsername.Data.Dispose();
             secureStringTextBoxEmail.Data.Dispose();

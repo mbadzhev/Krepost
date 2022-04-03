@@ -77,6 +77,7 @@ namespace KrepostWinForms.Middleware
 
             // Serialize the database to the specified path (path = ...\dir\file.ext).
             DatabaseWriter.SerializeDatabase(db, key, path);
+            Program.SavedDatabase = true;
 
             return true;
         }
@@ -110,6 +111,7 @@ namespace KrepostWinForms.Middleware
                 // Serialize the database to the path chosen through the dialog.
                 DatabaseWriter.SerializeDatabase(db, key, Path.GetFullPath(sfd.FileName));
                 Program.DbFilePath = Path.GetFullPath(sfd.FileName);
+                Program.SavedDatabase = true;
 
                 return true;
             }

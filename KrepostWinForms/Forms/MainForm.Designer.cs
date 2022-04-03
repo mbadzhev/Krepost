@@ -106,33 +106,33 @@
             // menuStripFileNew
             // 
             this.menuStripFileNew.Name = "menuStripFileNew";
-            this.menuStripFileNew.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileNew.Size = new System.Drawing.Size(114, 22);
             this.menuStripFileNew.Text = "New";
             this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
             // 
             // menuStripFileOpen
             // 
             this.menuStripFileOpen.Name = "menuStripFileOpen";
-            this.menuStripFileOpen.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileOpen.Size = new System.Drawing.Size(114, 22);
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
             // 
             // menuStripFileSave
             // 
             this.menuStripFileSave.Name = "menuStripFileSave";
-            this.menuStripFileSave.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileSave.Size = new System.Drawing.Size(114, 22);
             this.menuStripFileSave.Text = "Save";
             this.menuStripFileSave.Click += new System.EventHandler(this.menuStripFileSave_Click);
             // 
             // menuStripFileSaveAs
             // 
             this.menuStripFileSaveAs.Name = "menuStripFileSaveAs";
-            this.menuStripFileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileSaveAs.Size = new System.Drawing.Size(114, 22);
             this.menuStripFileSaveAs.Text = "Save As";
             this.menuStripFileSaveAs.Click += new System.EventHandler(this.menuStripFileSaveAs_Click);
             // 
@@ -459,6 +459,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
