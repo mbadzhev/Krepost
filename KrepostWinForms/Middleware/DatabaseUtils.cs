@@ -1,10 +1,46 @@
-﻿using KrepostLib.Security;
+﻿using System.Reflection;
+
+using KrepostLib.Security;
 using KrepostLib.Storage;
 
 namespace KrepostWinForms.Middleware
 {
     internal class DatabaseUtils
     {
+        /// <summary>
+        /// Creates and saves a new database.
+        /// </summary>
+        /// <param name="masterHash">Hash of the master password.</param>
+        /// <param name="key">Key used for encryption and decryption.</param>
+        /// <param name="iv">Initialization vector used for encryption and decryption.</param>
+        /// <returns>True, if the database was created, false if it was not.</returns>
+        public static bool NewDatabase(string masterHash, SecureByteArray key, byte[] iv)
+        {
+            // Set dialog settings
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "New";
+            sfd.InitialDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            sfd.FileName = "Untitled.dbf";
+            sfd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
+            sfd.FilterIndex = 1;
+            sfd.DefaultExt = "dbf";
+            sfd.AddExtension = true;
+            //sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                // Create db, use the picked path and serialize the db
+                Database db = DatabaseWriter.CreateDatabase(masterHash, iv);
+                DatabaseWriter.SerializeDatabase(db, key, Path.GetFullPath(sfd.FileName));
+                Program.CurrentDb = db;
+                Program.DbFilePath = Path.GetFullPath(sfd.FileName);
+                Program.OpenDatabase = true;
+
+                return true;
+            }
+            else
+                return false;
+        }
         /// <summary>
         /// Saves the database currently in use to the file it was loaded from.
         /// </summary>
@@ -49,6 +85,7 @@ namespace KrepostWinForms.Middleware
             //Set dialog settings
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Save As";
+            sfd.FileName = "Untitled.dbf";
             sfd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
             sfd.FilterIndex = 1;
             sfd.DefaultExt = "dbf";
