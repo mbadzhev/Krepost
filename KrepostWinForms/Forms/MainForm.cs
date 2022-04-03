@@ -14,16 +14,82 @@ namespace KrepostWinForms.Forms
             //menuStripEntryAddEntry.Enabled = false;
         }
 
+        #region MainForm Functions
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.SavedDatabase == false)
+            {
+                var result = ConfirmChanges();
+                if (result == DialogResult.Yes)
+                {
+                    if (Program.CurrentDb != null && Program.CurrentKey != null && Program.DbFilePath != null)
+                        Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
+                    else
+                    {
+                        string str2 = "A loaded database was not found. No changes could be saved.";
+                        MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    // Discard all changes.
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    // Cancel the closure of the form.
+                    e.Cancel = true;
+                }
+            }
+        }
+        #endregion
+
         #region menuStripFile Functions
         private void menuStripFileNew_Click(object sender, EventArgs e)
         {
+            if (Program.SavedDatabase == false)
+            {
+                var result = ConfirmChanges();
+                if (result == DialogResult.Yes)
+                {
+                    if (Program.CurrentDb != null && Program.CurrentKey != null && Program.DbFilePath != null)
+                        Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
+                    else
+                    {
+                        string str2 = "A loaded database was not found. No changes could be saved.";
+                        MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
             Form newDbForm = new NewDatabaseForm();
             newDbForm.ShowDialog();
         }
-
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
-            if (UI.Utility.OpenDatabaseFile())
+            if (Program.SavedDatabase == false)
+            {
+                var result = ConfirmChanges();
+                if (result == DialogResult.Yes)
+                {
+                    if (Program.CurrentDb != null && Program.CurrentKey != null && Program.DbFilePath != null)
+                        Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
+                    else
+                    {
+                        string str2 = "A loaded database was not found. No changes could be saved.";
+                        MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+            if (Utility.OpenDatabaseFile())
             {
                 Form openDbForm = new OpenDatabaseForm();
                 openDbForm.ShowDialog();
@@ -109,33 +175,17 @@ namespace KrepostWinForms.Forms
         {
             Middleware.DisplayUtils.DisplayEntryBody(node, Program.CurrentDb, textBoxUsername, textBoxEmail, textBoxPassword, textBoxUrl, textBoxNote);
         }
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private DialogResult ConfirmChanges()
         {
-            if (Program.SavedDatabase == false)
-            {
-                string message = "There are unsaved database changes. Should these changes be saved?";
-                var result = MessageBox.Show(message, "Krepost", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            string message = "There are unsaved database changes. Should these changes be saved?";
+            var result = MessageBox.Show(message, "Krepost", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
-                {
-                    if (Program.CurrentDb != null && Program.CurrentKey != null && Program.DbFilePath != null)
-                        Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
-                    else
-                    {
-                        string str2 = "A loaded database was not found. No changes could be saved.";
-                        MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else if (result == DialogResult.No)
-                {
-                    // Discard all changes.
-                }
-                else if (result == DialogResult.Cancel)
-                {
-                    // Cancel the closure of the form.
-                    e.Cancel = true;
-                }
-            }
+            if (result == DialogResult.Yes)
+                return DialogResult.Yes;
+            else if (result == DialogResult.No)
+                return DialogResult.No;
+            else
+                return DialogResult.Cancel;
         }
     }
 }
