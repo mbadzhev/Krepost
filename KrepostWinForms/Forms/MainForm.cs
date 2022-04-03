@@ -31,7 +31,7 @@ namespace KrepostWinForms.Forms
         }
         private void menuStripFileSave_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
         }
         #endregion
 
