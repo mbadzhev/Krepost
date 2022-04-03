@@ -33,6 +33,16 @@ namespace KrepostWinForms.Forms
         {
             Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
         }
+        private void menuStripFileSaveAs_Click(object sender, EventArgs e)
+        {
+            if (Program.CurrentDb != null && Program.CurrentKey != null)
+            {
+                if (!Middleware.DatabaseUtils.SaveAsDatabase(Program.CurrentDb, Program.CurrentKey))
+                    return;
+                return;
+            }
+            MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
         #endregion
 
         #region menuStripEntry Functions
@@ -40,7 +50,7 @@ namespace KrepostWinForms.Forms
         {
             if (!Program.OpenDatabase || Program.CurrentDb == null)
             {
-                MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

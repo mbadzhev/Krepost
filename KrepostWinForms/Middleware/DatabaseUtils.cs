@@ -28,8 +28,43 @@ namespace KrepostWinForms.Middleware
 
             // Serialize the database to the specified path (path = ...\dir\file.ext).
             DatabaseWriter.SerializeDatabase(db, key, path);
-            
+
             return true;
+        }
+        /// <summary>
+        /// Saves the database currently in use to a new file.
+        /// </summary>
+        /// <param name="db">The database to be saved.</param>
+        /// <param name="key">The key used for encryption and decryption.</param>
+        /// <returns>True, if the operation was successful, false if the database could not be saved.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool SaveAsDatabase(Database db, SecureByteArray key)
+        {
+            // Validate arguments
+            if (db == null)
+                throw new ArgumentNullException("db");
+            if (key == null)
+                throw new ArgumentNullException("key");
+
+            //Set dialog settings
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "Save As";
+            sfd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
+            sfd.FilterIndex = 1;
+            sfd.DefaultExt = "dbf";
+            sfd.AddExtension = true;
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                // Serialize the database to the path chosen through the dialog.
+                DatabaseWriter.SerializeDatabase(db, key, Path.GetFullPath(sfd.FileName));
+                Program.DbFilePath = Path.GetFullPath(sfd.FileName);
+
+                return true;
+            }
+            else
+                return false;
         }
         public static DatabaseEntry? FindEntry(string uuid, Database db)
         {

@@ -32,7 +32,9 @@
             this.menuStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +96,9 @@
             this.menuStripFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStripFileNew,
             this.menuStripFileOpen,
-            this.menuStripFileSave});
+            this.toolStripSeparator1,
+            this.menuStripFileSave,
+            this.menuStripFileSaveAs});
             this.menuStripFile.Name = "menuStripFile";
             this.menuStripFile.Size = new System.Drawing.Size(37, 20);
             this.menuStripFile.Text = "File";
@@ -113,12 +117,24 @@
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
             // menuStripFileSave
             // 
             this.menuStripFileSave.Name = "menuStripFileSave";
             this.menuStripFileSave.Size = new System.Drawing.Size(180, 22);
             this.menuStripFileSave.Text = "Save";
             this.menuStripFileSave.Click += new System.EventHandler(this.menuStripFileSave_Click);
+            // 
+            // menuStripFileSaveAs
+            // 
+            this.menuStripFileSaveAs.Name = "menuStripFileSaveAs";
+            this.menuStripFileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.menuStripFileSaveAs.Text = "Save As";
+            this.menuStripFileSaveAs.Click += new System.EventHandler(this.menuStripFileSaveAs_Click);
             // 
             // menuStripEntry
             // 
@@ -499,5 +515,7 @@
         private Button buttonUrl;
         private Button buttonPassword;
         private ToolStripMenuItem menuStripFileSave;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem menuStripFileSaveAs;
     }
 }

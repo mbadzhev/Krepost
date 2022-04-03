@@ -6,6 +6,7 @@ namespace KrepostWinForms
     internal static class Program
     {
         public static DatabaseFile CurrentDbFile { get; set; }
+        public static string DbFilePath { get; set; }
         public static Database? CurrentDb { get; set; }
         public static DatabaseHead CurrentDbHead { get; set; }
         public static bool OpenDatabase { get; set; }
