@@ -148,7 +148,7 @@ namespace KrepostWinForms.Forms
         }
         #endregion
 
-        #region splitContainer Functions
+        #region splitContainerMain Functions
 
         private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -187,5 +187,26 @@ namespace KrepostWinForms.Forms
             else
                 return DialogResult.Cancel;
         }
+        #region SplitContainerEntry Functions
+
+        private void buttonUsername_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Username));
+        }
+
+        private void buttonEmail_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Email));
+        }
+
+        private void buttonPassword_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Password));
+        }
+        private void buttonUrl_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxUrl.Text);
+        }
+        #endregion
     }
 }
