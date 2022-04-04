@@ -4,6 +4,7 @@ namespace KrepostWinForms.Forms
 {
     public partial class MainForm : Form
     {
+        private System.Windows.Forms.Timer copyTimer = new System.Windows.Forms.Timer();
         public MainForm()
         {
             InitializeComponent();
@@ -157,6 +158,40 @@ namespace KrepostWinForms.Forms
             Middleware.DisplayUtils.ResetSelectedEntry();
         }
         #endregion
+
+        #region SplitContainerEntry Functions
+
+        private void buttonUsername_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Username));
+        }
+
+        private void buttonEmail_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Email));
+        }
+
+        private void buttonPassword_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Password));
+        }
+        private void buttonUrl_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(textBoxUrl.Text);
+        }
+        #endregion
         public void RefreshTreeView()
         {
             Middleware.DisplayUtils.DisplayEntryList(treeView, Program.CurrentDb);
@@ -187,26 +222,9 @@ namespace KrepostWinForms.Forms
             else
                 return DialogResult.Cancel;
         }
-        #region SplitContainerEntry Functions
-
-        private void buttonUsername_Click(object sender, EventArgs e)
+        private static void TimerEventProcessor(object sender, EventArgs e)
         {
-            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Username));
+            Clipboard.Clear();
         }
-
-        private void buttonEmail_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Email));
-        }
-
-        private void buttonPassword_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Password));
-        }
-        private void buttonUrl_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(textBoxUrl.Text);
-        }
-        #endregion
     }
 }
