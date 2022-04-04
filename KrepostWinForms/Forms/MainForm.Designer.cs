@@ -321,8 +321,9 @@
             this.buttonUrl.Name = "buttonUrl";
             this.buttonUrl.Size = new System.Drawing.Size(60, 23);
             this.buttonUrl.TabIndex = 13;
-            this.buttonUrl.Text = "Reveal";
+            this.buttonUrl.Text = "Copy";
             this.buttonUrl.UseVisualStyleBackColor = true;
+            this.buttonUrl.Click += new System.EventHandler(this.buttonUrl_Click);
             // 
             // buttonPassword
             // 
@@ -330,8 +331,9 @@
             this.buttonPassword.Name = "buttonPassword";
             this.buttonPassword.Size = new System.Drawing.Size(60, 23);
             this.buttonPassword.TabIndex = 12;
-            this.buttonPassword.Text = "Reveal";
+            this.buttonPassword.Text = "Copy";
             this.buttonPassword.UseVisualStyleBackColor = true;
+            this.buttonPassword.Click += new System.EventHandler(this.buttonPassword_Click);
             // 
             // buttonEmail
             // 
@@ -339,8 +341,9 @@
             this.buttonEmail.Name = "buttonEmail";
             this.buttonEmail.Size = new System.Drawing.Size(60, 23);
             this.buttonEmail.TabIndex = 11;
-            this.buttonEmail.Text = "Reveal";
+            this.buttonEmail.Text = "Copy";
             this.buttonEmail.UseVisualStyleBackColor = true;
+            this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
             // 
             // buttonUsername
             // 
@@ -348,8 +351,9 @@
             this.buttonUsername.Name = "buttonUsername";
             this.buttonUsername.Size = new System.Drawing.Size(60, 23);
             this.buttonUsername.TabIndex = 10;
-            this.buttonUsername.Text = "Reveal";
+            this.buttonUsername.Text = "Copy";
             this.buttonUsername.UseVisualStyleBackColor = true;
+            this.buttonUsername.Click += new System.EventHandler(this.buttonUsername_Click);
             // 
             // textBoxNote
             // 

@@ -4,6 +4,7 @@ namespace KrepostWinForms.Forms
 {
     public partial class MainForm : Form
     {
+        private System.Windows.Forms.Timer copyTimer = new System.Windows.Forms.Timer();
         public MainForm()
         {
             InitializeComponent();
@@ -148,13 +149,47 @@ namespace KrepostWinForms.Forms
         }
         #endregion
 
-        #region splitContainer Functions
+        #region splitContainerMain Functions
 
         private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             RefreshEntryHeader(e.Node);
             RefreshEntryBody(e.Node);
             Middleware.DisplayUtils.ResetSelectedEntry();
+        }
+        #endregion
+
+        #region SplitContainerEntry Functions
+
+        private void buttonUsername_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Username));
+        }
+
+        private void buttonEmail_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Email));
+        }
+
+        private void buttonPassword_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Password));
+        }
+        private void buttonUrl_Click(object sender, EventArgs e)
+        {
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(textBoxUrl.Text);
         }
         #endregion
         public void RefreshTreeView()
@@ -186,6 +221,10 @@ namespace KrepostWinForms.Forms
                 return DialogResult.No;
             else
                 return DialogResult.Cancel;
+        }
+        private static void TimerEventProcessor(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
         }
     }
 }

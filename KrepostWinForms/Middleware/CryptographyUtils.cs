@@ -1,4 +1,7 @@
-﻿using KrepostLib.Cryptography;
+﻿using System.Text;
+
+using KrepostLib.Cryptography;
+using KrepostLib.Security;
 
 namespace KrepostWinForms.Middleware
 {
@@ -12,6 +15,16 @@ namespace KrepostWinForms.Middleware
         public static byte[] GenerateSalt(int bytes)
         {
             return Generator.GenerateBytes(bytes);
+        }
+        /// <summary>
+        /// Gets the plaintext stored in a <see cref="SecureByteArray"/>.
+        /// This function exposes the plaintext in memory as immutable <see cref="string"/>.
+        /// </summary>
+        /// <param name="sba"><see cref="SecureByteArray"/> that contains the data to be exposed.</param>
+        /// <returns><see cref="string"/> of the data.</returns>
+        public static string GetString(SecureByteArray sba)
+        {
+            return Encoding.UTF8.GetString(sba.Expose());
         }
     }
 }
