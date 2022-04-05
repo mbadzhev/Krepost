@@ -26,6 +26,7 @@ namespace KrepostWinForms.Forms
         {
             if (!KrepostLib.Utility.CompareStrings(Program.CurrentDbHead.AccessHash, secureStringTextBox.DataHash))
             {
+                DialogResult = DialogResult.Abort;
                 MessageBox.Show("Password is incorrect.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -43,12 +44,14 @@ namespace KrepostWinForms.Forms
                 // Decrypt and deserialize the last component needed for a complete database
                 if (!Utility.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
                 {
+                    DialogResult = DialogResult.Abort;
                     MessageBox.Show("Something went wrong while opening encrypted database content.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     // Marks that a database is opened
                     Program.OpenDatabase = true;
+                    DialogResult = DialogResult.OK;
                 }
 
                 secureStringTextBox.Data.Dispose();
@@ -59,6 +62,7 @@ namespace KrepostWinForms.Forms
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             secureStringTextBox.Data.Dispose();
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

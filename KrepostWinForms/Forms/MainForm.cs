@@ -47,6 +47,7 @@ namespace KrepostWinForms.Forms
         #region menuStripFile Functions
         private void menuStripFileNew_Click(object sender, EventArgs e)
         {
+            // Handle any unsaved changes.
             if (Program.SavedDatabase == false)
             {
                 var result = ConfirmChanges();
@@ -67,10 +68,15 @@ namespace KrepostWinForms.Forms
             }
 
             Form newDbForm = new NewDatabaseForm();
-            newDbForm.ShowDialog();
+            var formResult = newDbForm.ShowDialog();
+            if (formResult == DialogResult.OK)
+            {
+                RefreshTreeView();
+            }
         }
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
+            // Handle any unsaved changes.
             if (Program.SavedDatabase == false)
             {
                 var result = ConfirmChanges();
@@ -80,7 +86,7 @@ namespace KrepostWinForms.Forms
                         Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
                     else
                     {
-                        string str2 = "A loaded database was not found. No changes could be saved.";
+                        string str2 = "Something went wronge. No dabatase could be loaded.";
                         MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -90,10 +96,15 @@ namespace KrepostWinForms.Forms
                 }
             }
 
+            // Open database.
             if (Utility.OpenDatabaseFile())
             {
                 Form openDbForm = new OpenDatabaseForm();
-                openDbForm.ShowDialog();
+                var formResult = openDbForm.ShowDialog();
+                if (formResult == DialogResult.OK)
+                {
+                    RefreshTreeView();
+                }
             }
         }
         private void menuStripFileSave_Click(object sender, EventArgs e)

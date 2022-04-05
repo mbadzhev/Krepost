@@ -1,6 +1,4 @@
-﻿using KrepostLib.Cryptography;
-
-using KrepostWinForms.Middleware;
+﻿using KrepostWinForms.Middleware;
 
 namespace KrepostWinForms.Forms
 {
@@ -29,22 +27,31 @@ namespace KrepostWinForms.Forms
                 // Check if key generation failed.
                 if (Program.CurrentKey != null)
                 {
-                    // Create new database and dispose of user input.
-                    DatabaseUtils.NewDatabase(secureStringTextBoxTop.DataHash, Program.CurrentKey, secureStringTextBoxTop.DataSalt);
+                    // Create new database.
+                    if (DatabaseUtils.NewDatabase(secureStringTextBoxTop.DataHash, Program.CurrentKey, secureStringTextBoxTop.DataSalt))
+                        DialogResult = DialogResult.OK;
+                    else
+                        DialogResult=DialogResult.Abort;
+
+                    // Dispose of user input.
                     secureStringTextBoxTop.Data.Dispose();
                     secureStringTextBoxBottom.Data.Dispose();
                     Close();
-                    return;
                 }
-                MessageBox.Show("Entryption key has not created correctly.A new database has not been created.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
+                else
+                {
+                    MessageBox.Show("Entryption key was not created correctly. A new database has not been created.",
+                        "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult = DialogResult.Abort;
+                    Close();
+                }
             }
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             secureStringTextBoxTop.Data.Dispose();
             secureStringTextBoxBottom.Data.Dispose();
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }
