@@ -33,6 +33,8 @@ namespace KrepostWinForms.UI
         public SecureStringTextBox()
         {
             InitializeComponent();
+
+            InputBox.ShortcutsEnabled = false;
             
             emptyStatus = true;
         }
