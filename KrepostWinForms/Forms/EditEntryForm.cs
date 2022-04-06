@@ -106,7 +106,7 @@ namespace KrepostWinForms.Forms
             }
             if (secureStringTextBoxPassword.Data == null || secureStringTextBoxPassword.Data.Length <= 0)
             {
-                MessageBox.Show("No username set for entry. An entry must contain a title.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No password set for entry. An entry must contain a password.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
