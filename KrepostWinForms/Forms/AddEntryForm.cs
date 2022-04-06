@@ -58,7 +58,8 @@ namespace KrepostWinForms.Forms
         {
             if (textBoxTitle.Text == null || textBoxTitle.Text.Length <= 0)
             {
-                MessageBox.Show("No title set for entry. An entry must contain a title.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No title set for entry. An entry must contain a title.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if ((secureStringTextBoxUsername.Data == null ||
@@ -66,12 +67,14 @@ namespace KrepostWinForms.Forms
                 (secureStringTextBoxEmail.Data == null ||
                 secureStringTextBoxEmail.Data.Length <= 0))
             {
-                MessageBox.Show("No username or email set for entry. An entry must contain at least one.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No username or email set for entry. An entry must contain at least one.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (secureStringTextBoxPassword.Data == null || secureStringTextBoxPassword.Data.Length <= 0)
             {
-                MessageBox.Show("No username set for entry. An entry must contain a title.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No password set for entry. An entry must contain a password.", 
+                   "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
