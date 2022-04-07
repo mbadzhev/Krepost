@@ -32,11 +32,11 @@ namespace KrepostLib.Storage
             // TODO: Validate arguments
 
             DatabaseFile dbF = new DatabaseFile();
-            dbF.Salt = Generator.GenerateBytes(16);
+            dbF.Salt = Generator.GenerateBytes(32);
             dbF.Head = ObjectToByteArray(db.Head);
-            dbF.HeadHash = Sha256Engine.ComputeSha256Hash(dbF.Head, dbF.Salt);
+            dbF.HeadHash = HmacEngine.ComputeHmac(dbF.Head, key, dbF.Salt);
             dbF.Body = AesEngine.Encrypt(ObjectToByteArray(db.Body), key, db.Head.BodyIv);
-            dbF.BodyHash = Sha256Engine.ComputeSha256Hash(dbF.Body, dbF.Salt);
+            dbF.BodyHash = HmacEngine.ComputeHmac(dbF.Body, key, dbF.Salt);
 
 
             // Use new line and indentadion in xml output.
