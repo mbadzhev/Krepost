@@ -180,5 +180,45 @@ namespace KrepostWinForms.Middleware
                 return true;
             return false;
         }
+        /// <summary>
+        /// Deserializes the <see cref="DatabaseHead"/> contained in a <see cref="DatabaseFile"/>.
+        /// </summary>
+        /// <param name="dbF">The <see cref="DatabaseFile"/> that cointains the <see cref="DatabaseHead"/>.</param>
+        /// <returns>True, if the <see cref="DatabaseHead"/> was successfully deserialized.
+        /// False, if the operation failed.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AccessDatabaseHead(DatabaseFile dbF)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseHead dbH = DatabaseReader.DeserializeDatabaseHead(dbF);
+
+            if (!DatabaseReader.ValidateDatabaseHead(dbH))
+                return false;
+
+            Program.CurrentDbHead = dbH;
+            return true;
+        }
+        /// <summary>
+        /// Deserializes and decrypts a <see cref="DatabaseBody"/>
+        /// from a <see cref="DatabaseFile"/>, initializing a
+        /// <see cref="Database"/> to be used as global variable.
+        /// </summary>
+        /// <param name="dbF">Database file to read the encrypted body from.</param>
+        /// <param name="dbH">Database head to read the random bytes used during encryption</param>
+        /// <param name="key">Key used during encryption.</param>
+        /// <returns>Boolean confirming successful execution.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AccessDatabaseBody(DatabaseFile dbF, DatabaseHead dbH, SecureByteArray key)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseBody dbB = DatabaseReader.DeserializeDatabaseBody(dbF, dbH, key);
+
+            Program.CurrentDb = new Database(dbH, dbB);
+            return true;
+        }
     }
 }

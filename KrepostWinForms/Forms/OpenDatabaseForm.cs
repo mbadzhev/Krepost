@@ -12,7 +12,7 @@ namespace KrepostWinForms.Forms
             InitializeComponent();
 
             // Extract db head from db file to access hashed master password
-            if (!Utility.AccessDatabaseHead(Program.CurrentDbFile))
+            if (!DatabaseUtils.AccessDatabaseHead(Program.CurrentDbFile))
             {
                 MessageBox.Show("The database did not pass validation." +
                     "Data stored in it may be corrupted or compromised.");
@@ -55,7 +55,7 @@ namespace KrepostWinForms.Forms
                 }
 
                 // Decrypt and deserialize the last component needed for a complete database
-                if (!Utility.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
+                if (!DatabaseUtils.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
                 {
                     DialogResult = DialogResult.Abort;
                     MessageBox.Show("Something went wrong while opening encrypted database content.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
