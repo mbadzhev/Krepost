@@ -45,6 +45,32 @@ namespace KrepostWinForms.Middleware
                 return false;
         }
         /// <summary>
+        /// Opens and deserializes a <see cref="DatabaseFile"/>. No authentication is done on the file.
+        /// </summary>
+        /// <returns>True, if the file is successfully deserialized.
+        /// False, if the <see cref="OpenFileDialog"/> returns <see cref="DialogResult.Cancel"/>.</returns>
+        public static bool OpenDatabase()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Open";
+            ofd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            //ofd.RestoreDirectory = true;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Deserialize database file
+                DatabaseFile dbf = DatabaseReader.DeserializeDatabaseFile(Path.GetFullPath(ofd.FileName));
+                
+                // Save reference to db file to reduce deserializations
+                Program.CurrentDbFile = dbf;
+                Program.DbFilePath = Path.GetFullPath(ofd.FileName);
+                return true;
+            }
+            else
+                return false;
+        }
+        /// <summary>
         /// Sets a new key used for encryption and decryption, devired from user input.
         /// </summary>
         /// <param name="userInput">Master password used to access a database.</param>
