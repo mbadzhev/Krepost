@@ -132,5 +132,27 @@ namespace KrepostWinForms.Middleware
                 return null;
             return entry;
         }
+        /// <summary>
+        /// Checks if any <see cref="DatabaseFile"/> signitures are invalid.
+        /// </summary>
+        /// <param name="dbF">The <see cref="DatabaseFile"/> to be checked.</param>
+        /// <param name="key"> The secret used to generate the authentication key.</param>
+        /// <returns>True, if the signitures are valid. False, if at least one of the signitures is invalid.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static bool CheckDatabaseFileSignature(DatabaseFile dbF, SecureByteArray key)
+        {
+            // Validate arguments.
+            if (dbF is null)
+                throw new ArgumentNullException(nameof(dbF));
+            if (key is null)
+                throw new ArgumentNullException(nameof(key));
+            if (key.Length <= 0)
+                throw new ArgumentOutOfRangeException(nameof(key));
+
+            if (DatabaseReader.AuthenticateDatabaseFile(dbF, key))
+                return true;
+            return false;
+        }
     }
 }

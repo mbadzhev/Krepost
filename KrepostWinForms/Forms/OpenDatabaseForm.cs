@@ -1,5 +1,6 @@
 ﻿using KrepostLib.Security;
 
+using KrepostWinForms.Middleware;
 using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Forms
@@ -39,6 +40,18 @@ namespace KrepostWinForms.Forms
                     Array.Clear(temp, 0, temp.Length);
                     Program.CurrentKey = new SecureByteArray(ref key);
                     Array.Clear(key, 0, key.Length);
+                    
+                    // Authenticate the database file.
+                    if (!DatabaseUtils.CheckDatabaseFileSignature(Program.CurrentDbFile, Program.CurrentKey))
+                    {
+                        // If the file signiture check fails.
+                        MessageBox.Show("The database signiture is invalid. The file may have been tampered, corrupted or is not a valid database.",
+                            "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult = DialogResult.Abort;
+                        secureStringTextBox.Data.Dispose();
+                        Close();
+                        return;
+                    }
                 }
 
                 // Decrypt and deserialize the last component needed for a complete database
