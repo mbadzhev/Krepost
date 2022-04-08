@@ -13,10 +13,10 @@ namespace KrepostLib.Storage
         {
             // Deserialize and validate database file
             DatabaseFile dbFile = DeserializeDatabaseFile(path);
-            if (!dbFile.ValidateHead())
-                throw new InvalidOperationException("DatabaseFile head is compromised");
-            if (!dbFile.ValidateBody())
-                throw new InvalidOperationException("DatabaseFile body is compromised");
+            //if (!dbFile.ValidateHead(key))
+            //    throw new InvalidOperationException("DatabaseFile head is compromised");
+            //if (!dbFile.ValidateBody(key))
+            //    throw new InvalidOperationException("DatabaseFile body is compromised");
 
             // Deserialize and validate database head 
             DatabaseHead dbHead = (DatabaseHead)ByteArrayToObject(dbFile.Head);
@@ -77,6 +77,32 @@ namespace KrepostLib.Storage
             Array.Clear(tempDbBody, 0, tempDbBody.Length);
 
             return dbBody;
+        }
+        /// <summary>
+        /// Authenticates the <see cref="DatabaseFile"/> signitures to check the file integrity.
+        /// </summary>
+        /// <param name="dbF"><see cref="DatabaseFile"/> to validate.</param>
+        /// <param name="key">Secret used to generate the authentication key. </param>
+        /// <returns>True, if the file was authenticated. False, if at least one of the signitures was invalid.</returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        public static bool AuthenticateDatabaseFile(DatabaseFile dbF, SecureByteArray key)
+        {
+            int check = 0;
+            if (dbF.Head is null)
+                throw new InvalidOperationException("Database file head is null");
+            if (dbF.Head.Length <= 0)
+                throw new InvalidOperationException("Head cannot be <= 0");
+            if (dbF.HeadHash == HmacEngine.ComputeHmac(dbF.Head, key, dbF.Salt))
+                check += 1;
+            if (dbF.Body is null)
+                throw new InvalidOperationException("Body is null");
+            if (dbF.Body.Length <= 0)
+                throw new InvalidOperationException("Body cannot be <= 0");
+            if (dbF.BodyHash == HmacEngine.ComputeHmac(dbF.Body, key, dbF.Salt))
+                check += 1;
+            if (check == 2)
+                return true;
+            return false;
         }
         public static bool ValidateDatabaseHead(Database db)
         {
