@@ -1,5 +1,6 @@
 ﻿using KrepostLib.Security;
 
+using KrepostWinForms.Middleware;
 using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Forms
@@ -11,7 +12,7 @@ namespace KrepostWinForms.Forms
             InitializeComponent();
 
             // Extract db head from db file to access hashed master password
-            if (!Utility.AccessDatabaseHead(Program.CurrentDbFile))
+            if (!DatabaseUtils.AccessDatabaseHead(Program.CurrentDbFile))
             {
                 MessageBox.Show("The database did not pass validation." +
                     "Data stored in it may be corrupted or compromised.");
@@ -39,10 +40,22 @@ namespace KrepostWinForms.Forms
                     Array.Clear(temp, 0, temp.Length);
                     Program.CurrentKey = new SecureByteArray(ref key);
                     Array.Clear(key, 0, key.Length);
+                    
+                    // Authenticate the database file.
+                    if (!DatabaseUtils.CheckDatabaseFileSignature(Program.CurrentDbFile, Program.CurrentKey))
+                    {
+                        // If the file signiture check fails.
+                        MessageBox.Show("The database signiture is invalid. The file may have been tampered, corrupted or is not a valid database.",
+                            "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult = DialogResult.Abort;
+                        secureStringTextBox.Data.Dispose();
+                        Close();
+                        return;
+                    }
                 }
 
                 // Decrypt and deserialize the last component needed for a complete database
-                if (!Utility.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
+                if (!DatabaseUtils.AccessDatabaseBody(Program.CurrentDbFile, Program.CurrentDbHead, Program.CurrentKey))
                 {
                     DialogResult = DialogResult.Abort;
                     MessageBox.Show("Something went wrong while opening encrypted database content.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);

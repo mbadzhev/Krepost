@@ -45,6 +45,32 @@ namespace KrepostWinForms.Middleware
                 return false;
         }
         /// <summary>
+        /// Opens and deserializes a <see cref="DatabaseFile"/>. No authentication is done on the file.
+        /// </summary>
+        /// <returns>True, if the file is successfully deserialized.
+        /// False, if the <see cref="OpenFileDialog"/> returns <see cref="DialogResult.Cancel"/>.</returns>
+        public static bool OpenDatabase()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Open";
+            ofd.Filter = "Krepost Database Files (*.dbf)|*.dbf| All Files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            //ofd.RestoreDirectory = true;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Deserialize database file
+                DatabaseFile dbf = DatabaseReader.DeserializeDatabaseFile(Path.GetFullPath(ofd.FileName));
+                
+                // Save reference to db file to reduce deserializations
+                Program.CurrentDbFile = dbf;
+                Program.DbFilePath = Path.GetFullPath(ofd.FileName);
+                return true;
+            }
+            else
+                return false;
+        }
+        /// <summary>
         /// Sets a new key used for encryption and decryption, devired from user input.
         /// </summary>
         /// <param name="userInput">Master password used to access a database.</param>
@@ -131,6 +157,68 @@ namespace KrepostWinForms.Middleware
             if (entry == null)
                 return null;
             return entry;
+        }
+        /// <summary>
+        /// Checks if any <see cref="DatabaseFile"/> signitures are invalid.
+        /// </summary>
+        /// <param name="dbF">The <see cref="DatabaseFile"/> to be checked.</param>
+        /// <param name="key"> The secret used to generate the authentication key.</param>
+        /// <returns>True, if the signitures are valid. False, if at least one of the signitures is invalid.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static bool CheckDatabaseFileSignature(DatabaseFile dbF, SecureByteArray key)
+        {
+            // Validate arguments.
+            if (dbF is null)
+                throw new ArgumentNullException(nameof(dbF));
+            if (key is null)
+                throw new ArgumentNullException(nameof(key));
+            if (key.Length <= 0)
+                throw new ArgumentOutOfRangeException(nameof(key));
+
+            if (DatabaseReader.AuthenticateDatabaseFile(dbF, key))
+                return true;
+            return false;
+        }
+        /// <summary>
+        /// Deserializes the <see cref="DatabaseHead"/> contained in a <see cref="DatabaseFile"/>.
+        /// </summary>
+        /// <param name="dbF">The <see cref="DatabaseFile"/> that cointains the <see cref="DatabaseHead"/>.</param>
+        /// <returns>True, if the <see cref="DatabaseHead"/> was successfully deserialized.
+        /// False, if the operation failed.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AccessDatabaseHead(DatabaseFile dbF)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseHead dbH = DatabaseReader.DeserializeDatabaseHead(dbF);
+
+            if (!DatabaseReader.ValidateDatabaseHead(dbH))
+                return false;
+
+            Program.CurrentDbHead = dbH;
+            return true;
+        }
+        /// <summary>
+        /// Deserializes and decrypts a <see cref="DatabaseBody"/>
+        /// from a <see cref="DatabaseFile"/>, initializing a
+        /// <see cref="Database"/> to be used as global variable.
+        /// </summary>
+        /// <param name="dbF">Database file to read the encrypted body from.</param>
+        /// <param name="dbH">Database head to read the random bytes used during encryption</param>
+        /// <param name="key">Key used during encryption.</param>
+        /// <returns>Boolean confirming successful execution.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AccessDatabaseBody(DatabaseFile dbF, DatabaseHead dbH, SecureByteArray key)
+        {
+            if (dbF == null)
+                throw new ArgumentNullException("dbF");
+
+            DatabaseBody dbB = DatabaseReader.DeserializeDatabaseBody(dbF, dbH, key);
+
+            Program.CurrentDb = new Database(dbH, dbB);
+            return true;
         }
     }
 }

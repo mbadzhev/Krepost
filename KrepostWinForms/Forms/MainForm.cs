@@ -97,7 +97,7 @@ namespace KrepostWinForms.Forms
             }
 
             // Open database.
-            if (Utility.OpenDatabaseFile())
+            if (Middleware.DatabaseUtils.OpenDatabase())
             {
                 Form openDbForm = new OpenDatabaseForm();
                 var formResult = openDbForm.ShowDialog();
