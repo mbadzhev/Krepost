@@ -64,5 +64,17 @@ namespace KrepostLib.Storage
             string headHash = Sha256Engine.ComputeSha256Hash(headFields, salt);
             return headHash;
         }
+        public static void CopyDatabaseContent(Database dbOld, Database dbNew)
+        {
+            if (dbOld is null)
+                throw new ArgumentNullException(nameof(dbOld));
+            if (dbNew is null)
+                throw new ArgumentNullException(nameof(dbNew));
+            
+            dbNew.Head.HashFunction = dbOld.Head.HashFunction;
+            dbNew.Head.CipherAlgorithm = dbOld.Head.CipherAlgorithm;
+            dbNew.Head.BodyIv = dbOld.Head.BodyIv;
+            dbNew.Body.EntryList = dbOld.Body.EntryList;
+        }
     }
 }
