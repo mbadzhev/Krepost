@@ -121,6 +121,38 @@ namespace KrepostWinForms.Forms
             }
             MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+        private void menuStripFileChangeMasterPass_Click(object sender, EventArgs e)
+        {
+            if (Program.CurrentDb is null)
+            {
+                string str = "No database is open. A database must be opened before its master password can be changed.";
+                MessageBox.Show(str, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Handle any unsaved changes.
+            if (Program.SavedDatabase == false)
+            {
+                var result = ConfirmChanges();
+                if (result == DialogResult.Yes)
+                {
+                    if (Program.CurrentDb is not null && Program.CurrentKey is not null && Program.DbFilePath is not null)
+                        Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
+                    else
+                    {
+                        string str2 = "A loaded database was not found. No changes could be saved.";
+                        MessageBox.Show(str2, "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                    return;
+            }
+
+            Form changeMasterPassForm = new ChangeMasterPasswordForm();
+            var formResult = changeMasterPassForm.ShowDialog();
+            if (formResult == DialogResult.OK)
+                RefreshTreeView();
+        }
         #endregion
 
         #region menuStripEntry Functions
@@ -237,5 +269,7 @@ namespace KrepostWinForms.Forms
         {
             Clipboard.Clear();
         }
+
+        
     }
 }
