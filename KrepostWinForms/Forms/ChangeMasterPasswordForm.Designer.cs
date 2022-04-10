@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString3 = new System.Security.SecureString();
-            System.Security.SecureString secureString4 = new System.Security.SecureString();
+            System.Security.SecureString secureString5 = new System.Security.SecureString();
+            System.Security.SecureString secureString6 = new System.Security.SecureString();
             this.secureStringTextBoxTop = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelNewMasterPass = new System.Windows.Forms.Label();
             this.secureStringTextBoxBottom = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelRepeatNewPass = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // secureStringTextBoxTop
             // 
-            this.secureStringTextBoxTop.Data = secureString3;
+            this.secureStringTextBoxTop.Data = secureString5;
             this.secureStringTextBoxTop.DataHash = null;
             this.secureStringTextBoxTop.DataSalt = null;
             this.secureStringTextBoxTop.Location = new System.Drawing.Point(142, 58);
@@ -60,7 +60,7 @@
             // 
             // secureStringTextBoxBottom
             // 
-            this.secureStringTextBoxBottom.Data = secureString4;
+            this.secureStringTextBoxBottom.Data = secureString6;
             this.secureStringTextBoxBottom.DataHash = null;
             this.secureStringTextBoxBottom.DataSalt = null;
             this.secureStringTextBoxBottom.Location = new System.Drawing.Point(142, 94);
@@ -78,14 +78,15 @@
             this.labelRepeatNewPass.TabIndex = 3;
             this.labelRepeatNewPass.Text = "Repeat New Password";
             // 
-            // button1
+            // buttonSave
             // 
-            this.button1.Location = new System.Drawing.Point(315, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(315, 226);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 4;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonCancel
             // 
@@ -103,7 +104,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelRepeatNewPass);
             this.Controls.Add(this.secureStringTextBoxBottom);
             this.Controls.Add(this.labelNewMasterPass);
@@ -125,7 +126,7 @@
         private Label labelNewMasterPass;
         private UI.SecureStringTextBox secureStringTextBoxBottom;
         private Label labelRepeatNewPass;
-        private Button button1;
+        private Button buttonSave;
         private Button buttonCancel;
     }
 }
