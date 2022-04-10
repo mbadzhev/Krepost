@@ -37,6 +37,7 @@ namespace KrepostWinForms.Middleware
                 DatabaseWriter.SerializeDatabase(db, key, Path.GetFullPath(sfd.FileName));
                 Program.CurrentDb = db;
                 Program.DbFilePath = Path.GetFullPath(sfd.FileName);
+                Program.CurrentDbHead = db.Head;
                 Program.OpenDatabase = true;
 
                 return true;
@@ -218,6 +219,40 @@ namespace KrepostWinForms.Middleware
             DatabaseBody dbB = DatabaseReader.DeserializeDatabaseBody(dbF, dbH, key);
 
             Program.CurrentDb = new Database(dbH, dbB);
+            return true;
+        }
+        /// <summary>
+        /// Changes the master password of a database by creating a new database with the same content as the original.
+        /// </summary>
+        /// <param name="oldDb">The original database, that contains all stored data.</param>
+        /// <param name="newMasterHash"> The hash of the new master password.</param>
+        /// <param name="newKey">The new key generated from the new master password.</param>
+        /// <param name="bytes">The random bytes used as IV and salt.</param>
+        /// <returns>True, if no errors occurred byring the operation.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static bool ChangeMasterPassword(Database oldDb, string newMasterHash, SecureByteArray newKey, byte[] bytes)
+        {
+            // Validate arguments.
+            if (oldDb is null)
+                throw new ArgumentNullException(nameof(oldDb));
+            if (newMasterHash is null)
+                throw new ArgumentNullException(nameof(newMasterHash));
+            if (newMasterHash.Length <= 0)
+                throw new ArgumentOutOfRangeException(nameof(newMasterHash));
+            if (newKey is null)
+                throw new ArgumentNullException(nameof(newKey));
+            if (bytes is null)
+                throw new ArgumentNullException(nameof(bytes));
+
+            // Create db, use the picked path and serialize the db
+            Database newDb = DatabaseWriter.CreateDatabase(newMasterHash, bytes);
+            DatabaseWriter.CopyDatabaseContent(oldDb, newDb);
+            Program.CurrentDb = newDb;
+            Program.CurrentDbHead = newDb.Head;
+            Program.OpenDatabase = true;
+            Program.SavedDatabase = false;
+
             return true;
         }
     }

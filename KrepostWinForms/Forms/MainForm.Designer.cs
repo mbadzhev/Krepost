@@ -64,6 +64,8 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -98,7 +100,9 @@
             this.menuStripFileOpen,
             this.toolStripSeparator1,
             this.menuStripFileSave,
-            this.menuStripFileSaveAs});
+            this.menuStripFileSaveAs,
+            this.toolStripSeparator2,
+            this.menuStripFileChangeMasterPass});
             this.menuStripFile.Name = "menuStripFile";
             this.menuStripFile.Size = new System.Drawing.Size(37, 20);
             this.menuStripFile.Text = "File";
@@ -106,33 +110,33 @@
             // menuStripFileNew
             // 
             this.menuStripFileNew.Name = "menuStripFileNew";
-            this.menuStripFileNew.Size = new System.Drawing.Size(114, 22);
+            this.menuStripFileNew.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileNew.Text = "New";
             this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
             // 
             // menuStripFileOpen
             // 
             this.menuStripFileOpen.Name = "menuStripFileOpen";
-            this.menuStripFileOpen.Size = new System.Drawing.Size(114, 22);
+            this.menuStripFileOpen.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(204, 6);
             // 
             // menuStripFileSave
             // 
             this.menuStripFileSave.Name = "menuStripFileSave";
-            this.menuStripFileSave.Size = new System.Drawing.Size(114, 22);
+            this.menuStripFileSave.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileSave.Text = "Save";
             this.menuStripFileSave.Click += new System.EventHandler(this.menuStripFileSave_Click);
             // 
             // menuStripFileSaveAs
             // 
             this.menuStripFileSaveAs.Name = "menuStripFileSaveAs";
-            this.menuStripFileSaveAs.Size = new System.Drawing.Size(114, 22);
+            this.menuStripFileSaveAs.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileSaveAs.Text = "Save As";
             this.menuStripFileSaveAs.Click += new System.EventHandler(this.menuStripFileSaveAs_Click);
             // 
@@ -450,6 +454,18 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+            // 
+            // menuStripFileChangeMasterPass
+            // 
+            this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
+            this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
+            this.menuStripFileChangeMasterPass.Text = "Change Master Password";
+            this.menuStripFileChangeMasterPass.Click += new System.EventHandler(this.menuStripFileChangeMasterPass_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -522,5 +538,7 @@
         private ToolStripMenuItem menuStripFileSave;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem menuStripFileSaveAs;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem menuStripFileChangeMasterPass;
     }
 }
