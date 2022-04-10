@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString1 = new System.Security.SecureString();
-            System.Security.SecureString secureString2 = new System.Security.SecureString();
-            this.secureStringTextBox = new KrepostWinForms.UI.SecureStringTextBox();
+            System.Security.SecureString secureString3 = new System.Security.SecureString();
+            System.Security.SecureString secureString4 = new System.Security.SecureString();
+            this.secureStringTextBoxTop = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelNewMasterPass = new System.Windows.Forms.Label();
-            this.secureStringTextBox1 = new KrepostWinForms.UI.SecureStringTextBox();
+            this.secureStringTextBoxBottom = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelRepeatNewPass = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // secureStringTextBox
+            // secureStringTextBoxTop
             // 
-            this.secureStringTextBox.Data = secureString1;
-            this.secureStringTextBox.DataHash = null;
-            this.secureStringTextBox.DataSalt = null;
-            this.secureStringTextBox.Location = new System.Drawing.Point(142, 58);
-            this.secureStringTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 10);
-            this.secureStringTextBox.Name = "secureStringTextBox";
-            this.secureStringTextBox.Size = new System.Drawing.Size(329, 23);
-            this.secureStringTextBox.TabIndex = 0;
+            this.secureStringTextBoxTop.Data = secureString3;
+            this.secureStringTextBoxTop.DataHash = null;
+            this.secureStringTextBoxTop.DataSalt = null;
+            this.secureStringTextBoxTop.Location = new System.Drawing.Point(142, 58);
+            this.secureStringTextBoxTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 10);
+            this.secureStringTextBoxTop.Name = "secureStringTextBoxTop";
+            this.secureStringTextBoxTop.Size = new System.Drawing.Size(329, 23);
+            this.secureStringTextBoxTop.TabIndex = 0;
             // 
             // labelNewMasterPass
             // 
@@ -58,16 +58,16 @@
             this.labelNewMasterPass.TabIndex = 1;
             this.labelNewMasterPass.Text = "New Master Password";
             // 
-            // secureStringTextBox1
+            // secureStringTextBoxBottom
             // 
-            this.secureStringTextBox1.Data = secureString2;
-            this.secureStringTextBox1.DataHash = null;
-            this.secureStringTextBox1.DataSalt = null;
-            this.secureStringTextBox1.Location = new System.Drawing.Point(142, 94);
-            this.secureStringTextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.secureStringTextBox1.Name = "secureStringTextBox1";
-            this.secureStringTextBox1.Size = new System.Drawing.Size(329, 23);
-            this.secureStringTextBox1.TabIndex = 2;
+            this.secureStringTextBoxBottom.Data = secureString4;
+            this.secureStringTextBoxBottom.DataHash = null;
+            this.secureStringTextBoxBottom.DataSalt = null;
+            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(142, 94);
+            this.secureStringTextBoxBottom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxBottom.Name = "secureStringTextBoxBottom";
+            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(329, 23);
+            this.secureStringTextBoxBottom.TabIndex = 2;
             // 
             // labelRepeatNewPass
             // 
@@ -95,6 +95,7 @@
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // ChangeMasterPasswordForm
             // 
@@ -104,9 +105,9 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelRepeatNewPass);
-            this.Controls.Add(this.secureStringTextBox1);
+            this.Controls.Add(this.secureStringTextBoxBottom);
             this.Controls.Add(this.labelNewMasterPass);
-            this.Controls.Add(this.secureStringTextBox);
+            this.Controls.Add(this.secureStringTextBoxTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -120,9 +121,9 @@
 
         #endregion
 
-        private UI.SecureStringTextBox secureStringTextBox;
+        private UI.SecureStringTextBox secureStringTextBoxTop;
         private Label labelNewMasterPass;
-        private UI.SecureStringTextBox secureStringTextBox1;
+        private UI.SecureStringTextBox secureStringTextBoxBottom;
         private Label labelRepeatNewPass;
         private Button button1;
         private Button buttonCancel;
