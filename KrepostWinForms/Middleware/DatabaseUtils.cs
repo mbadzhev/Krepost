@@ -160,6 +160,27 @@ namespace KrepostWinForms.Middleware
             return entry;
         }
         /// <summary>
+        /// Deletes the specified database entry.
+        /// </summary>
+        /// <param name="db">The database that contains the specified entry.</param>
+        /// <param name="dbE">The database entry to be removed.</param>
+        /// <returns>True if <paramref name="dbE"/> is successfully removed; otherwise, false.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool DeleteEntry(Database db, DatabaseEntry dbE)
+        {
+            // Validate arguments.
+            if (db is null)
+                throw new ArgumentNullException(nameof(db));
+            if (dbE is null)
+                throw new ArgumentNullException(nameof(dbE));
+
+            if (!db.Body.EntryList.Remove(dbE))
+                return false;
+
+            Program.SavedDatabase = false;
+            return true;
+        }
+        /// <summary>
         /// Checks if any <see cref="DatabaseFile"/> signitures are invalid.
         /// </summary>
         /// <param name="dbF">The <see cref="DatabaseFile"/> to be checked.</param>
