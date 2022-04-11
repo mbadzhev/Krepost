@@ -35,6 +35,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,8 +66,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -140,11 +141,24 @@
             this.menuStripFileSaveAs.Text = "Save As";
             this.menuStripFileSaveAs.Click += new System.EventHandler(this.menuStripFileSaveAs_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+            // 
+            // menuStripFileChangeMasterPass
+            // 
+            this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
+            this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
+            this.menuStripFileChangeMasterPass.Text = "Change Master Password";
+            this.menuStripFileChangeMasterPass.Click += new System.EventHandler(this.menuStripFileChangeMasterPass_Click);
+            // 
             // menuStripEntry
             // 
             this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStripEntryAddEntry,
-            this.menuStripEntryEditEntry});
+            this.menuStripEntryEditEntry,
+            this.menuStripEntryDeleteEntry});
             this.menuStripEntry.Name = "menuStripEntry";
             this.menuStripEntry.Size = new System.Drawing.Size(46, 20);
             this.menuStripEntry.Text = "Entry";
@@ -152,14 +166,14 @@
             // menuStripEntryAddEntry
             // 
             this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
-            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(126, 22);
+            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
             this.menuStripEntryAddEntry.Text = "Add Entry";
             this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
             // 
             // menuStripEntryEditEntry
             // 
             this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
-            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(126, 22);
+            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(180, 22);
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
@@ -454,17 +468,12 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
-            // toolStripSeparator2
+            // menuStripEntryDeleteEntry
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
-            // 
-            // menuStripFileChangeMasterPass
-            // 
-            this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
-            this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
-            this.menuStripFileChangeMasterPass.Text = "Change Master Password";
-            this.menuStripFileChangeMasterPass.Click += new System.EventHandler(this.menuStripFileChangeMasterPass_Click);
+            this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
+            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryDeleteEntry.Text = "Delete Entry";
+            this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
             // 
             // MainForm
             // 
@@ -540,5 +549,6 @@
         private ToolStripMenuItem menuStripFileSaveAs;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem menuStripFileChangeMasterPass;
+        private ToolStripMenuItem menuStripEntryDeleteEntry;
     }
 }
