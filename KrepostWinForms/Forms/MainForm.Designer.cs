@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,11 +36,25 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripOpen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripAddEntry = new System.Windows.Forms.ToolStripButton();
+            this.toolStripEditEntry = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDeleteEntry = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripCopyUsername = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCopyEmail = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCopyPassword = new System.Windows.Forms.ToolStripButton();
+            this.toolStripOpenUrl = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainerEntry = new System.Windows.Forms.SplitContainer();
@@ -64,9 +79,8 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -140,6 +154,18 @@
             this.menuStripFileSaveAs.Text = "Save As";
             this.menuStripFileSaveAs.Click += new System.EventHandler(this.menuStripFileSaveAs_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+            // 
+            // menuStripFileChangeMasterPass
+            // 
+            this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
+            this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
+            this.menuStripFileChangeMasterPass.Text = "Change Master Password";
+            this.menuStripFileChangeMasterPass.Click += new System.EventHandler(this.menuStripFileChangeMasterPass_Click);
+            // 
             // menuStripEntry
             // 
             this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -174,12 +200,124 @@
             // 
             // toolStrip
             // 
-            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripNew,
+            this.toolStripOpen,
+            this.toolStripSave,
+            this.toolStripSeparator,
+            this.toolStripAddEntry,
+            this.toolStripEditEntry,
+            this.toolStripDeleteEntry,
+            this.toolStripSeparator4,
+            this.toolStripCopyUsername,
+            this.toolStripCopyEmail,
+            this.toolStripCopyPassword,
+            this.toolStripOpenUrl});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(584, 25);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip";
+            // 
+            // toolStripNew
+            // 
+            this.toolStripNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripNew.Image")));
+            this.toolStripNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripNew.Name = "toolStripNew";
+            this.toolStripNew.Size = new System.Drawing.Size(23, 22);
+            this.toolStripNew.Text = "New Database";
+            // 
+            // toolStripOpen
+            // 
+            this.toolStripOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripOpen.Image = ((System.Drawing.Image)(resources.GetObject("toolStripOpen.Image")));
+            this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripOpen.Name = "toolStripOpen";
+            this.toolStripOpen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripOpen.Text = "Open Database";
+            // 
+            // toolStripSave
+            // 
+            this.toolStripSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSave.Image")));
+            this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSave.Name = "toolStripSave";
+            this.toolStripSave.Size = new System.Drawing.Size(23, 22);
+            this.toolStripSave.Text = "Save";
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripAddEntry
+            // 
+            this.toolStripAddEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripAddEntry.Image = ((System.Drawing.Image)(resources.GetObject("toolStripAddEntry.Image")));
+            this.toolStripAddEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripAddEntry.Name = "toolStripAddEntry";
+            this.toolStripAddEntry.Size = new System.Drawing.Size(23, 22);
+            this.toolStripAddEntry.Text = "Add Entry";
+            // 
+            // toolStripEditEntry
+            // 
+            this.toolStripEditEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripEditEntry.Image = ((System.Drawing.Image)(resources.GetObject("toolStripEditEntry.Image")));
+            this.toolStripEditEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEditEntry.Name = "toolStripEditEntry";
+            this.toolStripEditEntry.Size = new System.Drawing.Size(23, 22);
+            this.toolStripEditEntry.Text = "Edit Entry";
+            // 
+            // toolStripDeleteEntry
+            // 
+            this.toolStripDeleteEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDeleteEntry.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDeleteEntry.Image")));
+            this.toolStripDeleteEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDeleteEntry.Name = "toolStripDeleteEntry";
+            this.toolStripDeleteEntry.Size = new System.Drawing.Size(23, 22);
+            this.toolStripDeleteEntry.Text = "Delete Entry";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripCopyUsername
+            // 
+            this.toolStripCopyUsername.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopyUsername.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCopyUsername.Image")));
+            this.toolStripCopyUsername.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCopyUsername.Name = "toolStripCopyUsername";
+            this.toolStripCopyUsername.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCopyUsername.Text = "Copy Username";
+            // 
+            // toolStripCopyEmail
+            // 
+            this.toolStripCopyEmail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopyEmail.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCopyEmail.Image")));
+            this.toolStripCopyEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCopyEmail.Name = "toolStripCopyEmail";
+            this.toolStripCopyEmail.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCopyEmail.Text = "Copy Email";
+            // 
+            // toolStripCopyPassword
+            // 
+            this.toolStripCopyPassword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopyPassword.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCopyPassword.Image")));
+            this.toolStripCopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCopyPassword.Name = "toolStripCopyPassword";
+            this.toolStripCopyPassword.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCopyPassword.Text = "Copy Password";
+            // 
+            // toolStripOpenUrl
+            // 
+            this.toolStripOpenUrl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripOpenUrl.Image = ((System.Drawing.Image)(resources.GetObject("toolStripOpenUrl.Image")));
+            this.toolStripOpenUrl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripOpenUrl.Name = "toolStripOpenUrl";
+            this.toolStripOpenUrl.Size = new System.Drawing.Size(23, 22);
+            this.toolStripOpenUrl.Text = "Open URL";
             // 
             // splitContainerMain
             // 
@@ -454,18 +592,6 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
-            // 
-            // menuStripFileChangeMasterPass
-            // 
-            this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
-            this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
-            this.menuStripFileChangeMasterPass.Text = "Change Master Password";
-            this.menuStripFileChangeMasterPass.Click += new System.EventHandler(this.menuStripFileChangeMasterPass_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -475,6 +601,7 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -482,6 +609,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -540,5 +669,17 @@
         private ToolStripMenuItem menuStripFileSaveAs;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem menuStripFileChangeMasterPass;
+        private ToolStripButton toolStripNew;
+        private ToolStripButton toolStripOpen;
+        private ToolStripButton toolStripSave;
+        private ToolStripSeparator toolStripSeparator;
+        private ToolStripButton toolStripAddEntry;
+        private ToolStripButton toolStripEditEntry;
+        private ToolStripButton toolStripDeleteEntry;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton toolStripCopyUsername;
+        private ToolStripButton toolStripCopyEmail;
+        private ToolStripButton toolStripCopyPassword;
+        private ToolStripButton toolStripOpenUrl;
     }
 }

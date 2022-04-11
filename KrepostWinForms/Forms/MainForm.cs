@@ -269,7 +269,5 @@ namespace KrepostWinForms.Forms
         {
             Clipboard.Clear();
         }
-
-        
     }
 }
