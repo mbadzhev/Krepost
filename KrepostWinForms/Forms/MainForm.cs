@@ -190,6 +190,30 @@ namespace KrepostWinForms.Forms
             panelEntryTop.Visible = false;
             panelEntryBottom.Visible = false;
         }
+        private void menuStripEntryDeleteEntry_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase || Program.CurrentDb == null)
+            {
+                MessageBox.Show("A database has been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Program.SelectedEntry == null)
+            {
+                MessageBox.Show("An entry has to be selected before it can be deleted.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var result = MessageBox.Show("Are you sure you want to delete '" + Program.SelectedEntry.Title + "' entry? This action cannot be undone.",
+                "Krepost", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                Middleware.DatabaseUtils.DeleteEntry(Program.CurrentDb, Program.SelectedEntry);
+
+            RefreshTreeView();
+        }
         #endregion
 
         #region splitContainerMain Functions
@@ -269,5 +293,6 @@ namespace KrepostWinForms.Forms
         {
             Clipboard.Clear();
         }
+
     }
 }

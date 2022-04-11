@@ -79,7 +79,9 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.menuStrip.SuspendLayout();
+            this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -170,7 +172,8 @@
             // 
             this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStripEntryAddEntry,
-            this.menuStripEntryEditEntry});
+            this.menuStripEntryEditEntry,
+            this.menuStripEntryDeleteEntry});
             this.menuStripEntry.Name = "menuStripEntry";
             this.menuStripEntry.Size = new System.Drawing.Size(46, 20);
             this.menuStripEntry.Text = "Entry";
@@ -178,14 +181,14 @@
             // menuStripEntryAddEntry
             // 
             this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
-            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(126, 22);
+            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
             this.menuStripEntryAddEntry.Text = "Add Entry";
             this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
             // 
             // menuStripEntryEditEntry
             // 
             this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
-            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(126, 22);
+            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(180, 22);
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
@@ -591,6 +594,13 @@
             this.labelUsername.Size = new System.Drawing.Size(63, 15);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
+            // menuStripEntryDeleteEntry
+            // 
+            this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
+            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryDeleteEntry.Text = "Delete Entry";
+            this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
+            // 
             // 
             // MainForm
             // 
@@ -668,7 +678,7 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem menuStripFileSaveAs;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem menuStripFileChangeMasterPass;
+        private ToolStripMenuItem menuStripEntryDeleteEntry;
         private ToolStripButton toolStripNew;
         private ToolStripButton toolStripOpen;
         private ToolStripButton toolStripSave;
@@ -681,5 +691,6 @@
         private ToolStripButton toolStripCopyEmail;
         private ToolStripButton toolStripCopyPassword;
         private ToolStripButton toolStripOpenUrl;
+        private ToolStripMenuItem menuStripFileChangeMasterPass;
     }
 }
