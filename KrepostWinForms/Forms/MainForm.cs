@@ -109,17 +109,29 @@ namespace KrepostWinForms.Forms
         }
         private void menuStripFileSave_Click(object sender, EventArgs e)
         {
-            Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath);
+            if (Program.CurrentDb is not null && Program.CurrentKey is not null)
+            {
+                if (!Middleware.DatabaseUtils.SaveDatabase(Program.CurrentDb, Program.CurrentKey, Program.DbFilePath))
+                {
+                    MessageBox.Show("An error occured. The changes could not be saved.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                return;
+            }
+            MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void menuStripFileSaveAs_Click(object sender, EventArgs e)
         {
-            if (Program.CurrentDb != null && Program.CurrentKey != null)
+            if (Program.CurrentDb is not null && Program.CurrentKey is not null)
             {
                 if (!Middleware.DatabaseUtils.SaveAsDatabase(Program.CurrentDb, Program.CurrentKey))
+                {
+                    MessageBox.Show("An error occured. The changes could not be saved.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
                 return;
             }
-            MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void menuStripFileChangeMasterPass_Click(object sender, EventArgs e)
         {
@@ -158,9 +170,9 @@ namespace KrepostWinForms.Forms
         #region menuStripEntry Functions
         private void menuStripEntryAddEntry_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb == null)
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
             {
-                MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A database has not been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -172,16 +184,15 @@ namespace KrepostWinForms.Forms
 
         private void menuStripEntryEditEntry_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb == null)
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
             {
-                MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A database has been opened.", "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (Program.SelectedEntry == null)
-            {
+            if (Program.SelectedEntry is null)
                 return;
-            }
+
             Form editEntryForm = new EditEntryForm(Program.SelectedEntry);
             editEntryForm.ShowDialog();
 
@@ -192,17 +203,17 @@ namespace KrepostWinForms.Forms
         }
         private void menuStripEntryDeleteEntry_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb == null)
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
             {
-                MessageBox.Show("A database has been opened.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (Program.SelectedEntry == null)
+            if (Program.SelectedEntry is null)
             {
                 MessageBox.Show("An entry has to be selected before it can be deleted.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -217,7 +228,6 @@ namespace KrepostWinForms.Forms
         #endregion
         
         #region toolStrip Functions
-
         private void toolStripNew_Click(object sender, EventArgs e)
         {
             menuStripFileNew_Click(sender, e);
@@ -283,6 +293,20 @@ namespace KrepostWinForms.Forms
 
         private void buttonUsername_Click(object sender, EventArgs e)
         {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its username can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             copyTimer.Tick += new EventHandler(TimerEventProcessor);
             copyTimer.Interval = 10000;
             copyTimer.Start();
@@ -291,6 +315,20 @@ namespace KrepostWinForms.Forms
 
         private void buttonEmail_Click(object sender, EventArgs e)
         {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its email can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             copyTimer.Tick += new EventHandler(TimerEventProcessor);
             copyTimer.Interval = 10000;
             copyTimer.Start();
@@ -299,6 +337,20 @@ namespace KrepostWinForms.Forms
 
         private void buttonPassword_Click(object sender, EventArgs e)
         {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its password can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             copyTimer.Tick += new EventHandler(TimerEventProcessor);
             copyTimer.Interval = 10000;
             copyTimer.Start();
@@ -306,6 +358,20 @@ namespace KrepostWinForms.Forms
         }
         private void buttonUrl_Click(object sender, EventArgs e)
         {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its URL can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             copyTimer.Tick += new EventHandler(TimerEventProcessor);
             copyTimer.Interval = 10000;
             copyTimer.Start();
