@@ -215,6 +215,59 @@ namespace KrepostWinForms.Forms
             RefreshTreeView();
         }
         #endregion
+        
+        #region toolStrip Functions
+
+        private void toolStripNew_Click(object sender, EventArgs e)
+        {
+            menuStripFileNew_Click(sender, e);
+        }
+
+        private void toolStripOpen_Click(object sender, EventArgs e)
+        {
+            menuStripFileOpen_Click(sender, e);
+        }
+
+        private void toolStripSave_Click(object sender, EventArgs e)
+        {
+            menuStripFileSave_Click(sender, e);
+        }
+
+        private void toolStripAddEntry_Click(object sender, EventArgs e)
+        {
+            menuStripEntryAddEntry_Click(sender, e);
+        }
+
+        private void toolStripEditEntry_Click(object sender, EventArgs e)
+        {
+            menuStripEntryEditEntry_Click(sender, e);
+        }
+
+        private void toolStripDeleteEntry_Click(object sender, EventArgs e)
+        {
+            menuStripEntryDeleteEntry_Click(sender, e );
+        }
+
+        private void toolStripCopyUsername_Click(object sender, EventArgs e)
+        {
+            buttonUsername_Click(sender, e);
+        }
+
+        private void toolStripCopyEmail_Click(object sender, EventArgs e)
+        {
+            buttonEmail_Click(sender, e);
+        }
+
+        private void toolStripCopyPassword_Click(object sender, EventArgs e)
+        {
+            buttonPassword_Click(sender, e);
+        }
+
+        private void toolStripOpenUrl_Click(object sender, EventArgs e)
+        {
+            buttonUrl_Click(sender, e);
+        }
+        #endregion
 
         #region splitContainerMain Functions
 
@@ -293,6 +346,5 @@ namespace KrepostWinForms.Forms
         {
             Clipboard.Clear();
         }
-
     }
 }

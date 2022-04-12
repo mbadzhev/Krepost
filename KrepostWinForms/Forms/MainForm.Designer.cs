@@ -41,6 +41,7 @@
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripNew = new System.Windows.Forms.ToolStripButton();
@@ -79,9 +80,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStripFileChangeMasterPass = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -192,6 +191,13 @@
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
+            // menuStripEntryDeleteEntry
+            // 
+            this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
+            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryDeleteEntry.Text = "Delete Entry";
+            this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Location = new System.Drawing.Point(0, 539);
@@ -230,6 +236,7 @@
             this.toolStripNew.Name = "toolStripNew";
             this.toolStripNew.Size = new System.Drawing.Size(23, 22);
             this.toolStripNew.Text = "New Database";
+            this.toolStripNew.Click += new System.EventHandler(this.toolStripNew_Click);
             // 
             // toolStripOpen
             // 
@@ -239,6 +246,7 @@
             this.toolStripOpen.Name = "toolStripOpen";
             this.toolStripOpen.Size = new System.Drawing.Size(23, 22);
             this.toolStripOpen.Text = "Open Database";
+            this.toolStripOpen.Click += new System.EventHandler(this.toolStripOpen_Click);
             // 
             // toolStripSave
             // 
@@ -248,6 +256,7 @@
             this.toolStripSave.Name = "toolStripSave";
             this.toolStripSave.Size = new System.Drawing.Size(23, 22);
             this.toolStripSave.Text = "Save";
+            this.toolStripSave.Click += new System.EventHandler(this.toolStripSave_Click);
             // 
             // toolStripSeparator
             // 
@@ -262,6 +271,7 @@
             this.toolStripAddEntry.Name = "toolStripAddEntry";
             this.toolStripAddEntry.Size = new System.Drawing.Size(23, 22);
             this.toolStripAddEntry.Text = "Add Entry";
+            this.toolStripAddEntry.Click += new System.EventHandler(this.toolStripAddEntry_Click);
             // 
             // toolStripEditEntry
             // 
@@ -271,6 +281,7 @@
             this.toolStripEditEntry.Name = "toolStripEditEntry";
             this.toolStripEditEntry.Size = new System.Drawing.Size(23, 22);
             this.toolStripEditEntry.Text = "Edit Entry";
+            this.toolStripEditEntry.Click += new System.EventHandler(this.toolStripEditEntry_Click);
             // 
             // toolStripDeleteEntry
             // 
@@ -280,6 +291,7 @@
             this.toolStripDeleteEntry.Name = "toolStripDeleteEntry";
             this.toolStripDeleteEntry.Size = new System.Drawing.Size(23, 22);
             this.toolStripDeleteEntry.Text = "Delete Entry";
+            this.toolStripDeleteEntry.Click += new System.EventHandler(this.toolStripDeleteEntry_Click);
             // 
             // toolStripSeparator4
             // 
@@ -294,6 +306,7 @@
             this.toolStripCopyUsername.Name = "toolStripCopyUsername";
             this.toolStripCopyUsername.Size = new System.Drawing.Size(23, 22);
             this.toolStripCopyUsername.Text = "Copy Username";
+            this.toolStripCopyUsername.Click += new System.EventHandler(this.toolStripCopyUsername_Click);
             // 
             // toolStripCopyEmail
             // 
@@ -303,6 +316,7 @@
             this.toolStripCopyEmail.Name = "toolStripCopyEmail";
             this.toolStripCopyEmail.Size = new System.Drawing.Size(23, 22);
             this.toolStripCopyEmail.Text = "Copy Email";
+            this.toolStripCopyEmail.Click += new System.EventHandler(this.toolStripCopyEmail_Click);
             // 
             // toolStripCopyPassword
             // 
@@ -312,6 +326,7 @@
             this.toolStripCopyPassword.Name = "toolStripCopyPassword";
             this.toolStripCopyPassword.Size = new System.Drawing.Size(23, 22);
             this.toolStripCopyPassword.Text = "Copy Password";
+            this.toolStripCopyPassword.Click += new System.EventHandler(this.toolStripCopyPassword_Click);
             // 
             // toolStripOpenUrl
             // 
@@ -321,6 +336,7 @@
             this.toolStripOpenUrl.Name = "toolStripOpenUrl";
             this.toolStripOpenUrl.Size = new System.Drawing.Size(23, 22);
             this.toolStripOpenUrl.Text = "Open URL";
+            this.toolStripOpenUrl.Click += new System.EventHandler(this.toolStripOpenUrl_Click);
             // 
             // splitContainerMain
             // 
@@ -594,13 +610,6 @@
             this.labelUsername.Size = new System.Drawing.Size(63, 15);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
-            // menuStripEntryDeleteEntry
-            // 
-            this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
-            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(180, 22);
-            this.menuStripEntryDeleteEntry.Text = "Delete Entry";
-            this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
-            // 
             // 
             // MainForm
             // 
