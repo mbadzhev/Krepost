@@ -1,4 +1,6 @@
-﻿using KrepostWinForms.UI;
+﻿using System.Diagnostics;
+
+using KrepostWinForms.UI;
 
 namespace KrepostWinForms.Forms
 {
@@ -275,7 +277,27 @@ namespace KrepostWinForms.Forms
 
         private void toolStripOpenUrl_Click(object sender, EventArgs e)
         {
-            buttonUrl_Click(sender, e);
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its URL can be opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Open entry url.
+            var psi = new ProcessStartInfo(textBoxUrl.Text)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(psi);
         }
         #endregion
 
