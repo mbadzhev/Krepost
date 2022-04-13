@@ -297,7 +297,16 @@ namespace KrepostWinForms.Forms
                 UseShellExecute = true,
                 Verb = "open"
             };
-            Process.Start(psi);
+
+            try
+            {
+                Process.Start(psi);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The URL could not be opened. Make sure it is a valid URL.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
 

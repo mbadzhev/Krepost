@@ -125,6 +125,7 @@
             // menuStripFileNew
             // 
             this.menuStripFileNew.Name = "menuStripFileNew";
+            this.menuStripFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.menuStripFileNew.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileNew.Text = "New";
             this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
@@ -132,6 +133,7 @@
             // menuStripFileOpen
             // 
             this.menuStripFileOpen.Name = "menuStripFileOpen";
+            this.menuStripFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.menuStripFileOpen.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
@@ -144,6 +146,7 @@
             // menuStripFileSave
             // 
             this.menuStripFileSave.Name = "menuStripFileSave";
+            this.menuStripFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.menuStripFileSave.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileSave.Text = "Save";
             this.menuStripFileSave.Click += new System.EventHandler(this.menuStripFileSave_Click);
@@ -180,6 +183,7 @@
             // menuStripEntryAddEntry
             // 
             this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
+            this.menuStripEntryAddEntry.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
             this.menuStripEntryAddEntry.Text = "Add Entry";
             this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
@@ -187,14 +191,15 @@
             // menuStripEntryEditEntry
             // 
             this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
-            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(161, 22);
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
             // menuStripEntryDeleteEntry
             // 
             this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
-            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryDeleteEntry.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(161, 22);
             this.menuStripEntryDeleteEntry.Text = "Delete Entry";
             this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
             // 
@@ -235,7 +240,7 @@
             this.toolStripNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripNew.Name = "toolStripNew";
             this.toolStripNew.Size = new System.Drawing.Size(23, 22);
-            this.toolStripNew.Text = "New Database";
+            this.toolStripNew.Text = "New Database (Ctrl+N)";
             this.toolStripNew.Click += new System.EventHandler(this.toolStripNew_Click);
             // 
             // toolStripOpen
@@ -245,7 +250,7 @@
             this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripOpen.Name = "toolStripOpen";
             this.toolStripOpen.Size = new System.Drawing.Size(23, 22);
-            this.toolStripOpen.Text = "Open Database";
+            this.toolStripOpen.Text = "Open Database (Ctrl+O)";
             this.toolStripOpen.Click += new System.EventHandler(this.toolStripOpen_Click);
             // 
             // toolStripSave
@@ -255,7 +260,7 @@
             this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSave.Name = "toolStripSave";
             this.toolStripSave.Size = new System.Drawing.Size(23, 22);
-            this.toolStripSave.Text = "Save";
+            this.toolStripSave.Text = "Save (Ctrl+S)";
             this.toolStripSave.Click += new System.EventHandler(this.toolStripSave_Click);
             // 
             // toolStripSeparator
@@ -270,7 +275,7 @@
             this.toolStripAddEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripAddEntry.Name = "toolStripAddEntry";
             this.toolStripAddEntry.Size = new System.Drawing.Size(23, 22);
-            this.toolStripAddEntry.Text = "Add Entry";
+            this.toolStripAddEntry.Text = "Add Entry (Ctrl+I)";
             this.toolStripAddEntry.Click += new System.EventHandler(this.toolStripAddEntry_Click);
             // 
             // toolStripEditEntry
@@ -290,7 +295,7 @@
             this.toolStripDeleteEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDeleteEntry.Name = "toolStripDeleteEntry";
             this.toolStripDeleteEntry.Size = new System.Drawing.Size(23, 22);
-            this.toolStripDeleteEntry.Text = "Delete Entry";
+            this.toolStripDeleteEntry.Text = "Delete Entry (Del)";
             this.toolStripDeleteEntry.Click += new System.EventHandler(this.toolStripDeleteEntry_Click);
             // 
             // toolStripSeparator4
