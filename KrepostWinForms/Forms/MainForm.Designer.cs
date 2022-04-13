@@ -40,8 +40,26 @@
             this.menuStripEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStripEntryCopyUsername = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryCopyEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryCopyPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryOpenUrl = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripOpen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripAddEntry = new System.Windows.Forms.ToolStripButton();
+            this.toolStripEditEntry = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDeleteEntry = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripCopyUsername = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCopyEmail = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCopyPassword = new System.Windows.Forms.ToolStripButton();
+            this.toolStripOpenUrl = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainerEntry = new System.Windows.Forms.SplitContainer();
@@ -66,8 +84,8 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -110,14 +128,20 @@
             // 
             // menuStripFileNew
             // 
+            this.menuStripFileNew.Image = global::KrepostWinForms.Properties.Resources.NewDocument;
+            this.menuStripFileNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileNew.Name = "menuStripFileNew";
+            this.menuStripFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.menuStripFileNew.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileNew.Text = "New";
             this.menuStripFileNew.Click += new System.EventHandler(this.menuStripFileNew_Click);
             // 
             // menuStripFileOpen
             // 
+            this.menuStripFileOpen.Image = global::KrepostWinForms.Properties.Resources.OpenFolder;
+            this.menuStripFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileOpen.Name = "menuStripFileOpen";
+            this.menuStripFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.menuStripFileOpen.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileOpen.Text = "Open";
             this.menuStripFileOpen.Click += new System.EventHandler(this.menuStripFileOpen_Click);
@@ -129,13 +153,18 @@
             // 
             // menuStripFileSave
             // 
+            this.menuStripFileSave.Image = global::KrepostWinForms.Properties.Resources.Save;
+            this.menuStripFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileSave.Name = "menuStripFileSave";
+            this.menuStripFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.menuStripFileSave.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileSave.Text = "Save";
             this.menuStripFileSave.Click += new System.EventHandler(this.menuStripFileSave_Click);
             // 
             // menuStripFileSaveAs
             // 
+            this.menuStripFileSaveAs.Image = global::KrepostWinForms.Properties.Resources.SaveAs;
+            this.menuStripFileSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileSaveAs.Name = "menuStripFileSaveAs";
             this.menuStripFileSaveAs.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileSaveAs.Text = "Save As";
@@ -148,6 +177,8 @@
             // 
             // menuStripFileChangeMasterPass
             // 
+            this.menuStripFileChangeMasterPass.Image = global::KrepostWinForms.Properties.Resources.NewKey;
+            this.menuStripFileChangeMasterPass.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
             this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileChangeMasterPass.Text = "Change Master Password";
@@ -158,24 +189,90 @@
             this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStripEntryAddEntry,
             this.menuStripEntryEditEntry,
-            this.menuStripEntryDeleteEntry});
+            this.menuStripEntryDeleteEntry,
+            this.toolStripSeparator3,
+            this.menuStripEntryCopyUsername,
+            this.menuStripEntryCopyEmail,
+            this.menuStripEntryCopyPassword,
+            this.menuStripEntryOpenUrl});
             this.menuStripEntry.Name = "menuStripEntry";
             this.menuStripEntry.Size = new System.Drawing.Size(46, 20);
             this.menuStripEntry.Text = "Entry";
             // 
             // menuStripEntryAddEntry
             // 
+            this.menuStripEntryAddEntry.Image = global::KrepostWinForms.Properties.Resources.Add;
+            this.menuStripEntryAddEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
-            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryAddEntry.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryAddEntry.Text = "Add Entry";
             this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
             // 
             // menuStripEntryEditEntry
             // 
+            this.menuStripEntryEditEntry.Image = global::KrepostWinForms.Properties.Resources.Edit;
+            this.menuStripEntryEditEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
-            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
+            // 
+            // menuStripEntryDeleteEntry
+            // 
+            this.menuStripEntryDeleteEntry.Image = global::KrepostWinForms.Properties.Resources.Remove;
+            this.menuStripEntryDeleteEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
+            this.menuStripEntryDeleteEntry.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryDeleteEntry.Text = "Delete Entry";
+            this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(229, 6);
+            // 
+            // menuStripEntryCopyUsername
+            // 
+            this.menuStripEntryCopyUsername.Image = global::KrepostWinForms.Properties.Resources.User;
+            this.menuStripEntryCopyUsername.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuStripEntryCopyUsername.Name = "menuStripEntryCopyUsername";
+            this.menuStripEntryCopyUsername.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.menuStripEntryCopyUsername.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryCopyUsername.Text = "Copy Username";
+            this.menuStripEntryCopyUsername.Click += new System.EventHandler(this.menuStripEntryCopyUsername_Click);
+            // 
+            // menuStripEntryCopyEmail
+            // 
+            this.menuStripEntryCopyEmail.Image = global::KrepostWinForms.Properties.Resources.EmailAddressViewer;
+            this.menuStripEntryCopyEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuStripEntryCopyEmail.Name = "menuStripEntryCopyEmail";
+            this.menuStripEntryCopyEmail.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.menuStripEntryCopyEmail.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryCopyEmail.Text = "Copy Email";
+            this.menuStripEntryCopyEmail.Click += new System.EventHandler(this.menuStripEntryCopyEmail_Click);
+            // 
+            // menuStripEntryCopyPassword
+            // 
+            this.menuStripEntryCopyPassword.Image = global::KrepostWinForms.Properties.Resources.PasswordBox;
+            this.menuStripEntryCopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuStripEntryCopyPassword.Name = "menuStripEntryCopyPassword";
+            this.menuStripEntryCopyPassword.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.menuStripEntryCopyPassword.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryCopyPassword.Text = "Copy Password";
+            this.menuStripEntryCopyPassword.Click += new System.EventHandler(this.menuStripEntryCopyPassword_Click);
+            // 
+            // menuStripEntryOpenUrl
+            // 
+            this.menuStripEntryOpenUrl.Image = global::KrepostWinForms.Properties.Resources.OpenWebSite;
+            this.menuStripEntryOpenUrl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuStripEntryOpenUrl.Name = "menuStripEntryOpenUrl";
+            this.menuStripEntryOpenUrl.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryOpenUrl.Text = "Open URL in Browser";
+            this.menuStripEntryOpenUrl.Click += new System.EventHandler(this.menuStripEntryOpenUrl_Click);
             // 
             // statusStrip
             // 
@@ -188,12 +285,134 @@
             // 
             // toolStrip
             // 
-            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripNew,
+            this.toolStripOpen,
+            this.toolStripSave,
+            this.toolStripSeparator,
+            this.toolStripAddEntry,
+            this.toolStripEditEntry,
+            this.toolStripDeleteEntry,
+            this.toolStripSeparator4,
+            this.toolStripCopyUsername,
+            this.toolStripCopyEmail,
+            this.toolStripCopyPassword,
+            this.toolStripOpenUrl});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(584, 25);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip";
+            // 
+            // toolStripNew
+            // 
+            this.toolStripNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripNew.Image = global::KrepostWinForms.Properties.Resources.NewDocument;
+            this.toolStripNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripNew.Name = "toolStripNew";
+            this.toolStripNew.Size = new System.Drawing.Size(23, 22);
+            this.toolStripNew.Text = "New Database (Ctrl+N)";
+            this.toolStripNew.Click += new System.EventHandler(this.toolStripNew_Click);
+            // 
+            // toolStripOpen
+            // 
+            this.toolStripOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripOpen.Image = global::KrepostWinForms.Properties.Resources.OpenFolder;
+            this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripOpen.Name = "toolStripOpen";
+            this.toolStripOpen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripOpen.Text = "Open Database (Ctrl+O)";
+            this.toolStripOpen.Click += new System.EventHandler(this.toolStripOpen_Click);
+            // 
+            // toolStripSave
+            // 
+            this.toolStripSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSave.Image = global::KrepostWinForms.Properties.Resources.Save;
+            this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSave.Name = "toolStripSave";
+            this.toolStripSave.Size = new System.Drawing.Size(23, 22);
+            this.toolStripSave.Text = "Save (Ctrl+S)";
+            this.toolStripSave.Click += new System.EventHandler(this.toolStripSave_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripAddEntry
+            // 
+            this.toolStripAddEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripAddEntry.Image = global::KrepostWinForms.Properties.Resources.Add;
+            this.toolStripAddEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripAddEntry.Name = "toolStripAddEntry";
+            this.toolStripAddEntry.Size = new System.Drawing.Size(23, 22);
+            this.toolStripAddEntry.Text = "Add Entry (Ctrl+I)";
+            this.toolStripAddEntry.Click += new System.EventHandler(this.toolStripAddEntry_Click);
+            // 
+            // toolStripEditEntry
+            // 
+            this.toolStripEditEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripEditEntry.Image = global::KrepostWinForms.Properties.Resources.Edit;
+            this.toolStripEditEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEditEntry.Name = "toolStripEditEntry";
+            this.toolStripEditEntry.Size = new System.Drawing.Size(23, 22);
+            this.toolStripEditEntry.Text = "Edit Entry";
+            this.toolStripEditEntry.Click += new System.EventHandler(this.toolStripEditEntry_Click);
+            // 
+            // toolStripDeleteEntry
+            // 
+            this.toolStripDeleteEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDeleteEntry.Image = global::KrepostWinForms.Properties.Resources.Remove;
+            this.toolStripDeleteEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDeleteEntry.Name = "toolStripDeleteEntry";
+            this.toolStripDeleteEntry.Size = new System.Drawing.Size(23, 22);
+            this.toolStripDeleteEntry.Text = "Delete Entry (Del)";
+            this.toolStripDeleteEntry.Click += new System.EventHandler(this.toolStripDeleteEntry_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripCopyUsername
+            // 
+            this.toolStripCopyUsername.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopyUsername.Image = global::KrepostWinForms.Properties.Resources.User;
+            this.toolStripCopyUsername.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCopyUsername.Name = "toolStripCopyUsername";
+            this.toolStripCopyUsername.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCopyUsername.Text = "Copy Username (Ctrl+Shift+C)";
+            this.toolStripCopyUsername.Click += new System.EventHandler(this.toolStripCopyUsername_Click);
+            // 
+            // toolStripCopyEmail
+            // 
+            this.toolStripCopyEmail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopyEmail.Image = global::KrepostWinForms.Properties.Resources.EmailAddressViewer;
+            this.toolStripCopyEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCopyEmail.Name = "toolStripCopyEmail";
+            this.toolStripCopyEmail.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCopyEmail.Text = "Copy Email (Ctrl+Alt+C)";
+            this.toolStripCopyEmail.Click += new System.EventHandler(this.toolStripCopyEmail_Click);
+            // 
+            // toolStripCopyPassword
+            // 
+            this.toolStripCopyPassword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopyPassword.Image = global::KrepostWinForms.Properties.Resources.PasswordBox;
+            this.toolStripCopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCopyPassword.Name = "toolStripCopyPassword";
+            this.toolStripCopyPassword.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCopyPassword.Text = "Copy Password (Ctrl+C)";
+            this.toolStripCopyPassword.Click += new System.EventHandler(this.toolStripCopyPassword_Click);
+            // 
+            // toolStripOpenUrl
+            // 
+            this.toolStripOpenUrl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripOpenUrl.Image = global::KrepostWinForms.Properties.Resources.OpenWebSite;
+            this.toolStripOpenUrl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripOpenUrl.Name = "toolStripOpenUrl";
+            this.toolStripOpenUrl.Size = new System.Drawing.Size(23, 22);
+            this.toolStripOpenUrl.Text = "Open URL";
+            this.toolStripOpenUrl.Click += new System.EventHandler(this.toolStripOpenUrl_Click);
             // 
             // splitContainerMain
             // 
@@ -468,13 +687,6 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
-            // menuStripEntryDeleteEntry
-            // 
-            this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
-            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(180, 22);
-            this.menuStripEntryDeleteEntry.Text = "Delete Entry";
-            this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -484,6 +696,7 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -491,6 +704,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -548,7 +763,24 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem menuStripFileSaveAs;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem menuStripFileChangeMasterPass;
         private ToolStripMenuItem menuStripEntryDeleteEntry;
+        private ToolStripButton toolStripNew;
+        private ToolStripButton toolStripOpen;
+        private ToolStripButton toolStripSave;
+        private ToolStripSeparator toolStripSeparator;
+        private ToolStripButton toolStripAddEntry;
+        private ToolStripButton toolStripEditEntry;
+        private ToolStripButton toolStripDeleteEntry;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton toolStripCopyUsername;
+        private ToolStripButton toolStripCopyEmail;
+        private ToolStripButton toolStripCopyPassword;
+        private ToolStripButton toolStripOpenUrl;
+        private ToolStripMenuItem menuStripFileChangeMasterPass;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem menuStripEntryCopyUsername;
+        private ToolStripMenuItem menuStripEntryCopyEmail;
+        private ToolStripMenuItem menuStripEntryCopyPassword;
+        private ToolStripMenuItem menuStripEntryOpenUrl;
     }
 }
