@@ -42,6 +42,10 @@
             this.menuStripEntryAddEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryEditEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryDeleteEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStripEntryCopyUsername = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryCopyEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryCopyPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripNew = new System.Windows.Forms.ToolStripButton();
@@ -80,6 +84,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.menuStripEntryOpenUrl = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -175,7 +180,12 @@
             this.menuStripEntry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStripEntryAddEntry,
             this.menuStripEntryEditEntry,
-            this.menuStripEntryDeleteEntry});
+            this.menuStripEntryDeleteEntry,
+            this.toolStripSeparator3,
+            this.menuStripEntryCopyUsername,
+            this.menuStripEntryCopyEmail,
+            this.menuStripEntryCopyPassword,
+            this.menuStripEntryOpenUrl});
             this.menuStripEntry.Name = "menuStripEntry";
             this.menuStripEntry.Size = new System.Drawing.Size(46, 20);
             this.menuStripEntry.Text = "Entry";
@@ -184,14 +194,14 @@
             // 
             this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
             this.menuStripEntryAddEntry.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(180, 22);
+            this.menuStripEntryAddEntry.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryAddEntry.Text = "Add Entry";
             this.menuStripEntryAddEntry.Click += new System.EventHandler(this.menuStripEntryAddEntry_Click);
             // 
             // menuStripEntryEditEntry
             // 
             this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
-            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(161, 22);
+            this.menuStripEntryEditEntry.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryEditEntry.Text = "Edit Entry";
             this.menuStripEntryEditEntry.Click += new System.EventHandler(this.menuStripEntryEditEntry_Click);
             // 
@@ -199,9 +209,40 @@
             // 
             this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
             this.menuStripEntryDeleteEntry.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(161, 22);
+            this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryDeleteEntry.Text = "Delete Entry";
             this.menuStripEntryDeleteEntry.Click += new System.EventHandler(this.menuStripEntryDeleteEntry_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(229, 6);
+            // 
+            // menuStripEntryCopyUsername
+            // 
+            this.menuStripEntryCopyUsername.Name = "menuStripEntryCopyUsername";
+            this.menuStripEntryCopyUsername.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.menuStripEntryCopyUsername.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryCopyUsername.Text = "Copy Username";
+            this.menuStripEntryCopyUsername.Click += new System.EventHandler(this.menuStripEntryCopyUsername_Click);
+            // 
+            // menuStripEntryCopyEmail
+            // 
+            this.menuStripEntryCopyEmail.Name = "menuStripEntryCopyEmail";
+            this.menuStripEntryCopyEmail.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.menuStripEntryCopyEmail.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryCopyEmail.Text = "Copy Email";
+            this.menuStripEntryCopyEmail.Click += new System.EventHandler(this.menuStripEntryCopyEmail_Click);
+            // 
+            // menuStripEntryCopyPassword
+            // 
+            this.menuStripEntryCopyPassword.Name = "menuStripEntryCopyPassword";
+            this.menuStripEntryCopyPassword.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.menuStripEntryCopyPassword.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryCopyPassword.Text = "Copy Password";
+            this.menuStripEntryCopyPassword.Click += new System.EventHandler(this.menuStripEntryCopyPassword_Click);
             // 
             // statusStrip
             // 
@@ -310,7 +351,7 @@
             this.toolStripCopyUsername.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopyUsername.Name = "toolStripCopyUsername";
             this.toolStripCopyUsername.Size = new System.Drawing.Size(23, 22);
-            this.toolStripCopyUsername.Text = "Copy Username";
+            this.toolStripCopyUsername.Text = "Copy Username (Ctrl+Shift+C)";
             this.toolStripCopyUsername.Click += new System.EventHandler(this.toolStripCopyUsername_Click);
             // 
             // toolStripCopyEmail
@@ -320,7 +361,7 @@
             this.toolStripCopyEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopyEmail.Name = "toolStripCopyEmail";
             this.toolStripCopyEmail.Size = new System.Drawing.Size(23, 22);
-            this.toolStripCopyEmail.Text = "Copy Email";
+            this.toolStripCopyEmail.Text = "Copy Email (Ctrl+Alt+C)";
             this.toolStripCopyEmail.Click += new System.EventHandler(this.toolStripCopyEmail_Click);
             // 
             // toolStripCopyPassword
@@ -330,7 +371,7 @@
             this.toolStripCopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopyPassword.Name = "toolStripCopyPassword";
             this.toolStripCopyPassword.Size = new System.Drawing.Size(23, 22);
-            this.toolStripCopyPassword.Text = "Copy Password";
+            this.toolStripCopyPassword.Text = "Copy Password (Ctrl+C)";
             this.toolStripCopyPassword.Click += new System.EventHandler(this.toolStripCopyPassword_Click);
             // 
             // toolStripOpenUrl
@@ -616,6 +657,13 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
+            // menuStripEntryOpenUrl
+            // 
+            this.menuStripEntryOpenUrl.Name = "menuStripEntryOpenUrl";
+            this.menuStripEntryOpenUrl.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryOpenUrl.Text = "Open URL in Browser";
+            this.menuStripEntryOpenUrl.Click += new System.EventHandler(this.menuStripEntryOpenUrl_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -706,5 +754,10 @@
         private ToolStripButton toolStripCopyPassword;
         private ToolStripButton toolStripOpenUrl;
         private ToolStripMenuItem menuStripFileChangeMasterPass;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem menuStripEntryCopyUsername;
+        private ToolStripMenuItem menuStripEntryCopyEmail;
+        private ToolStripMenuItem menuStripEntryCopyPassword;
+        private ToolStripMenuItem menuStripEntryOpenUrl;
     }
 }

@@ -203,6 +203,7 @@ namespace KrepostWinForms.Forms
             panelEntryTop.Visible = false;
             panelEntryBottom.Visible = false;
         }
+
         private void menuStripEntryDeleteEntry_Click(object sender, EventArgs e)
         {
             if (!Program.OpenDatabase || Program.CurrentDb is null)
@@ -227,8 +228,107 @@ namespace KrepostWinForms.Forms
 
             RefreshTreeView();
         }
+
+        private void menuStripEntryCopyUsername_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its username can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Username));
+        }
+
+        private void menuStripEntryCopyEmail_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its email can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Email));
+        }
+
+        private void menuStripEntryCopyPassword_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its password can be copied.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            copyTimer.Tick += new EventHandler(TimerEventProcessor);
+            copyTimer.Interval = 10000;
+            copyTimer.Start();
+            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Password));
+        }
+        private void menuStripEntryOpenUrl_Click(object sender, EventArgs e)
+        {
+            if (!Program.OpenDatabase || Program.CurrentDb is null)
+            {
+                MessageBox.Show("A database has not been opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (Program.SelectedEntry is null)
+            {
+                MessageBox.Show("An entry has to be selected before its URL can be opened.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Open entry url.
+            var psi = new ProcessStartInfo(textBoxUrl.Text)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+
+            try
+            {
+                Process.Start(psi);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The URL could not be opened. Make sure it is a valid URL.",
+                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         #endregion
-        
+
         #region toolStrip Functions
         private void toolStripNew_Click(object sender, EventArgs e)
         {
@@ -277,36 +377,7 @@ namespace KrepostWinForms.Forms
 
         private void toolStripOpenUrl_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb is null)
-            {
-                MessageBox.Show("A database has not been opened.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (Program.SelectedEntry is null)
-            {
-                MessageBox.Show("An entry has to be selected before its URL can be opened.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            // Open entry url.
-            var psi = new ProcessStartInfo(textBoxUrl.Text)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            };
-
-            try
-            {
-                Process.Start(psi);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("The URL could not be opened. Make sure it is a valid URL.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            menuStripEntryOpenUrl_Click(sender, e);
         }
         #endregion
 
@@ -324,68 +395,17 @@ namespace KrepostWinForms.Forms
 
         private void buttonUsername_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb is null)
-            {
-                MessageBox.Show("A database has not been opened.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (Program.SelectedEntry is null)
-            {
-                MessageBox.Show("An entry has to be selected before its username can be copied.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            copyTimer.Tick += new EventHandler(TimerEventProcessor);
-            copyTimer.Interval = 10000;
-            copyTimer.Start();
-            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Username));
+            menuStripEntryCopyUsername_Click(sender, e);
         }
 
         private void buttonEmail_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb is null)
-            {
-                MessageBox.Show("A database has not been opened.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (Program.SelectedEntry is null)
-            {
-                MessageBox.Show("An entry has to be selected before its email can be copied.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            copyTimer.Tick += new EventHandler(TimerEventProcessor);
-            copyTimer.Interval = 10000;
-            copyTimer.Start();
-            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Email));
+            menuStripEntryCopyEmail_Click(sender, e);
         }
 
         private void buttonPassword_Click(object sender, EventArgs e)
         {
-            if (!Program.OpenDatabase || Program.CurrentDb is null)
-            {
-                MessageBox.Show("A database has not been opened.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (Program.SelectedEntry is null)
-            {
-                MessageBox.Show("An entry has to be selected before its password can be copied.",
-                    "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            copyTimer.Tick += new EventHandler(TimerEventProcessor);
-            copyTimer.Interval = 10000;
-            copyTimer.Start();
-            Clipboard.SetText(Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Password));
+            menuStripEntryCopyPassword_Click(sender, e);
         }
         private void buttonUrl_Click(object sender, EventArgs e)
         {
