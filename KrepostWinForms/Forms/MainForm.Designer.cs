@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripFileNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +45,7 @@
             this.menuStripEntryCopyUsername = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryCopyEmail = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripEntryCopyPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripEntryOpenUrl = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripNew = new System.Windows.Forms.ToolStripButton();
@@ -84,7 +84,6 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.menuStripEntryOpenUrl = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -129,6 +128,8 @@
             // 
             // menuStripFileNew
             // 
+            this.menuStripFileNew.Image = global::KrepostWinForms.Properties.Resources.NewDocument;
+            this.menuStripFileNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileNew.Name = "menuStripFileNew";
             this.menuStripFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.menuStripFileNew.Size = new System.Drawing.Size(207, 22);
@@ -137,6 +138,8 @@
             // 
             // menuStripFileOpen
             // 
+            this.menuStripFileOpen.Image = global::KrepostWinForms.Properties.Resources.OpenFolder;
+            this.menuStripFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileOpen.Name = "menuStripFileOpen";
             this.menuStripFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.menuStripFileOpen.Size = new System.Drawing.Size(207, 22);
@@ -150,6 +153,8 @@
             // 
             // menuStripFileSave
             // 
+            this.menuStripFileSave.Image = global::KrepostWinForms.Properties.Resources.Save;
+            this.menuStripFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileSave.Name = "menuStripFileSave";
             this.menuStripFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.menuStripFileSave.Size = new System.Drawing.Size(207, 22);
@@ -158,6 +163,8 @@
             // 
             // menuStripFileSaveAs
             // 
+            this.menuStripFileSaveAs.Image = global::KrepostWinForms.Properties.Resources.SaveAs;
+            this.menuStripFileSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileSaveAs.Name = "menuStripFileSaveAs";
             this.menuStripFileSaveAs.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileSaveAs.Text = "Save As";
@@ -170,6 +177,8 @@
             // 
             // menuStripFileChangeMasterPass
             // 
+            this.menuStripFileChangeMasterPass.Image = global::KrepostWinForms.Properties.Resources.NewKey;
+            this.menuStripFileChangeMasterPass.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripFileChangeMasterPass.Name = "menuStripFileChangeMasterPass";
             this.menuStripFileChangeMasterPass.Size = new System.Drawing.Size(207, 22);
             this.menuStripFileChangeMasterPass.Text = "Change Master Password";
@@ -192,6 +201,8 @@
             // 
             // menuStripEntryAddEntry
             // 
+            this.menuStripEntryAddEntry.Image = global::KrepostWinForms.Properties.Resources.Add;
+            this.menuStripEntryAddEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryAddEntry.Name = "menuStripEntryAddEntry";
             this.menuStripEntryAddEntry.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.menuStripEntryAddEntry.Size = new System.Drawing.Size(232, 22);
@@ -200,6 +211,8 @@
             // 
             // menuStripEntryEditEntry
             // 
+            this.menuStripEntryEditEntry.Image = global::KrepostWinForms.Properties.Resources.Edit;
+            this.menuStripEntryEditEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryEditEntry.Name = "menuStripEntryEditEntry";
             this.menuStripEntryEditEntry.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryEditEntry.Text = "Edit Entry";
@@ -207,6 +220,8 @@
             // 
             // menuStripEntryDeleteEntry
             // 
+            this.menuStripEntryDeleteEntry.Image = global::KrepostWinForms.Properties.Resources.Remove;
+            this.menuStripEntryDeleteEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryDeleteEntry.Name = "menuStripEntryDeleteEntry";
             this.menuStripEntryDeleteEntry.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.menuStripEntryDeleteEntry.Size = new System.Drawing.Size(232, 22);
@@ -220,6 +235,8 @@
             // 
             // menuStripEntryCopyUsername
             // 
+            this.menuStripEntryCopyUsername.Image = global::KrepostWinForms.Properties.Resources.User;
+            this.menuStripEntryCopyUsername.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryCopyUsername.Name = "menuStripEntryCopyUsername";
             this.menuStripEntryCopyUsername.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
@@ -229,6 +246,8 @@
             // 
             // menuStripEntryCopyEmail
             // 
+            this.menuStripEntryCopyEmail.Image = global::KrepostWinForms.Properties.Resources.EmailAddressViewer;
+            this.menuStripEntryCopyEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryCopyEmail.Name = "menuStripEntryCopyEmail";
             this.menuStripEntryCopyEmail.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.C)));
@@ -238,11 +257,22 @@
             // 
             // menuStripEntryCopyPassword
             // 
+            this.menuStripEntryCopyPassword.Image = global::KrepostWinForms.Properties.Resources.PasswordBox;
+            this.menuStripEntryCopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuStripEntryCopyPassword.Name = "menuStripEntryCopyPassword";
             this.menuStripEntryCopyPassword.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.menuStripEntryCopyPassword.Size = new System.Drawing.Size(232, 22);
             this.menuStripEntryCopyPassword.Text = "Copy Password";
             this.menuStripEntryCopyPassword.Click += new System.EventHandler(this.menuStripEntryCopyPassword_Click);
+            // 
+            // menuStripEntryOpenUrl
+            // 
+            this.menuStripEntryOpenUrl.Image = global::KrepostWinForms.Properties.Resources.OpenWebSite;
+            this.menuStripEntryOpenUrl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuStripEntryOpenUrl.Name = "menuStripEntryOpenUrl";
+            this.menuStripEntryOpenUrl.Size = new System.Drawing.Size(232, 22);
+            this.menuStripEntryOpenUrl.Text = "Open URL in Browser";
+            this.menuStripEntryOpenUrl.Click += new System.EventHandler(this.menuStripEntryOpenUrl_Click);
             // 
             // statusStrip
             // 
@@ -277,7 +307,7 @@
             // toolStripNew
             // 
             this.toolStripNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripNew.Image")));
+            this.toolStripNew.Image = global::KrepostWinForms.Properties.Resources.NewDocument;
             this.toolStripNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripNew.Name = "toolStripNew";
             this.toolStripNew.Size = new System.Drawing.Size(23, 22);
@@ -287,7 +317,7 @@
             // toolStripOpen
             // 
             this.toolStripOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripOpen.Image = ((System.Drawing.Image)(resources.GetObject("toolStripOpen.Image")));
+            this.toolStripOpen.Image = global::KrepostWinForms.Properties.Resources.OpenFolder;
             this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripOpen.Name = "toolStripOpen";
             this.toolStripOpen.Size = new System.Drawing.Size(23, 22);
@@ -297,7 +327,7 @@
             // toolStripSave
             // 
             this.toolStripSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSave.Image")));
+            this.toolStripSave.Image = global::KrepostWinForms.Properties.Resources.Save;
             this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSave.Name = "toolStripSave";
             this.toolStripSave.Size = new System.Drawing.Size(23, 22);
@@ -312,7 +342,7 @@
             // toolStripAddEntry
             // 
             this.toolStripAddEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripAddEntry.Image = ((System.Drawing.Image)(resources.GetObject("toolStripAddEntry.Image")));
+            this.toolStripAddEntry.Image = global::KrepostWinForms.Properties.Resources.Add;
             this.toolStripAddEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripAddEntry.Name = "toolStripAddEntry";
             this.toolStripAddEntry.Size = new System.Drawing.Size(23, 22);
@@ -322,7 +352,7 @@
             // toolStripEditEntry
             // 
             this.toolStripEditEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripEditEntry.Image = ((System.Drawing.Image)(resources.GetObject("toolStripEditEntry.Image")));
+            this.toolStripEditEntry.Image = global::KrepostWinForms.Properties.Resources.Edit;
             this.toolStripEditEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripEditEntry.Name = "toolStripEditEntry";
             this.toolStripEditEntry.Size = new System.Drawing.Size(23, 22);
@@ -332,7 +362,7 @@
             // toolStripDeleteEntry
             // 
             this.toolStripDeleteEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDeleteEntry.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDeleteEntry.Image")));
+            this.toolStripDeleteEntry.Image = global::KrepostWinForms.Properties.Resources.Remove;
             this.toolStripDeleteEntry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDeleteEntry.Name = "toolStripDeleteEntry";
             this.toolStripDeleteEntry.Size = new System.Drawing.Size(23, 22);
@@ -347,7 +377,7 @@
             // toolStripCopyUsername
             // 
             this.toolStripCopyUsername.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCopyUsername.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCopyUsername.Image")));
+            this.toolStripCopyUsername.Image = global::KrepostWinForms.Properties.Resources.User;
             this.toolStripCopyUsername.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopyUsername.Name = "toolStripCopyUsername";
             this.toolStripCopyUsername.Size = new System.Drawing.Size(23, 22);
@@ -357,7 +387,7 @@
             // toolStripCopyEmail
             // 
             this.toolStripCopyEmail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCopyEmail.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCopyEmail.Image")));
+            this.toolStripCopyEmail.Image = global::KrepostWinForms.Properties.Resources.EmailAddressViewer;
             this.toolStripCopyEmail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopyEmail.Name = "toolStripCopyEmail";
             this.toolStripCopyEmail.Size = new System.Drawing.Size(23, 22);
@@ -367,7 +397,7 @@
             // toolStripCopyPassword
             // 
             this.toolStripCopyPassword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCopyPassword.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCopyPassword.Image")));
+            this.toolStripCopyPassword.Image = global::KrepostWinForms.Properties.Resources.PasswordBox;
             this.toolStripCopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripCopyPassword.Name = "toolStripCopyPassword";
             this.toolStripCopyPassword.Size = new System.Drawing.Size(23, 22);
@@ -377,7 +407,7 @@
             // toolStripOpenUrl
             // 
             this.toolStripOpenUrl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripOpenUrl.Image = ((System.Drawing.Image)(resources.GetObject("toolStripOpenUrl.Image")));
+            this.toolStripOpenUrl.Image = global::KrepostWinForms.Properties.Resources.OpenWebSite;
             this.toolStripOpenUrl.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripOpenUrl.Name = "toolStripOpenUrl";
             this.toolStripOpenUrl.Size = new System.Drawing.Size(23, 22);
@@ -656,13 +686,6 @@
             this.labelUsername.Size = new System.Drawing.Size(63, 15);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
-            // 
-            // menuStripEntryOpenUrl
-            // 
-            this.menuStripEntryOpenUrl.Name = "menuStripEntryOpenUrl";
-            this.menuStripEntryOpenUrl.Size = new System.Drawing.Size(232, 22);
-            this.menuStripEntryOpenUrl.Text = "Open URL in Browser";
-            this.menuStripEntryOpenUrl.Click += new System.EventHandler(this.menuStripEntryOpenUrl_Click);
             // 
             // MainForm
             // 
