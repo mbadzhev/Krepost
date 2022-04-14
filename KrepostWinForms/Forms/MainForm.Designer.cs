@@ -69,6 +69,7 @@
             this.labelEntryDoC = new System.Windows.Forms.Label();
             this.labelEntryTitle = new System.Windows.Forms.Label();
             this.panelEntryBottom = new System.Windows.Forms.Panel();
+            this.textBoxNoteReveal = new System.Windows.Forms.TextBox();
             this.buttonNote = new System.Windows.Forms.Button();
             this.buttonUrl = new System.Windows.Forms.Button();
             this.buttonPassword = new System.Windows.Forms.Button();
@@ -537,11 +538,22 @@
             this.panelEntryBottom.Controls.Add(this.labelPassword);
             this.panelEntryBottom.Controls.Add(this.labelEmail);
             this.panelEntryBottom.Controls.Add(this.labelUsername);
+            this.panelEntryBottom.Controls.Add(this.textBoxNoteReveal);
             this.panelEntryBottom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEntryBottom.Location = new System.Drawing.Point(0, 0);
             this.panelEntryBottom.Name = "panelEntryBottom";
             this.panelEntryBottom.Size = new System.Drawing.Size(459, 365);
             this.panelEntryBottom.TabIndex = 0;
+            // 
+            // textBoxNoteReveal
+            // 
+            this.textBoxNoteReveal.Location = new System.Drawing.Point(100, 232);
+            this.textBoxNoteReveal.Margin = new System.Windows.Forms.Padding(10);
+            this.textBoxNoteReveal.Multiline = true;
+            this.textBoxNoteReveal.Name = "textBoxNoteReveal";
+            this.textBoxNoteReveal.ReadOnly = true;
+            this.textBoxNoteReveal.Size = new System.Drawing.Size(265, 75);
+            this.textBoxNoteReveal.TabIndex = 15;
             // 
             // buttonNote
             // 
@@ -551,6 +563,7 @@
             this.buttonNote.TabIndex = 14;
             this.buttonNote.Text = "Reveal";
             this.buttonNote.UseVisualStyleBackColor = true;
+            this.buttonNote.Click += new System.EventHandler(this.buttonNote_Click);
             // 
             // buttonUrl
             // 
@@ -782,5 +795,6 @@
         private ToolStripMenuItem menuStripEntryCopyEmail;
         private ToolStripMenuItem menuStripEntryCopyPassword;
         private ToolStripMenuItem menuStripEntryOpenUrl;
+        private TextBox textBoxNoteReveal;
     }
 }
