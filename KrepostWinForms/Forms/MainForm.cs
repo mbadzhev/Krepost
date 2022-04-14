@@ -428,6 +428,23 @@ namespace KrepostWinForms.Forms
             copyTimer.Start();
             Clipboard.SetText(textBoxUrl.Text);
         }
+        private void buttonNote_Click(object sender, EventArgs e)
+        {
+            if (buttonNote.Text == "Reveal")
+            {
+                textBoxNoteReveal.Text = Middleware.CryptographyUtils.GetString(Program.SelectedEntry.Note);
+                buttonNote.Text = "Hide";
+                textBoxNoteReveal.Visible = true;
+                textBoxNote.Visible = false;
+            }
+            else if (buttonNote.Text == "Hide")
+            {
+                buttonNote.Text = null;
+                buttonNote.Text = "Reveal";
+                textBoxNote.Visible = true;
+                textBoxNoteReveal.Visible = false;
+            }
+        }
         #endregion
         public void RefreshTreeView()
         {
