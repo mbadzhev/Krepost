@@ -14,7 +14,8 @@ namespace KrepostWinForms.Forms
             toolStrip.Renderer = new CustomToolStripRenderer();
             panelEntryTop.Visible = false;
             panelEntryBottom.Visible = false;
-            //menuStripEntryAddEntry.Enabled = false;
+
+            EnableAvailableIteams();
         }
 
         #region MainForm Functions
@@ -75,6 +76,7 @@ namespace KrepostWinForms.Forms
             {
                 RefreshTreeView();
             }
+            EnableUnavaialbeIteams();
         }
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
@@ -108,6 +110,7 @@ namespace KrepostWinForms.Forms
                     RefreshTreeView();
                 }
             }
+            EnableUnavaialbeIteams();
         }
         private void menuStripFileSave_Click(object sender, EventArgs e)
         {
@@ -479,6 +482,41 @@ namespace KrepostWinForms.Forms
         private static void TimerEventProcessor(object sender, EventArgs e)
         {
             Clipboard.Clear();
+        }
+        private void EnableAvailableIteams()
+        {
+            if (Program.OpenDatabase is false)
+            {
+                menuStripFileSave.Enabled = false;
+                menuStripFileSaveAs.Enabled = false;
+                menuStripFileChangeMasterPass.Enabled = false;
+                menuStripEntry.Enabled = false;
+
+                toolStripSave.Enabled = false;
+                toolStripAddEntry.Enabled = false;
+                toolStripEditEntry.Enabled = false;
+                toolStripDeleteEntry.Enabled = false;
+                toolStripCopyUsername.Enabled = false;
+                toolStripCopyEmail.Enabled = false;
+                toolStripCopyPassword.Enabled = false;
+                toolStripOpenUrl.Enabled = false;
+            }
+            else
+            {
+                menuStripFileSave.Enabled = true;
+                menuStripFileSaveAs.Enabled = true;
+                menuStripFileChangeMasterPass.Enabled = true;
+                menuStripEntry.Enabled = true;
+
+                toolStripSave.Enabled = true;
+                toolStripAddEntry.Enabled = true;
+                toolStripEditEntry.Enabled = true;
+                toolStripDeleteEntry.Enabled = true;
+                toolStripCopyUsername.Enabled = true;
+                toolStripCopyEmail.Enabled = true;
+                toolStripCopyPassword.Enabled = true;
+                toolStripOpenUrl.Enabled = true;
+            }
         }
     }
 }
