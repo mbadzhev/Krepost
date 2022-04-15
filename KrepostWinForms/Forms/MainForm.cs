@@ -15,7 +15,7 @@ namespace KrepostWinForms.Forms
             panelEntryTop.Visible = false;
             panelEntryBottom.Visible = false;
 
-            EnableUnavaialbeIteams();
+            EnableAvailableIteams();
         }
 
         #region MainForm Functions
@@ -483,10 +483,15 @@ namespace KrepostWinForms.Forms
         {
             Clipboard.Clear();
         }
-        private void EnableUnavaialbeIteams()
+        private void EnableAvailableIteams()
         {
             if (Program.OpenDatabase is false)
             {
+                menuStripFileSave.Enabled = false;
+                menuStripFileSaveAs.Enabled = false;
+                menuStripFileChangeMasterPass.Enabled = false;
+                menuStripEntry.Enabled = false;
+
                 toolStripSave.Enabled = false;
                 toolStripAddEntry.Enabled = false;
                 toolStripEditEntry.Enabled = false;
@@ -498,6 +503,11 @@ namespace KrepostWinForms.Forms
             }
             else
             {
+                menuStripFileSave.Enabled = true;
+                menuStripFileSaveAs.Enabled = true;
+                menuStripFileChangeMasterPass.Enabled = true;
+                menuStripEntry.Enabled = true;
+
                 toolStripSave.Enabled = true;
                 toolStripAddEntry.Enabled = true;
                 toolStripEditEntry.Enabled = true;
