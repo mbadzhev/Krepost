@@ -14,7 +14,8 @@ namespace KrepostWinForms.Forms
             toolStrip.Renderer = new CustomToolStripRenderer();
             panelEntryTop.Visible = false;
             panelEntryBottom.Visible = false;
-            //menuStripEntryAddEntry.Enabled = false;
+
+            EnableUnavaialbeIteams();
         }
 
         #region MainForm Functions
@@ -75,6 +76,7 @@ namespace KrepostWinForms.Forms
             {
                 RefreshTreeView();
             }
+            EnableUnavaialbeIteams();
         }
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
@@ -108,6 +110,7 @@ namespace KrepostWinForms.Forms
                     RefreshTreeView();
                 }
             }
+            EnableUnavaialbeIteams();
         }
         private void menuStripFileSave_Click(object sender, EventArgs e)
         {
@@ -479,6 +482,31 @@ namespace KrepostWinForms.Forms
         private static void TimerEventProcessor(object sender, EventArgs e)
         {
             Clipboard.Clear();
+        }
+        private void EnableUnavaialbeIteams()
+        {
+            if (Program.OpenDatabase is false)
+            {
+                toolStripSave.Enabled = false;
+                toolStripAddEntry.Enabled = false;
+                toolStripEditEntry.Enabled = false;
+                toolStripDeleteEntry.Enabled = false;
+                toolStripCopyUsername.Enabled = false;
+                toolStripCopyEmail.Enabled = false;
+                toolStripCopyPassword.Enabled = false;
+                toolStripOpenUrl.Enabled = false;
+            }
+            else
+            {
+                toolStripSave.Enabled = true;
+                toolStripAddEntry.Enabled = true;
+                toolStripEditEntry.Enabled = true;
+                toolStripDeleteEntry.Enabled = true;
+                toolStripCopyUsername.Enabled = true;
+                toolStripCopyEmail.Enabled = true;
+                toolStripCopyPassword.Enabled = true;
+                toolStripOpenUrl.Enabled = true;
+            }
         }
     }
 }
