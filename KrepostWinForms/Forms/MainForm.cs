@@ -76,7 +76,7 @@ namespace KrepostWinForms.Forms
             {
                 RefreshTreeView();
             }
-            EnableUnavaialbeIteams();
+            EnableAvailableIteams();
         }
         private void menuStripFileOpen_Click(object sender, EventArgs e)
         {
@@ -110,7 +110,7 @@ namespace KrepostWinForms.Forms
                     RefreshTreeView();
                 }
             }
-            EnableUnavaialbeIteams();
+            EnableAvailableIteams();
         }
         private void menuStripFileSave_Click(object sender, EventArgs e)
         {
