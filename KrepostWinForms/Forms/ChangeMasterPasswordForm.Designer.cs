@@ -30,12 +30,15 @@
         {
             System.Security.SecureString secureString5 = new System.Security.SecureString();
             System.Security.SecureString secureString6 = new System.Security.SecureString();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeMasterPasswordForm));
             this.secureStringTextBoxTop = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelNewMasterPass = new System.Windows.Forms.Label();
             this.secureStringTextBoxBottom = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelRepeatNewPass = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.labelTop = new System.Windows.Forms.Label();
+            this.labelDivider = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // secureStringTextBoxTop
@@ -43,44 +46,44 @@
             this.secureStringTextBoxTop.Data = secureString5;
             this.secureStringTextBoxTop.DataHash = null;
             this.secureStringTextBoxTop.DataSalt = null;
-            this.secureStringTextBoxTop.Location = new System.Drawing.Point(142, 58);
-            this.secureStringTextBoxTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 10);
+            this.secureStringTextBoxTop.Location = new System.Drawing.Point(145, 99);
+            this.secureStringTextBoxTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxTop.Name = "secureStringTextBoxTop";
-            this.secureStringTextBoxTop.Size = new System.Drawing.Size(329, 23);
+            this.secureStringTextBoxTop.Size = new System.Drawing.Size(326, 23);
             this.secureStringTextBoxTop.TabIndex = 0;
             // 
             // labelNewMasterPass
             // 
             this.labelNewMasterPass.AutoSize = true;
-            this.labelNewMasterPass.Location = new System.Drawing.Point(12, 62);
+            this.labelNewMasterPass.Location = new System.Drawing.Point(12, 103);
             this.labelNewMasterPass.Name = "labelNewMasterPass";
-            this.labelNewMasterPass.Size = new System.Drawing.Size(123, 15);
+            this.labelNewMasterPass.Size = new System.Drawing.Size(126, 15);
             this.labelNewMasterPass.TabIndex = 1;
-            this.labelNewMasterPass.Text = "New Master Password";
+            this.labelNewMasterPass.Text = "New Master Password:";
             // 
             // secureStringTextBoxBottom
             // 
             this.secureStringTextBoxBottom.Data = secureString6;
             this.secureStringTextBoxBottom.DataHash = null;
             this.secureStringTextBoxBottom.DataSalt = null;
-            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(142, 94);
+            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(145, 128);
             this.secureStringTextBoxBottom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxBottom.Name = "secureStringTextBoxBottom";
-            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(329, 23);
+            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(326, 23);
             this.secureStringTextBoxBottom.TabIndex = 2;
             // 
             // labelRepeatNewPass
             // 
             this.labelRepeatNewPass.AutoSize = true;
-            this.labelRepeatNewPass.Location = new System.Drawing.Point(12, 98);
+            this.labelRepeatNewPass.Location = new System.Drawing.Point(12, 132);
             this.labelRepeatNewPass.Name = "labelRepeatNewPass";
-            this.labelRepeatNewPass.Size = new System.Drawing.Size(123, 15);
+            this.labelRepeatNewPass.Size = new System.Drawing.Size(126, 15);
             this.labelRepeatNewPass.TabIndex = 3;
-            this.labelRepeatNewPass.Text = "Repeat New Password";
+            this.labelRepeatNewPass.Text = "Repeat New Password:";
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(315, 226);
+            this.buttonSave.Location = new System.Drawing.Point(316, 192);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 4;
@@ -90,7 +93,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(396, 226);
+            this.buttonCancel.Location = new System.Drawing.Point(397, 192);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
@@ -98,11 +101,33 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // labelTop
+            // 
+            this.labelTop.AutoSize = true;
+            this.labelTop.Location = new System.Drawing.Point(12, 12);
+            this.labelTop.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
+            this.labelTop.MaximumSize = new System.Drawing.Size(460, 0);
+            this.labelTop.Name = "labelTop";
+            this.labelTop.Size = new System.Drawing.Size(456, 60);
+            this.labelTop.TabIndex = 6;
+            this.labelTop.Text = resources.GetString("labelTop.Text");
+            // 
+            // labelDivider
+            // 
+            this.labelDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelDivider.Location = new System.Drawing.Point(-13, 180);
+            this.labelDivider.Margin = new System.Windows.Forms.Padding(3, 24, 3, 7);
+            this.labelDivider.Name = "labelDivider";
+            this.labelDivider.Size = new System.Drawing.Size(510, 2);
+            this.labelDivider.TabIndex = 11;
+            // 
             // ChangeMasterPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.ClientSize = new System.Drawing.Size(484, 227);
+            this.Controls.Add(this.labelDivider);
+            this.Controls.Add(this.labelTop);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelRepeatNewPass);
@@ -114,7 +139,7 @@
             this.MinimizeBox = false;
             this.Name = "ChangeMasterPasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ChangeMasterPasswordForm";
+            this.Text = "Change Master Password";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +153,7 @@
         private Label labelRepeatNewPass;
         private Button buttonSave;
         private Button buttonCancel;
+        private Label labelTop;
+        private Label labelDivider;
     }
 }
