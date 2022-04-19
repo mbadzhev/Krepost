@@ -9,7 +9,7 @@ namespace KrepostWinForms.Forms
             InitializeComponent();
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (Program.CurrentDb == null)
             {

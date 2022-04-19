@@ -46,14 +46,16 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxNote = new KrepostWinForms.UI.SecureStringTextBox();
             this.textBoxUrl = new System.Windows.Forms.TextBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
-            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.labelTop = new System.Windows.Forms.Label();
+            this.labelDivider = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Location = new System.Drawing.Point(12, 63);
+            this.labelTitle.Location = new System.Drawing.Point(12, 73);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(32, 15);
             this.labelTitle.TabIndex = 0;
@@ -62,7 +64,7 @@ namespace KrepostWinForms.Forms
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(12, 103);
+            this.labelUsername.Location = new System.Drawing.Point(12, 102);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(63, 15);
             this.labelUsername.TabIndex = 1;
@@ -71,7 +73,7 @@ namespace KrepostWinForms.Forms
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(12, 143);
+            this.labelEmail.Location = new System.Drawing.Point(12, 131);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(39, 15);
             this.labelEmail.TabIndex = 2;
@@ -80,7 +82,7 @@ namespace KrepostWinForms.Forms
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(12, 183);
+            this.labelPassword.Location = new System.Drawing.Point(12, 160);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(60, 15);
             this.labelPassword.TabIndex = 3;
@@ -89,7 +91,7 @@ namespace KrepostWinForms.Forms
             // labelUrl
             // 
             this.labelUrl.AutoSize = true;
-            this.labelUrl.Location = new System.Drawing.Point(12, 223);
+            this.labelUrl.Location = new System.Drawing.Point(12, 189);
             this.labelUrl.Name = "labelUrl";
             this.labelUrl.Size = new System.Drawing.Size(31, 15);
             this.labelUrl.TabIndex = 4;
@@ -98,7 +100,7 @@ namespace KrepostWinForms.Forms
             // labelNote
             // 
             this.labelNote.AutoSize = true;
-            this.labelNote.Location = new System.Drawing.Point(12, 263);
+            this.labelNote.Location = new System.Drawing.Point(12, 218);
             this.labelNote.Name = "labelNote";
             this.labelNote.Size = new System.Drawing.Size(36, 15);
             this.labelNote.TabIndex = 5;
@@ -109,10 +111,10 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxPassword.Data = secureString5;
             this.secureStringTextBoxPassword.DataHash = null;
             this.secureStringTextBoxPassword.DataSalt = null;
-            this.secureStringTextBoxPassword.Location = new System.Drawing.Point(97, 180);
+            this.secureStringTextBoxPassword.Location = new System.Drawing.Point(95, 156);
             this.secureStringTextBoxPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxPassword.Name = "secureStringTextBoxPassword";
-            this.secureStringTextBoxPassword.Size = new System.Drawing.Size(325, 23);
+            this.secureStringTextBoxPassword.Size = new System.Drawing.Size(377, 23);
             this.secureStringTextBoxPassword.TabIndex = 6;
             // 
             // secureStringTextBoxEmail
@@ -120,10 +122,10 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxEmail.Data = secureString6;
             this.secureStringTextBoxEmail.DataHash = null;
             this.secureStringTextBoxEmail.DataSalt = null;
-            this.secureStringTextBoxEmail.Location = new System.Drawing.Point(97, 140);
+            this.secureStringTextBoxEmail.Location = new System.Drawing.Point(95, 127);
             this.secureStringTextBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxEmail.Name = "secureStringTextBoxEmail";
-            this.secureStringTextBoxEmail.Size = new System.Drawing.Size(325, 23);
+            this.secureStringTextBoxEmail.Size = new System.Drawing.Size(377, 23);
             this.secureStringTextBoxEmail.TabIndex = 7;
             // 
             // secureStringTextBoxUsername
@@ -131,10 +133,10 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxUsername.Data = secureString7;
             this.secureStringTextBoxUsername.DataHash = null;
             this.secureStringTextBoxUsername.DataSalt = null;
-            this.secureStringTextBoxUsername.Location = new System.Drawing.Point(97, 100);
+            this.secureStringTextBoxUsername.Location = new System.Drawing.Point(95, 98);
             this.secureStringTextBoxUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxUsername.Name = "secureStringTextBoxUsername";
-            this.secureStringTextBoxUsername.Size = new System.Drawing.Size(325, 23);
+            this.secureStringTextBoxUsername.Size = new System.Drawing.Size(377, 23);
             this.secureStringTextBoxUsername.TabIndex = 8;
             // 
             // secureStringTextBoxNote
@@ -142,39 +144,39 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxNote.Data = secureString8;
             this.secureStringTextBoxNote.DataHash = null;
             this.secureStringTextBoxNote.DataSalt = null;
-            this.secureStringTextBoxNote.Location = new System.Drawing.Point(97, 260);
+            this.secureStringTextBoxNote.Location = new System.Drawing.Point(95, 214);
             this.secureStringTextBoxNote.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
-            this.secureStringTextBoxNote.Size = new System.Drawing.Size(325, 23);
+            this.secureStringTextBoxNote.Size = new System.Drawing.Size(377, 23);
             this.secureStringTextBoxNote.TabIndex = 10;
             // 
             // textBoxUrl
             // 
-            this.textBoxUrl.Location = new System.Drawing.Point(97, 220);
+            this.textBoxUrl.Location = new System.Drawing.Point(95, 185);
             this.textBoxUrl.Name = "textBoxUrl";
-            this.textBoxUrl.Size = new System.Drawing.Size(325, 23);
+            this.textBoxUrl.Size = new System.Drawing.Size(377, 23);
             this.textBoxUrl.TabIndex = 11;
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(97, 60);
+            this.textBoxTitle.Location = new System.Drawing.Point(95, 69);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(325, 23);
+            this.textBoxTitle.Size = new System.Drawing.Size(377, 23);
             this.textBoxTitle.TabIndex = 12;
             // 
-            // buttonSave
+            // buttonAdd
             // 
-            this.buttonSave.Location = new System.Drawing.Point(266, 376);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 14;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(316, 278);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 14;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(347, 376);
+            this.buttonCancel.Location = new System.Drawing.Point(397, 278);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 13;
@@ -182,12 +184,35 @@ namespace KrepostWinForms.Forms
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // labelTop
+            // 
+            this.labelTop.AutoSize = true;
+            this.labelTop.Location = new System.Drawing.Point(12, 12);
+            this.labelTop.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
+            this.labelTop.MaximumSize = new System.Drawing.Size(460, 0);
+            this.labelTop.Name = "labelTop";
+            this.labelTop.Size = new System.Drawing.Size(458, 30);
+            this.labelTop.TabIndex = 24;
+            this.labelTop.Text = "Currently creating a database entry. Once \'Add\' is pressed, the database still ha" +
+    "s to be saved for this change to take effect.";
+            // 
+            // labelDivider
+            // 
+            this.labelDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelDivider.Location = new System.Drawing.Point(-13, 266);
+            this.labelDivider.Margin = new System.Windows.Forms.Padding(3, 24, 3, 7);
+            this.labelDivider.Name = "labelDivider";
+            this.labelDivider.Size = new System.Drawing.Size(510, 2);
+            this.labelDivider.TabIndex = 25;
+            // 
             // AddEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 411);
-            this.Controls.Add(this.buttonSave);
+            this.ClientSize = new System.Drawing.Size(484, 313);
+            this.Controls.Add(this.labelDivider);
+            this.Controls.Add(this.labelTop);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.textBoxUrl);
@@ -206,7 +231,7 @@ namespace KrepostWinForms.Forms
             this.MinimizeBox = false;
             this.Name = "AddEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddEntryForm";
+            this.Text = "Add Entry";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,7 +251,9 @@ namespace KrepostWinForms.Forms
         private SecureStringTextBox secureStringTextBoxNote;
         private TextBox textBoxUrl;
         private TextBox textBoxTitle;
-        private Button buttonSave;
+        private Button buttonAdd;
         private Button buttonCancel;
+        private Label labelTop;
+        private Label labelDivider;
     }
 }
