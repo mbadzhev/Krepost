@@ -69,7 +69,6 @@
             this.labelEntryDoC = new System.Windows.Forms.Label();
             this.labelEntryTitle = new System.Windows.Forms.Label();
             this.panelEntryBottom = new System.Windows.Forms.Panel();
-            this.textBoxNoteReveal = new System.Windows.Forms.TextBox();
             this.buttonNote = new System.Windows.Forms.Button();
             this.buttonUrl = new System.Windows.Forms.Button();
             this.buttonPassword = new System.Windows.Forms.Button();
@@ -85,6 +84,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.textBoxNoteReveal = new System.Windows.Forms.TextBox();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -545,16 +545,6 @@
             this.panelEntryBottom.Size = new System.Drawing.Size(459, 365);
             this.panelEntryBottom.TabIndex = 0;
             // 
-            // textBoxNoteReveal
-            // 
-            this.textBoxNoteReveal.Location = new System.Drawing.Point(100, 232);
-            this.textBoxNoteReveal.Margin = new System.Windows.Forms.Padding(10);
-            this.textBoxNoteReveal.Multiline = true;
-            this.textBoxNoteReveal.Name = "textBoxNoteReveal";
-            this.textBoxNoteReveal.ReadOnly = true;
-            this.textBoxNoteReveal.Size = new System.Drawing.Size(265, 75);
-            this.textBoxNoteReveal.TabIndex = 15;
-            // 
             // buttonNote
             // 
             this.buttonNote.Location = new System.Drawing.Point(371, 232);
@@ -700,6 +690,16 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
+            // textBoxNoteReveal
+            // 
+            this.textBoxNoteReveal.Location = new System.Drawing.Point(100, 232);
+            this.textBoxNoteReveal.Margin = new System.Windows.Forms.Padding(10);
+            this.textBoxNoteReveal.Multiline = true;
+            this.textBoxNoteReveal.Name = "textBoxNoteReveal";
+            this.textBoxNoteReveal.ReadOnly = true;
+            this.textBoxNoteReveal.Size = new System.Drawing.Size(265, 75);
+            this.textBoxNoteReveal.TabIndex = 15;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -709,11 +709,12 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Krepost";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
