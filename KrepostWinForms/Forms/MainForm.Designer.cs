@@ -69,7 +69,6 @@
             this.labelEntryDoC = new System.Windows.Forms.Label();
             this.labelEntryTitle = new System.Windows.Forms.Label();
             this.panelEntryBottom = new System.Windows.Forms.Panel();
-            this.textBoxNoteReveal = new System.Windows.Forms.TextBox();
             this.buttonNote = new System.Windows.Forms.Button();
             this.buttonUrl = new System.Windows.Forms.Button();
             this.buttonPassword = new System.Windows.Forms.Button();
@@ -85,6 +84,7 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.textBoxNoteReveal = new System.Windows.Forms.TextBox();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -111,6 +111,7 @@
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(584, 24);
             this.menuStrip.TabIndex = 0;
+            this.menuStrip.TabStop = true;
             this.menuStrip.Text = "menuStrip";
             // 
             // menuStripFile
@@ -302,7 +303,8 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(584, 25);
-            this.toolStrip.TabIndex = 2;
+            this.toolStrip.TabIndex = 1;
+            this.toolStrip.TabStop = true;
             this.toolStrip.Text = "toolStrip";
             // 
             // toolStripNew
@@ -545,22 +547,12 @@
             this.panelEntryBottom.Size = new System.Drawing.Size(459, 365);
             this.panelEntryBottom.TabIndex = 0;
             // 
-            // textBoxNoteReveal
-            // 
-            this.textBoxNoteReveal.Location = new System.Drawing.Point(100, 232);
-            this.textBoxNoteReveal.Margin = new System.Windows.Forms.Padding(10);
-            this.textBoxNoteReveal.Multiline = true;
-            this.textBoxNoteReveal.Name = "textBoxNoteReveal";
-            this.textBoxNoteReveal.ReadOnly = true;
-            this.textBoxNoteReveal.Size = new System.Drawing.Size(265, 75);
-            this.textBoxNoteReveal.TabIndex = 15;
-            // 
             // buttonNote
             // 
             this.buttonNote.Location = new System.Drawing.Point(371, 232);
             this.buttonNote.Name = "buttonNote";
             this.buttonNote.Size = new System.Drawing.Size(60, 23);
-            this.buttonNote.TabIndex = 14;
+            this.buttonNote.TabIndex = 4;
             this.buttonNote.Text = "Reveal";
             this.buttonNote.UseVisualStyleBackColor = true;
             this.buttonNote.Click += new System.EventHandler(this.buttonNote_Click);
@@ -570,7 +562,7 @@
             this.buttonUrl.Location = new System.Drawing.Point(371, 189);
             this.buttonUrl.Name = "buttonUrl";
             this.buttonUrl.Size = new System.Drawing.Size(60, 23);
-            this.buttonUrl.TabIndex = 13;
+            this.buttonUrl.TabIndex = 3;
             this.buttonUrl.Text = "Copy";
             this.buttonUrl.UseVisualStyleBackColor = true;
             this.buttonUrl.Click += new System.EventHandler(this.buttonUrl_Click);
@@ -580,7 +572,7 @@
             this.buttonPassword.Location = new System.Drawing.Point(371, 146);
             this.buttonPassword.Name = "buttonPassword";
             this.buttonPassword.Size = new System.Drawing.Size(60, 23);
-            this.buttonPassword.TabIndex = 12;
+            this.buttonPassword.TabIndex = 2;
             this.buttonPassword.Text = "Copy";
             this.buttonPassword.UseVisualStyleBackColor = true;
             this.buttonPassword.Click += new System.EventHandler(this.buttonPassword_Click);
@@ -590,7 +582,7 @@
             this.buttonEmail.Location = new System.Drawing.Point(371, 102);
             this.buttonEmail.Name = "buttonEmail";
             this.buttonEmail.Size = new System.Drawing.Size(60, 23);
-            this.buttonEmail.TabIndex = 11;
+            this.buttonEmail.TabIndex = 1;
             this.buttonEmail.Text = "Copy";
             this.buttonEmail.UseVisualStyleBackColor = true;
             this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
@@ -600,7 +592,7 @@
             this.buttonUsername.Location = new System.Drawing.Point(371, 60);
             this.buttonUsername.Name = "buttonUsername";
             this.buttonUsername.Size = new System.Drawing.Size(60, 23);
-            this.buttonUsername.TabIndex = 10;
+            this.buttonUsername.TabIndex = 0;
             this.buttonUsername.Text = "Copy";
             this.buttonUsername.UseVisualStyleBackColor = true;
             this.buttonUsername.Click += new System.EventHandler(this.buttonUsername_Click);
@@ -700,6 +692,16 @@
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
             // 
+            // textBoxNoteReveal
+            // 
+            this.textBoxNoteReveal.Location = new System.Drawing.Point(100, 232);
+            this.textBoxNoteReveal.Margin = new System.Windows.Forms.Padding(10);
+            this.textBoxNoteReveal.Multiline = true;
+            this.textBoxNoteReveal.Name = "textBoxNoteReveal";
+            this.textBoxNoteReveal.ReadOnly = true;
+            this.textBoxNoteReveal.Size = new System.Drawing.Size(265, 75);
+            this.textBoxNoteReveal.TabIndex = 15;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -709,11 +711,12 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Krepost";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

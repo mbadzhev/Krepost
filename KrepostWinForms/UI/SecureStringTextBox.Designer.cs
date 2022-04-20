@@ -48,7 +48,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.InputBox);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "SecureStringTextBox";
             this.Size = new System.Drawing.Size(175, 23);
             this.ResumeLayout(false);

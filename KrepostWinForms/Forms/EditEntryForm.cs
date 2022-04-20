@@ -43,7 +43,7 @@ namespace KrepostWinForms.Forms
             secureStringTextBoxNote.DisplayCharacterNumberOnly(dbE.Note.Length);
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (Program.CurrentDb == null)
             {
