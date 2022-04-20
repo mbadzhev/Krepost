@@ -30,8 +30,8 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString3 = new System.Security.SecureString();
-            System.Security.SecureString secureString4 = new System.Security.SecureString();
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
+            System.Security.SecureString secureString2 = new System.Security.SecureString();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelPasswordRepeat = new System.Windows.Forms.Label();
             this.labelTop = new System.Windows.Forms.Label();
@@ -95,24 +95,22 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxBottom
             // 
-            this.secureStringTextBoxBottom.Data = secureString3;
+            this.secureStringTextBoxBottom.Data = secureString1;
             this.secureStringTextBoxBottom.DataHash = null;
             this.secureStringTextBoxBottom.DataSalt = null;
-            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(157, 126);
-            this.secureStringTextBoxBottom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(156, 126);
             this.secureStringTextBoxBottom.Name = "secureStringTextBoxBottom";
-            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(315, 23);
+            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(316, 23);
             this.secureStringTextBoxBottom.TabIndex = 7;
             // 
             // secureStringTextBoxTop
             // 
-            this.secureStringTextBoxTop.Data = secureString4;
+            this.secureStringTextBoxTop.Data = secureString2;
             this.secureStringTextBoxTop.DataHash = null;
             this.secureStringTextBoxTop.DataSalt = null;
-            this.secureStringTextBoxTop.Location = new System.Drawing.Point(157, 97);
-            this.secureStringTextBoxTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxTop.Location = new System.Drawing.Point(156, 97);
             this.secureStringTextBoxTop.Name = "secureStringTextBoxTop";
-            this.secureStringTextBoxTop.Size = new System.Drawing.Size(315, 23);
+            this.secureStringTextBoxTop.Size = new System.Drawing.Size(316, 23);
             this.secureStringTextBoxTop.TabIndex = 8;
             // 
             // labelDivider

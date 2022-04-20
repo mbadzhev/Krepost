@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString5 = new System.Security.SecureString();
-            System.Security.SecureString secureString6 = new System.Security.SecureString();
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
+            System.Security.SecureString secureString2 = new System.Security.SecureString();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeMasterPasswordForm));
             this.secureStringTextBoxTop = new KrepostWinForms.UI.SecureStringTextBox();
             this.labelNewMasterPass = new System.Windows.Forms.Label();
@@ -43,13 +43,12 @@
             // 
             // secureStringTextBoxTop
             // 
-            this.secureStringTextBoxTop.Data = secureString5;
+            this.secureStringTextBoxTop.Data = secureString1;
             this.secureStringTextBoxTop.DataHash = null;
             this.secureStringTextBoxTop.DataSalt = null;
-            this.secureStringTextBoxTop.Location = new System.Drawing.Point(145, 99);
-            this.secureStringTextBoxTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxTop.Location = new System.Drawing.Point(144, 99);
             this.secureStringTextBoxTop.Name = "secureStringTextBoxTop";
-            this.secureStringTextBoxTop.Size = new System.Drawing.Size(326, 23);
+            this.secureStringTextBoxTop.Size = new System.Drawing.Size(328, 23);
             this.secureStringTextBoxTop.TabIndex = 0;
             // 
             // labelNewMasterPass
@@ -63,13 +62,12 @@
             // 
             // secureStringTextBoxBottom
             // 
-            this.secureStringTextBoxBottom.Data = secureString6;
+            this.secureStringTextBoxBottom.Data = secureString2;
             this.secureStringTextBoxBottom.DataHash = null;
             this.secureStringTextBoxBottom.DataSalt = null;
-            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(145, 128);
-            this.secureStringTextBoxBottom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxBottom.Location = new System.Drawing.Point(144, 128);
             this.secureStringTextBoxBottom.Name = "secureStringTextBoxBottom";
-            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(326, 23);
+            this.secureStringTextBoxBottom.Size = new System.Drawing.Size(328, 23);
             this.secureStringTextBoxBottom.TabIndex = 2;
             // 
             // labelRepeatNewPass

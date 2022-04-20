@@ -84,9 +84,8 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBox.DataHash = null;
             this.secureStringTextBox.DataSalt = null;
             this.secureStringTextBox.Location = new System.Drawing.Point(117, 54);
-            this.secureStringTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBox.Name = "secureStringTextBox";
-            this.secureStringTextBox.Size = new System.Drawing.Size(354, 23);
+            this.secureStringTextBox.Size = new System.Drawing.Size(355, 23);
             this.secureStringTextBox.TabIndex = 5;
             // 
             // labelDivider

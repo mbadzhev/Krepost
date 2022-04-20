@@ -120,7 +120,6 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxPassword.DataHash = null;
             this.secureStringTextBoxPassword.DataSalt = null;
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(81, 186);
-            this.secureStringTextBoxPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxPassword.Name = "secureStringTextBoxPassword";
             this.secureStringTextBoxPassword.Size = new System.Drawing.Size(325, 23);
             this.secureStringTextBoxPassword.TabIndex = 6;
@@ -131,7 +130,6 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxEmail.DataHash = null;
             this.secureStringTextBoxEmail.DataSalt = null;
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(81, 157);
-            this.secureStringTextBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxEmail.Name = "secureStringTextBoxEmail";
             this.secureStringTextBoxEmail.Size = new System.Drawing.Size(325, 23);
             this.secureStringTextBoxEmail.TabIndex = 7;
@@ -142,7 +140,6 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxUsername.DataHash = null;
             this.secureStringTextBoxUsername.DataSalt = null;
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(81, 128);
-            this.secureStringTextBoxUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxUsername.Name = "secureStringTextBoxUsername";
             this.secureStringTextBoxUsername.Size = new System.Drawing.Size(325, 23);
             this.secureStringTextBoxUsername.TabIndex = 8;
@@ -153,7 +150,6 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxNote.DataHash = null;
             this.secureStringTextBoxNote.DataSalt = null;
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(81, 245);
-            this.secureStringTextBoxNote.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
             this.secureStringTextBoxNote.Size = new System.Drawing.Size(325, 23);
             this.secureStringTextBoxNote.TabIndex = 10;

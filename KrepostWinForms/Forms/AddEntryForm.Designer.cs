@@ -30,10 +30,10 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString5 = new System.Security.SecureString();
-            System.Security.SecureString secureString6 = new System.Security.SecureString();
-            System.Security.SecureString secureString7 = new System.Security.SecureString();
-            System.Security.SecureString secureString8 = new System.Security.SecureString();
+            System.Security.SecureString secureString1 = new System.Security.SecureString();
+            System.Security.SecureString secureString2 = new System.Security.SecureString();
+            System.Security.SecureString secureString3 = new System.Security.SecureString();
+            System.Security.SecureString secureString4 = new System.Security.SecureString();
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -108,60 +108,56 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxPassword
             // 
-            this.secureStringTextBoxPassword.Data = secureString5;
+            this.secureStringTextBoxPassword.Data = secureString1;
             this.secureStringTextBoxPassword.DataHash = null;
             this.secureStringTextBoxPassword.DataSalt = null;
-            this.secureStringTextBoxPassword.Location = new System.Drawing.Point(95, 156);
-            this.secureStringTextBoxPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxPassword.Location = new System.Drawing.Point(81, 156);
             this.secureStringTextBoxPassword.Name = "secureStringTextBoxPassword";
-            this.secureStringTextBoxPassword.Size = new System.Drawing.Size(377, 23);
+            this.secureStringTextBoxPassword.Size = new System.Drawing.Size(391, 23);
             this.secureStringTextBoxPassword.TabIndex = 6;
             // 
             // secureStringTextBoxEmail
             // 
-            this.secureStringTextBoxEmail.Data = secureString6;
+            this.secureStringTextBoxEmail.Data = secureString2;
             this.secureStringTextBoxEmail.DataHash = null;
             this.secureStringTextBoxEmail.DataSalt = null;
-            this.secureStringTextBoxEmail.Location = new System.Drawing.Point(95, 127);
-            this.secureStringTextBoxEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxEmail.Location = new System.Drawing.Point(81, 127);
             this.secureStringTextBoxEmail.Name = "secureStringTextBoxEmail";
-            this.secureStringTextBoxEmail.Size = new System.Drawing.Size(377, 23);
+            this.secureStringTextBoxEmail.Size = new System.Drawing.Size(391, 23);
             this.secureStringTextBoxEmail.TabIndex = 7;
             // 
             // secureStringTextBoxUsername
             // 
-            this.secureStringTextBoxUsername.Data = secureString7;
+            this.secureStringTextBoxUsername.Data = secureString3;
             this.secureStringTextBoxUsername.DataHash = null;
             this.secureStringTextBoxUsername.DataSalt = null;
-            this.secureStringTextBoxUsername.Location = new System.Drawing.Point(95, 98);
-            this.secureStringTextBoxUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxUsername.Location = new System.Drawing.Point(81, 98);
             this.secureStringTextBoxUsername.Name = "secureStringTextBoxUsername";
-            this.secureStringTextBoxUsername.Size = new System.Drawing.Size(377, 23);
+            this.secureStringTextBoxUsername.Size = new System.Drawing.Size(391, 23);
             this.secureStringTextBoxUsername.TabIndex = 8;
             // 
             // secureStringTextBoxNote
             // 
-            this.secureStringTextBoxNote.Data = secureString8;
+            this.secureStringTextBoxNote.Data = secureString4;
             this.secureStringTextBoxNote.DataHash = null;
             this.secureStringTextBoxNote.DataSalt = null;
-            this.secureStringTextBoxNote.Location = new System.Drawing.Point(95, 214);
-            this.secureStringTextBoxNote.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.secureStringTextBoxNote.Location = new System.Drawing.Point(81, 214);
             this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
-            this.secureStringTextBoxNote.Size = new System.Drawing.Size(377, 23);
+            this.secureStringTextBoxNote.Size = new System.Drawing.Size(391, 23);
             this.secureStringTextBoxNote.TabIndex = 10;
             // 
             // textBoxUrl
             // 
-            this.textBoxUrl.Location = new System.Drawing.Point(95, 185);
+            this.textBoxUrl.Location = new System.Drawing.Point(81, 185);
             this.textBoxUrl.Name = "textBoxUrl";
-            this.textBoxUrl.Size = new System.Drawing.Size(377, 23);
+            this.textBoxUrl.Size = new System.Drawing.Size(391, 23);
             this.textBoxUrl.TabIndex = 11;
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(95, 69);
+            this.textBoxTitle.Location = new System.Drawing.Point(81, 69);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(377, 23);
+            this.textBoxTitle.Size = new System.Drawing.Size(391, 23);
             this.textBoxTitle.TabIndex = 12;
             // 
             // buttonAdd
