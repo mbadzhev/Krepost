@@ -68,7 +68,7 @@
             this.secureStringTextBoxBottom.Location = new System.Drawing.Point(144, 128);
             this.secureStringTextBoxBottom.Name = "secureStringTextBoxBottom";
             this.secureStringTextBoxBottom.Size = new System.Drawing.Size(328, 23);
-            this.secureStringTextBoxBottom.TabIndex = 2;
+            this.secureStringTextBoxBottom.TabIndex = 1;
             // 
             // labelRepeatNewPass
             // 
@@ -84,7 +84,7 @@
             this.buttonSave.Location = new System.Drawing.Point(316, 192);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -94,7 +94,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(397, 192);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);

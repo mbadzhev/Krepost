@@ -63,7 +63,7 @@ namespace KrepostWinForms.Forms
             this.buttonCancel.Location = new System.Drawing.Point(397, 118);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 3;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -73,7 +73,7 @@ namespace KrepostWinForms.Forms
             this.buttonOpen.Location = new System.Drawing.Point(316, 118);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(75, 23);
-            this.buttonOpen.TabIndex = 4;
+            this.buttonOpen.TabIndex = 1;
             this.buttonOpen.Text = "Open";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
@@ -86,7 +86,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBox.Location = new System.Drawing.Point(117, 54);
             this.secureStringTextBox.Name = "secureStringTextBox";
             this.secureStringTextBox.Size = new System.Drawing.Size(355, 23);
-            this.secureStringTextBox.TabIndex = 5;
+            this.secureStringTextBox.TabIndex = 0;
             // 
             // labelDivider
             // 

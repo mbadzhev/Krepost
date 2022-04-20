@@ -114,7 +114,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(81, 156);
             this.secureStringTextBoxPassword.Name = "secureStringTextBoxPassword";
             this.secureStringTextBoxPassword.Size = new System.Drawing.Size(391, 23);
-            this.secureStringTextBoxPassword.TabIndex = 6;
+            this.secureStringTextBoxPassword.TabIndex = 3;
             // 
             // secureStringTextBoxEmail
             // 
@@ -124,7 +124,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(81, 127);
             this.secureStringTextBoxEmail.Name = "secureStringTextBoxEmail";
             this.secureStringTextBoxEmail.Size = new System.Drawing.Size(391, 23);
-            this.secureStringTextBoxEmail.TabIndex = 7;
+            this.secureStringTextBoxEmail.TabIndex = 2;
             // 
             // secureStringTextBoxUsername
             // 
@@ -134,7 +134,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(81, 98);
             this.secureStringTextBoxUsername.Name = "secureStringTextBoxUsername";
             this.secureStringTextBoxUsername.Size = new System.Drawing.Size(391, 23);
-            this.secureStringTextBoxUsername.TabIndex = 8;
+            this.secureStringTextBoxUsername.TabIndex = 1;
             // 
             // secureStringTextBoxNote
             // 
@@ -144,28 +144,28 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(81, 214);
             this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
             this.secureStringTextBoxNote.Size = new System.Drawing.Size(391, 23);
-            this.secureStringTextBoxNote.TabIndex = 10;
+            this.secureStringTextBoxNote.TabIndex = 5;
             // 
             // textBoxUrl
             // 
             this.textBoxUrl.Location = new System.Drawing.Point(81, 185);
             this.textBoxUrl.Name = "textBoxUrl";
             this.textBoxUrl.Size = new System.Drawing.Size(391, 23);
-            this.textBoxUrl.TabIndex = 11;
+            this.textBoxUrl.TabIndex = 4;
             // 
             // textBoxTitle
             // 
             this.textBoxTitle.Location = new System.Drawing.Point(81, 69);
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(391, 23);
-            this.textBoxTitle.TabIndex = 12;
+            this.textBoxTitle.TabIndex = 0;
             // 
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(316, 278);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 14;
+            this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -175,7 +175,7 @@ namespace KrepostWinForms.Forms
             this.buttonCancel.Location = new System.Drawing.Point(397, 278);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 13;
+            this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);

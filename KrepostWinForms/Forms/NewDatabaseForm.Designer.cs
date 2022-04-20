@@ -78,7 +78,7 @@ namespace KrepostWinForms.Forms
             this.buttonCancel.Location = new System.Drawing.Point(397, 190);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -88,7 +88,7 @@ namespace KrepostWinForms.Forms
             this.buttonSave.Location = new System.Drawing.Point(316, 190);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 6;
+            this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -101,7 +101,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxBottom.Location = new System.Drawing.Point(156, 126);
             this.secureStringTextBoxBottom.Name = "secureStringTextBoxBottom";
             this.secureStringTextBoxBottom.Size = new System.Drawing.Size(316, 23);
-            this.secureStringTextBoxBottom.TabIndex = 7;
+            this.secureStringTextBoxBottom.TabIndex = 1;
             // 
             // secureStringTextBoxTop
             // 
@@ -111,7 +111,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxTop.Location = new System.Drawing.Point(156, 97);
             this.secureStringTextBoxTop.Name = "secureStringTextBoxTop";
             this.secureStringTextBoxTop.Size = new System.Drawing.Size(316, 23);
-            this.secureStringTextBoxTop.TabIndex = 8;
+            this.secureStringTextBoxTop.TabIndex = 0;
             // 
             // labelDivider
             // 

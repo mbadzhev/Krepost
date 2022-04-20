@@ -111,6 +111,7 @@
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(584, 24);
             this.menuStrip.TabIndex = 0;
+            this.menuStrip.TabStop = true;
             this.menuStrip.Text = "menuStrip";
             // 
             // menuStripFile
@@ -302,7 +303,8 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(584, 25);
-            this.toolStrip.TabIndex = 2;
+            this.toolStrip.TabIndex = 1;
+            this.toolStrip.TabStop = true;
             this.toolStrip.Text = "toolStrip";
             // 
             // toolStripNew
@@ -550,7 +552,7 @@
             this.buttonNote.Location = new System.Drawing.Point(371, 232);
             this.buttonNote.Name = "buttonNote";
             this.buttonNote.Size = new System.Drawing.Size(60, 23);
-            this.buttonNote.TabIndex = 14;
+            this.buttonNote.TabIndex = 4;
             this.buttonNote.Text = "Reveal";
             this.buttonNote.UseVisualStyleBackColor = true;
             this.buttonNote.Click += new System.EventHandler(this.buttonNote_Click);
@@ -560,7 +562,7 @@
             this.buttonUrl.Location = new System.Drawing.Point(371, 189);
             this.buttonUrl.Name = "buttonUrl";
             this.buttonUrl.Size = new System.Drawing.Size(60, 23);
-            this.buttonUrl.TabIndex = 13;
+            this.buttonUrl.TabIndex = 3;
             this.buttonUrl.Text = "Copy";
             this.buttonUrl.UseVisualStyleBackColor = true;
             this.buttonUrl.Click += new System.EventHandler(this.buttonUrl_Click);
@@ -570,7 +572,7 @@
             this.buttonPassword.Location = new System.Drawing.Point(371, 146);
             this.buttonPassword.Name = "buttonPassword";
             this.buttonPassword.Size = new System.Drawing.Size(60, 23);
-            this.buttonPassword.TabIndex = 12;
+            this.buttonPassword.TabIndex = 2;
             this.buttonPassword.Text = "Copy";
             this.buttonPassword.UseVisualStyleBackColor = true;
             this.buttonPassword.Click += new System.EventHandler(this.buttonPassword_Click);
@@ -580,7 +582,7 @@
             this.buttonEmail.Location = new System.Drawing.Point(371, 102);
             this.buttonEmail.Name = "buttonEmail";
             this.buttonEmail.Size = new System.Drawing.Size(60, 23);
-            this.buttonEmail.TabIndex = 11;
+            this.buttonEmail.TabIndex = 1;
             this.buttonEmail.Text = "Copy";
             this.buttonEmail.UseVisualStyleBackColor = true;
             this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
@@ -590,7 +592,7 @@
             this.buttonUsername.Location = new System.Drawing.Point(371, 60);
             this.buttonUsername.Name = "buttonUsername";
             this.buttonUsername.Size = new System.Drawing.Size(60, 23);
-            this.buttonUsername.TabIndex = 10;
+            this.buttonUsername.TabIndex = 0;
             this.buttonUsername.Text = "Copy";
             this.buttonUsername.UseVisualStyleBackColor = true;
             this.buttonUsername.Click += new System.EventHandler(this.buttonUsername_Click);

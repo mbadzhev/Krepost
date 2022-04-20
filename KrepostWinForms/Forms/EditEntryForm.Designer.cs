@@ -122,7 +122,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(81, 186);
             this.secureStringTextBoxPassword.Name = "secureStringTextBoxPassword";
             this.secureStringTextBoxPassword.Size = new System.Drawing.Size(325, 23);
-            this.secureStringTextBoxPassword.TabIndex = 6;
+            this.secureStringTextBoxPassword.TabIndex = 5;
             // 
             // secureStringTextBoxEmail
             // 
@@ -132,7 +132,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(81, 157);
             this.secureStringTextBoxEmail.Name = "secureStringTextBoxEmail";
             this.secureStringTextBoxEmail.Size = new System.Drawing.Size(325, 23);
-            this.secureStringTextBoxEmail.TabIndex = 7;
+            this.secureStringTextBoxEmail.TabIndex = 3;
             // 
             // secureStringTextBoxUsername
             // 
@@ -142,7 +142,7 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(81, 128);
             this.secureStringTextBoxUsername.Name = "secureStringTextBoxUsername";
             this.secureStringTextBoxUsername.Size = new System.Drawing.Size(325, 23);
-            this.secureStringTextBoxUsername.TabIndex = 8;
+            this.secureStringTextBoxUsername.TabIndex = 1;
             // 
             // secureStringTextBoxNote
             // 
@@ -152,28 +152,28 @@ namespace KrepostWinForms.Forms
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(81, 245);
             this.secureStringTextBoxNote.Name = "secureStringTextBoxNote";
             this.secureStringTextBoxNote.Size = new System.Drawing.Size(325, 23);
-            this.secureStringTextBoxNote.TabIndex = 10;
+            this.secureStringTextBoxNote.TabIndex = 8;
             // 
             // textBoxUrl
             // 
             this.textBoxUrl.Location = new System.Drawing.Point(81, 216);
             this.textBoxUrl.Name = "textBoxUrl";
             this.textBoxUrl.Size = new System.Drawing.Size(391, 23);
-            this.textBoxUrl.TabIndex = 11;
+            this.textBoxUrl.TabIndex = 7;
             // 
             // textBoxTitle
             // 
             this.textBoxTitle.Location = new System.Drawing.Point(81, 99);
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(391, 23);
-            this.textBoxTitle.TabIndex = 12;
+            this.textBoxTitle.TabIndex = 0;
             // 
             // buttonEdit
             // 
             this.buttonEdit.Location = new System.Drawing.Point(316, 309);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonEdit.TabIndex = 14;
+            this.buttonEdit.TabIndex = 10;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
@@ -183,7 +183,7 @@ namespace KrepostWinForms.Forms
             this.buttonCancel.Location = new System.Drawing.Point(397, 309);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 13;
+            this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -193,7 +193,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealUsername.Location = new System.Drawing.Point(412, 128);
             this.buttonRevealUsername.Name = "buttonRevealUsername";
             this.buttonRevealUsername.Size = new System.Drawing.Size(60, 23);
-            this.buttonRevealUsername.TabIndex = 15;
+            this.buttonRevealUsername.TabIndex = 2;
             this.buttonRevealUsername.Text = "Reveal";
             this.buttonRevealUsername.UseVisualStyleBackColor = true;
             this.buttonRevealUsername.Click += new System.EventHandler(this.buttonRevealUsername_Click);
@@ -203,7 +203,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealEmail.Location = new System.Drawing.Point(412, 157);
             this.buttonRevealEmail.Name = "buttonRevealEmail";
             this.buttonRevealEmail.Size = new System.Drawing.Size(60, 23);
-            this.buttonRevealEmail.TabIndex = 16;
+            this.buttonRevealEmail.TabIndex = 4;
             this.buttonRevealEmail.Text = "Reveal";
             this.buttonRevealEmail.UseVisualStyleBackColor = true;
             this.buttonRevealEmail.Click += new System.EventHandler(this.buttonRevealEmail_Click);
@@ -213,7 +213,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealPassword.Location = new System.Drawing.Point(412, 186);
             this.buttonRevealPassword.Name = "buttonRevealPassword";
             this.buttonRevealPassword.Size = new System.Drawing.Size(60, 23);
-            this.buttonRevealPassword.TabIndex = 17;
+            this.buttonRevealPassword.TabIndex = 6;
             this.buttonRevealPassword.Text = "Reveal";
             this.buttonRevealPassword.UseVisualStyleBackColor = true;
             this.buttonRevealPassword.Click += new System.EventHandler(this.buttonRevealPassword_Click);
@@ -223,7 +223,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealNote.Location = new System.Drawing.Point(412, 245);
             this.buttonRevealNote.Name = "buttonRevealNote";
             this.buttonRevealNote.Size = new System.Drawing.Size(60, 23);
-            this.buttonRevealNote.TabIndex = 18;
+            this.buttonRevealNote.TabIndex = 9;
             this.buttonRevealNote.Text = "Reveal";
             this.buttonRevealNote.UseVisualStyleBackColor = true;
             this.buttonRevealNote.Click += new System.EventHandler(this.buttonRevealNote_Click);
