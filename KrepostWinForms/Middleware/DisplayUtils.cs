@@ -1,5 +1,7 @@
 ﻿using KrepostLib.Storage;
 
+using KrepostWinForms.UI;
+
 namespace KrepostWinForms.Middleware
 {
     internal class DisplayUtils
@@ -129,6 +131,38 @@ namespace KrepostWinForms.Middleware
             if (SelectedEntry != null)
             {
                 SelectedEntry = null;
+            }
+        }
+        /// <summary>
+        /// Reveals the value stored in a SecureStringTextBox.
+        /// </summary>
+        /// <param name="btn"><see cref="Button"/> that is clicked.</param>
+        /// <param name="tbx"><see cref="TextBox"/> that will display the plaintext value.</param>
+        /// <param name="sstbx"><see cref="SecureStringTextBox"/> that stores the value to be revealed.</param>
+        public static void ButtonRevealClick(Button btn, TextBox tbx, SecureStringTextBox sstbx)
+        {
+            // Validate arguments.
+            if (btn is null)
+                throw new ArgumentNullException(nameof(btn));
+            if (tbx is null)
+                throw new ArgumentNullException(nameof(tbx));
+            if (sstbx is null)
+                throw new ArgumentNullException(nameof(sstbx));
+
+            // If the content is hidden.
+            if (btn.Text == "Reveal")
+            {
+                tbx.Text = sstbx.Expose();
+                tbx.Visible = true;
+                sstbx.Visible = false;
+                btn.Text = "Hide";
+            }
+            // If the content is revealed.
+            else if (btn.Text == "Hide")
+            {
+                sstbx.Visible = true;
+                tbx.Visible = false;
+                btn.Text = "Reveal";
             }
         }
     }
