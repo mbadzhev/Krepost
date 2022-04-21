@@ -30,10 +30,10 @@ namespace KrepostWinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Security.SecureString secureString1 = new System.Security.SecureString();
-            System.Security.SecureString secureString2 = new System.Security.SecureString();
-            System.Security.SecureString secureString3 = new System.Security.SecureString();
-            System.Security.SecureString secureString4 = new System.Security.SecureString();
+            System.Security.SecureString secureString5 = new System.Security.SecureString();
+            System.Security.SecureString secureString6 = new System.Security.SecureString();
+            System.Security.SecureString secureString7 = new System.Security.SecureString();
+            System.Security.SecureString secureString8 = new System.Security.SecureString();
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -116,7 +116,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxPassword
             // 
-            this.secureStringTextBoxPassword.Data = secureString1;
+            this.secureStringTextBoxPassword.Data = secureString5;
             this.secureStringTextBoxPassword.DataHash = null;
             this.secureStringTextBoxPassword.DataSalt = null;
             this.secureStringTextBoxPassword.Location = new System.Drawing.Point(81, 156);
@@ -126,7 +126,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxEmail
             // 
-            this.secureStringTextBoxEmail.Data = secureString2;
+            this.secureStringTextBoxEmail.Data = secureString6;
             this.secureStringTextBoxEmail.DataHash = null;
             this.secureStringTextBoxEmail.DataSalt = null;
             this.secureStringTextBoxEmail.Location = new System.Drawing.Point(81, 127);
@@ -136,7 +136,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxUsername
             // 
-            this.secureStringTextBoxUsername.Data = secureString3;
+            this.secureStringTextBoxUsername.Data = secureString7;
             this.secureStringTextBoxUsername.DataHash = null;
             this.secureStringTextBoxUsername.DataSalt = null;
             this.secureStringTextBoxUsername.Location = new System.Drawing.Point(81, 98);
@@ -146,7 +146,7 @@ namespace KrepostWinForms.Forms
             // 
             // secureStringTextBoxNote
             // 
-            this.secureStringTextBoxNote.Data = secureString4;
+            this.secureStringTextBoxNote.Data = secureString8;
             this.secureStringTextBoxNote.DataHash = null;
             this.secureStringTextBoxNote.DataSalt = null;
             this.secureStringTextBoxNote.Location = new System.Drawing.Point(81, 214);
@@ -217,6 +217,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealNote.TabIndex = 29;
             this.buttonRevealNote.Text = "Reveal";
             this.buttonRevealNote.UseVisualStyleBackColor = true;
+            this.buttonRevealNote.Click += new System.EventHandler(this.buttonRevealNote_Click);
             // 
             // buttonRevealPassword
             // 
@@ -226,6 +227,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealPassword.TabIndex = 28;
             this.buttonRevealPassword.Text = "Reveal";
             this.buttonRevealPassword.UseVisualStyleBackColor = true;
+            this.buttonRevealPassword.Click += new System.EventHandler(this.buttonRevealPassword_Click);
             // 
             // buttonRevealEmail
             // 
@@ -235,6 +237,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealEmail.TabIndex = 27;
             this.buttonRevealEmail.Text = "Reveal";
             this.buttonRevealEmail.UseVisualStyleBackColor = true;
+            this.buttonRevealEmail.Click += new System.EventHandler(this.buttonRevealEmail_Click);
             // 
             // buttonRevealUsername
             // 
@@ -244,6 +247,7 @@ namespace KrepostWinForms.Forms
             this.buttonRevealUsername.TabIndex = 26;
             this.buttonRevealUsername.Text = "Reveal";
             this.buttonRevealUsername.UseVisualStyleBackColor = true;
+            this.buttonRevealUsername.Click += new System.EventHandler(this.buttonRevealUsername_Click);
             // 
             // textBoxUsername
             // 
