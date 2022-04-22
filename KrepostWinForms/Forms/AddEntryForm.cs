@@ -1,5 +1,8 @@
 ﻿using KrepostLib.Storage;
 
+using KrepostWinForms.Middleware;
+using KrepostWinForms.UI;
+
 namespace KrepostWinForms.Forms
 {
     public partial class AddEntryForm : Form
@@ -78,6 +81,25 @@ namespace KrepostWinForms.Forms
                 return false;
             }
             return true;
+        }
+        private void buttonRevealUsername_Click(object sender, EventArgs e)
+        {
+            DisplayUtils.ButtonRevealClick(buttonRevealUsername, textBoxUsername, secureStringTextBoxUsername);
+        }
+
+        private void buttonRevealEmail_Click(object sender, EventArgs e)
+        {
+            DisplayUtils.ButtonRevealClick(buttonRevealEmail, textBoxEmail, secureStringTextBoxEmail);
+        }
+
+        private void buttonRevealPassword_Click(object sender, EventArgs e)
+        {
+            DisplayUtils.ButtonRevealClick(buttonRevealPassword, textBoxPassword, secureStringTextBoxPassword);
+        }
+
+        private void buttonRevealNote_Click(object sender, EventArgs e)
+        {
+            DisplayUtils.ButtonRevealClick(buttonRevealNote, textBoxNote, secureStringTextBoxNote);
         }
     }
 }
