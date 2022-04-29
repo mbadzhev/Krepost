@@ -45,9 +45,9 @@ namespace KrepostWinForms.Forms
             this.labelTop.Location = new System.Drawing.Point(12, 12);
             this.labelTop.Margin = new System.Windows.Forms.Padding(3, 3, 3, 24);
             this.labelTop.Name = "labelTop";
-            this.labelTop.Size = new System.Drawing.Size(126, 15);
+            this.labelTop.Size = new System.Drawing.Size(312, 15);
             this.labelTop.TabIndex = 0;
-            this.labelTop.Text = "Enter Master Password";
+            this.labelTop.Text = "Enter the correct master password to access this database.\r\n";
             // 
             // labelPassword
             // 

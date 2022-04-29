@@ -43,6 +43,9 @@ namespace KrepostWinForms.Forms
                     MessageBox.Show("Entryption key was not created correctly. A new database has not been created.",
                         "Krepost", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.Abort;
+                    // Dispose of user input.
+                    secureStringTextBoxTop.Data.Dispose();
+                    secureStringTextBoxBottom.Data.Dispose();
                     Close();
                 }
             }
