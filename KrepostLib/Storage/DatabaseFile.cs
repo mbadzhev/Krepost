@@ -32,6 +32,7 @@ namespace KrepostLib.Storage
 
         public bool ValidateHead()
         {
+            // Deprecated.
             if (Head == null)
             {
                 throw new InvalidOperationException("Head is null");
@@ -48,6 +49,7 @@ namespace KrepostLib.Storage
         }
         public bool ValidateBody()
         {
+            // Deprecated.
             if (Body == null)
             {
                 throw new InvalidOperationException("Head is null");

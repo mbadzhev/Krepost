@@ -50,11 +50,12 @@ namespace KrepostLib.Storage
 
         public DatabaseHead()
         {
-            // Empty constructor needed for serialization
+            // Empty constructor needed for serialization.
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
+            // Method needed for serialization.
             info.AddValue("HashFunction", HashFunction);
             info.AddValue("CipherAlgorithm", CipherAlgorithm);
             info.AddValue("AccessHash", AccessHash);
@@ -63,6 +64,7 @@ namespace KrepostLib.Storage
         }
         public DatabaseHead(SerializationInfo info, StreamingContext context)
         {
+            // Method needed for deserialization.
             HashFunction = (HashId)info.GetValue("HashFunction", typeof(HashId));
             CipherAlgorithm = (CipherId)info.GetValue("CipherAlgorithm", typeof(CipherId));
             AccessHash = (string)info.GetValue("AccessHash", typeof(string));
@@ -82,15 +84,17 @@ namespace KrepostLib.Storage
 
         public DatabaseBody()
         {
-            // Empty constructor needed for serialization
+            // Empty constructor needed for serialization.
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
+            // Method needed for serialization.
             info.AddValue("EntryList", EntryList);
         }
         public DatabaseBody(SerializationInfo info, StreamingContext context)
         {
+            // Method needed for deserialization.
             EntryList = (List<DatabaseEntry>)info.GetValue("EntryList", typeof(List<DatabaseEntry>));
         }
     }
@@ -153,6 +157,18 @@ namespace KrepostLib.Storage
         {
             // Empty constructor needed for serialization
         }
+        /// <summary>
+        /// Creates a new <see cref="DatabaseEntry"/> with the arguments passed into the constructor.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="username"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="url"></param>
+        /// <param name="note"></param>
+        /// <param name="uid"></param>
+        /// <param name="iv"></param>
+        /// <param name="doM"></param>
         public DatabaseEntry(string title, SecureByteArray username,
             SecureByteArray email, SecureByteArray password,
             string url, SecureByteArray note, string uid, byte[] iv, string doM = DefaultDateModified)
@@ -170,6 +186,9 @@ namespace KrepostLib.Storage
             ComputeIntegrityHash();
         }
 
+        /// <summary>
+        /// Computes a hash of the values stored in a database entry to validate their integrity.
+        /// </summary>
         private void ComputeIntegrityHash()
         {
             string entryFields = Title + Encoding.UTF8.GetString(Username.Data) +
@@ -181,6 +200,7 @@ namespace KrepostLib.Storage
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
+            // Method needed for serialization.
             info.AddValue("Title", Title);
             info.AddValue("Username", Username);
             info.AddValue("Email", Email);
@@ -196,6 +216,7 @@ namespace KrepostLib.Storage
 
         public DatabaseEntry(SerializationInfo info, StreamingContext context)
         {
+            // Method needed for deserialization.
             Title = (string)info.GetValue("Title", typeof(string));
             Username = (SecureByteArray)info.GetValue("Username", typeof(SecureByteArray));
             Email = (SecureByteArray)info.GetValue("Email", typeof(SecureByteArray));

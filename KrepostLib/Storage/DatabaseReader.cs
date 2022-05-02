@@ -11,6 +11,8 @@ namespace KrepostLib.Storage
     {
         public static Database OpenDatabase(string path, SecureByteArray key)
         {
+            // Deprecated.
+
             // Deserialize and validate database file
             DatabaseFile dbFile = DeserializeDatabaseFile(path);
             //if (!dbFile.ValidateHead(key))
@@ -34,7 +36,11 @@ namespace KrepostLib.Storage
 
             return db;
         }
-
+        /// <summary>
+        /// Deserializes a <see cref="DatabaseFile"/> to an object.
+        /// </summary>
+        /// <param name="path">The path to the <see cref="DatabaseFile"/> to be deserialized.</param>
+        /// <returns>The object reference to the deserialized object.</returns>
         public static DatabaseFile DeserializeDatabaseFile(string path)
         {
             // Create a new file stream to read the stored DatabaseFile.
@@ -57,7 +63,12 @@ namespace KrepostLib.Storage
 
             return dbF;
         }
-
+        /// <summary>
+        /// Deserializes the head of a <see cref="DatabaseFile"/> object.
+        /// </summary>
+        /// <param name="dbF">The <see cref="DatabaseFile"/> containing the head to be deserialized.</param>
+        /// <returns>The reference to the deserialized <see cref="DatabaseHead"/>.</returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public static DatabaseHead DeserializeDatabaseHead(DatabaseFile dbF)
         {
             // Deserialize and validate database head 
@@ -69,6 +80,13 @@ namespace KrepostLib.Storage
 
             return dbHead;
         }
+        /// <summary>
+        /// Deserializes the body of a <see cref="DatabaseFile"/> object.
+        /// </summary>
+        /// <param name="dbF">The <see cref="DatabaseFile"/> containing the body to be deserialized.</param>
+        /// <param name="dbH">The <see cref="DatabaseHead"/> of the <see cref="Database"/> containing the body to be deserialized.</param>
+        /// <param name="key">The key used to encrypt the <see cref="DatabaseBody"/>.</param>
+        /// <returns>The reference to the deserialized <see cref="DatabaseBody"/>.</returns>
         public static DatabaseBody DeserializeDatabaseBody(DatabaseFile dbF, DatabaseHead dbH, SecureByteArray key)
         {
             // Deserialize and decrypt database body
@@ -104,10 +122,13 @@ namespace KrepostLib.Storage
                 return true;
             return false;
         }
+        /// <summary>
+        /// Validates the integrity of a <see cref="DatabaseHead"/>.
+        /// </summary>
+        /// <param name="db">The <see cref="Database"/> caontaining the head object to be validated.</param>
+        /// <returns>True if the validation is successfull, false if the validation fails.</returns>
         public static bool ValidateDatabaseHead(Database db)
         {
-            // TODO: Allow for different values in header fields
-
             // Concatenate all fields of database header
             string headerString = db.Head.HashFunction + db.Head.AccessHash + db.Head.CipherAlgorithm + db.Head.BodyIv;
             // Hash concatenated string and compare result with stored hash
@@ -117,6 +138,11 @@ namespace KrepostLib.Storage
             }
             return true;
         }
+        /// <summary>
+        /// Validates the integrity of a <see cref="DatabaseHead"/>.
+        /// </summary>
+        /// <param name="dbH">The <see cref="DatabaseHead"/> to be validated.</param>
+        /// <returns>True if the validation is successfull, false if the validation fails.</returns>
         public static bool ValidateDatabaseHead(DatabaseHead dbH)
         {
             // Concatenate all fields of database header
