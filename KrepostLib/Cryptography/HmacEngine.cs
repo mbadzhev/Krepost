@@ -7,6 +7,13 @@ namespace KrepostLib.Cryptography
 {
     public sealed class HmacEngine
     {
+        /// <summary>
+        /// Computes the HMAC of the specified data using SHA-256.
+        /// </summary>
+        /// <param name="data">The data for which to cumpute HMAC.</param>
+        /// <param name="key">The cryptographic key used to compute the HMAC.</param>
+        /// <param name="salt">The salt used to randomize the output.</param>
+        /// <returns>The HMAC value for the specificed data.</returns>
         public static byte[] ComputeHmac(byte[] data, byte[] key, byte[] salt)
         {
             byte[] authenticationKey = Argon2Engine.DeriveKey(key, salt);
@@ -18,6 +25,13 @@ namespace KrepostLib.Cryptography
                 return hmac.ComputeHash(data);
             }
         }
+        /// <summary>
+        /// Computes the HMAC of the specified data using SHA-256.
+        /// </summary>
+        /// <param name="data">The data for which to cumpute HMAC.</param>
+        /// <param name="key">The cryptographic key used to compute the HMAC.</param>
+        /// <param name="salt">The salt used to randomize the output.</param>
+        /// <returns>The HMAC value for the specificed data.</returns>
         public static string ComputeHmac(byte[] data, SecureByteArray key, byte[] salt)
         {
             byte[] bytes = key.Expose();

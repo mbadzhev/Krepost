@@ -5,9 +5,13 @@ namespace KrepostLib.Cryptography
 {
     public static class Sha256Engine
     {
+        /// <summary>
+        /// Computes the hash value of the specified data using SHA-256.
+        /// </summary>
+        /// <param name="plainText">The data for which to calculate the hash.</param>
+        /// <returns>The hash of the specified data.</returns>
         public static string ComputeSha256Hash(string plainText)
         {
-            // TODO: Securely transport the plain text.
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(plainText));
@@ -21,6 +25,12 @@ namespace KrepostLib.Cryptography
                 return builder.ToString();
             }
         }
+        /// <summary>
+        /// Computes the hash value of the specified data using SHA-256.
+        /// </summary>
+        /// <param name="plainText">The data for which to calculate the hash.</param>
+        /// <param name="salt">The salt used to randomize the output.</param>
+        /// <returns>The hash of the specified data.</returns>
         public static string ComputeSha256Hash(string plainText, byte[] salt)
         {
             byte[] bytesInput = Encoding.UTF8.GetBytes(plainText);
@@ -41,7 +51,6 @@ namespace KrepostLib.Cryptography
                 completeInput[plainText.Length + i] = salt[i];
             }
 
-            // TODO: Securely transport the plain text.
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 byte[] bytes = sha256Hash.ComputeHash(completeInput);

@@ -1,10 +1,18 @@
 ﻿using System.Security.Cryptography;
+
 using KrepostLib.Security;
 
 namespace KrepostLib.Cryptography
 {
     public sealed class AesEngine
     {
+        /// <summary>
+        /// Encrypts data using AES-256.
+        /// </summary>
+        /// <param name="plainBytes">The plaintext to be encrypted.</param>
+        /// <param name="key">The encryption key.</param>
+        /// <param name="iv">The initialiation vector.</param>
+        /// <returns>The encrypted data as ciphertext.</returns>
         public static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
         {
             using (Aes cipher = Aes.Create())
@@ -27,6 +35,13 @@ namespace KrepostLib.Cryptography
                 }
             }
         }
+        /// <summary>
+        /// Encrypts data using AES-256.
+        /// </summary>
+        /// <param name="plainBytes">The plaintext to be encrypted.</param>
+        /// <param name="key">The encryption key.</param>
+        /// <param name="iv">The initialiation vector.</param>
+        /// <returns>The encrypted data as ciphertext.</returns>
         public static byte[] Encrypt(byte[] plainBytes, SecureByteArray key, byte[] iv)
         {
             byte[] masterKey = key.Expose();
@@ -34,6 +49,13 @@ namespace KrepostLib.Cryptography
             Array.Clear(masterKey, 0, masterKey.Length);
             return cipherText;
         }
+        /// <summary>
+        /// Decrypts data using AES-256.
+        /// </summary>
+        /// <param name="encryptedData">The ciphertext to be decrypted.</param>
+        /// <param name="key">The decryption key.</param>
+        /// <param name="iv">The initialiation vector.</param>
+        /// <returns>The decrypted data as plaintext.</returns>
         public static byte[] Decrypt(byte[] encryptedData, byte[] key, byte[] iv)
         {
             using (Aes cipher = Aes.Create())
@@ -56,17 +78,24 @@ namespace KrepostLib.Cryptography
                 }
             }
         }
-        public static byte[] Decrypt(byte[] plainBytes, SecureByteArray key, byte[] iv)
+        /// <summary>
+        /// Decrypts data using AES-256.
+        /// </summary>
+        /// <param name="encryptedData">The ciphertext to be decrypted.</param>
+        /// <param name="key">The decryption key.</param>
+        /// <param name="iv">The initialiation vector.</param>
+        /// <returns>The decrypted data as plaintext.</returns>
+        public static byte[] Decrypt(byte[] encryptedData, SecureByteArray key, byte[] iv)
         {
             byte[] masterKey = key.Expose();
-            byte[] plainText = Decrypt(plainBytes, masterKey, iv);
+            byte[] plainText = Decrypt(encryptedData, masterKey, iv);
             Array.Clear(masterKey, 0, masterKey.Length);
             return plainText;
         }
-        //https://bytes.com/topic/java/answers/700499-cant-decrypt-my-aes-128-c-encrypted-byte-array-java really helped
         private static byte[] ReadFully(Stream stream)
         {
-            // TODO: Introduce validation for byte array size
+            //https://bytes.com/topic/java/answers/700499-cant-decrypt-my-aes-128-c-encrypted-byte-array-java really helped
+
             byte[] buffer = new byte[32768];
             using (MemoryStream ms = new MemoryStream())
             {
