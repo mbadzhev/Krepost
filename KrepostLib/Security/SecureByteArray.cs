@@ -37,6 +37,9 @@ namespace KrepostLib.Security
         /// </summary>
         private readonly object lockObject = new object();
 
+        /// <summary>
+        /// Indicates if the data stored is encrypted or not.
+        /// </summary>
         private bool encryptedStatus;
 
         /// <summary>

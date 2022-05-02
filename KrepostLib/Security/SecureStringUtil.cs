@@ -146,6 +146,9 @@ namespace KrepostLib.Security
             }
             return data;
         }
+        /// <summary>
+        /// Disposes of all resources help by the utility.
+        /// </summary>
         public void Dispose()
         {
             if (!disposedStatus)
